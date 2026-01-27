@@ -541,13 +541,13 @@
                 
                 <div class="story-columns">
                     <p>
-                        It began in 2013. Fresh out of Computer Science, I found myself not in a tech startup, but as an intern in a pharmaceutical firm. It was there, amidst the rows of numbers and spreadsheets, that I discovered my true language: <strong>Data</strong>. 
+                        [cite_start]It began in 2013. Fresh out of Computer Science [cite: 71][cite_start], I found myself not in a tech startup, but as an intern in a pharmaceutical firm[cite: 66]. It was there, amidst the rows of numbers and spreadsheets, that I discovered my true language: <strong>Data</strong>. 
                     </p>
                     <p>
-                        I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I made a pivotal decision to pursue a Master’s in Development Studies, a decision that finally married my technical programming roots with the human-centric world of development practice.
+                        I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. [cite_start]This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products[cite: 70]. But I wanted more impact. [cite_start]I made a pivotal decision to pursue a Master’s in Development Studies[cite: 71], a decision that finally married my technical programming roots with the human-centric world of development practice.
                     </p>
                     <p>
-                        This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of progressive data wrangling. Though I will always consider myself a student of the craft, I have built a proven track record of wrangling data into any shape, creating complex tables, and designing intricate plots. I like to think of myself as a "Data Wizard" :-)
+                        [cite_start]This path led me to impactful work with USAID [cite: 60] and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank">Dr. [cite_start]Luke Sonnet</a>[cite: 71], under whose wing I delved into the realm of progressive data wrangling. Though I will always consider myself a student of the craft, I have built a proven track record of wrangling data into any shape, creating complex tables, and designing intricate plots. I like to think of myself as a "Data Wizard" :-)
                     </p>
                 </div>
 
@@ -568,16 +568,114 @@
                         <div class="mentor-card">
                             <h4><a href="https://saadgulzar.com/" target="_blank">Dr. Saad Gulzar</a></h4>
                             <p>
-                                Dr. Gulzar is the guiding light that taught me to fly. He opened doors I did not know existed, giving me multiple opportunities within his research and introducing me to brilliant minds at Stanford, Yale, and Princeton. He didn't just give me a role; he gave me a horizon.
+                                Dr. Gulzar is the guiding light that taught me to fly. [cite_start]He opened doors I did not know existed, giving me multiple opportunities within his research and introducing me to brilliant minds at Stanford, Yale, and Princeton[cite: 72]. He didn't just give me a role; he gave me a horizon.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <p style="margin-top: 40px; text-align: center;">
-                    With this foundation, I have managed multiple multi-national projects and now find myself in the United States, serving as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank">Kellogg Institute at the University of Notre Dame</a>.
+                    [cite_start]With this foundation, I have managed multiple multi-national projects [cite: 15] [cite_start]and now find myself in the United States, serving as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank">Kellogg Institute at the University of Notre Dame</a>[cite: 11].
                 </p>
             </section>
+
+            <style>
+                /* --- UPDATE THIS CSS FOR PERFECT COLUMNS --- */
+                
+                .section-container {
+                    max-width: 900px;
+                    margin: 0 auto;
+                    padding: 80px 40px;
+                }
+
+                .section-title {
+                    font-size: 3rem;
+                    margin-bottom: 40px;
+                    color: var(--text-main);
+                    border-left: 4px solid var(--gold-accent);
+                    padding-left: 20px;
+                }
+
+                /* Story Columns - The Key Fix */
+                .story-columns {
+                    column-count: 2;          /* Creates 2 columns */
+                    column-gap: 50px;         /* Nice wide gap between them */
+                    column-fill: balance;     /* Forces browser to make heights equal */
+                    font-size: 1.1rem;
+                    line-height: 1.8;
+                    color: #e0e0e0;
+                    text-align: justify;
+                    margin-bottom: 50px;
+                    orphans: 2;               /* Prevents single lines at bottom */
+                    widows: 2;                /* Prevents single lines at top */
+                }
+                
+                .story-columns p {
+                    margin-top: 0;
+                    margin-bottom: 25px;
+                    /* REMOVED 'break-inside: avoid' to allow text to balance perfectly */
+                }
+                
+                .story-columns a {
+                    color: var(--gold-accent);
+                    border-bottom: 1px dotted var(--gold-accent);
+                }
+                .story-columns a:hover {
+                    color: #fff;
+                    border-bottom: 1px solid #fff;
+                }
+
+                /* Mentors Block */
+                .mentors-block { margin-top: 60px; }
+                
+                .mentors-title {
+                    font-size: 2rem;
+                    color: var(--gold-accent);
+                    font-style: italic;
+                    margin-bottom: 40px;
+                    text-align: center;
+                    width: 100%;
+                }
+
+                /* Grid for Side-by-Side Mentors */
+                .mentors-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr; /* Two equal columns */
+                    gap: 30px;
+                }
+
+                .mentor-card {
+                    background: rgba(255, 255, 255, 0.03);
+                    border-left: 3px solid var(--gold-accent);
+                    padding: 25px;
+                    border-radius: 0 8px 8px 0;
+                    transition: transform 0.3s ease;
+                    height: 100%; /* Ensures cards align in height */
+                }
+                .mentor-card:hover {
+                    background: rgba(255, 255, 255, 0.05);
+                    transform: translateY(-5px);
+                }
+                .mentor-card h4 {
+                    font-size: 1.4rem;
+                    color: var(--gold-accent);
+                    margin: 0 0 15px 0;
+                }
+                .mentor-card h4 a { border-bottom: none; }
+                .mentor-card p {
+                    font-style: italic;
+                    color: #ccc;
+                    margin: 0;
+                    line-height: 1.6;
+                    font-size: 0.95rem;
+                }
+
+                /* Mobile Adjustment */
+                @media (max-width: 900px) {
+                    .story-columns { column-count: 1; } /* Stack on phone */
+                    .mentors-grid { grid-template-columns: 1fr; } /* Stack on phone */
+                }
+            </style>
 
             <section id="experience" class="section-container">
                 <h2 class="section-title">Work Experience</h2>
