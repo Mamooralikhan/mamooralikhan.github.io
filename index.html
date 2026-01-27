@@ -67,9 +67,9 @@
         }
 
         nav a {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--text-muted);
         }
 
@@ -77,19 +77,21 @@
             color: var(--gold-accent);
         }
 
-        /* --- TITLE PAGE (HERO SECTION) --- */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 70%);
+        /* --- UNIFIED HOME SECTION CONTAINER --- */
+        #home {
+            background: radial-gradient(circle at top center, #1a1a1a 0%, #0a0a0a 60%);
+            padding-bottom: 60px;
         }
 
-        /* Profile Picture Style */
+        /* --- HEADER SUB-SECTION --- */
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+        }
+
         .profile-pic {
             width: 180px;
             height: 180px;
@@ -100,27 +102,27 @@
             margin-bottom: 25px;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 15px;
+        .header-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
             letter-spacing: -1px;
         }
 
-        .hero .subtitle {
-            font-size: 1.5rem;
+        .header-content .subtitle {
+            font-size: 1.3rem;
             color: var(--gold-accent);
             font-style: italic;
             font-weight: 400;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
-        /* Contact Line */
-        .hero .contact-line {
+        /* Contact Info Row */
+        .contact-line {
             display: flex;
             gap: 25px;
             color: var(--text-muted);
-            margin-bottom: 40px;
-            font-size: 1.1rem;
+            margin-bottom: 30px;
+            font-size: 1rem;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
@@ -132,19 +134,14 @@
             gap: 8px;
         }
 
-        .contact-item i {
-            color: var(--gold-accent);
-        }
+        .contact-item i { color: var(--gold-accent); }
+        .contact-item:hover { color: var(--text-main); }
 
-        .contact-item:hover {
-            color: var(--text-main);
-        }
-
-        /* --- SOCIAL & CV ICONS --- */
+        /* Social Icons Row */
         .social-links {
             display: flex;
-            gap: 40px; /* Increased gap for cleaner look */
-            margin-top: 10px;
+            gap: 40px;
+            margin-bottom: 40px;
             align-items: flex-start;
             flex-wrap: wrap;
             justify-content: center;
@@ -154,12 +151,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            width: 120px; /* Fixed width for alignment */
+            gap: 10px;
+            width: 100px;
         }
 
         .social-icon {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--text-muted);
             transition: transform 0.3s ease, color 0.3s ease;
         }
@@ -170,16 +167,93 @@
         }
 
         .social-text {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
             line-height: 1.4;
         }
 
-        /* --- CONTENT COMING SOON SECTIONS --- */
+        /* --- STORY SUB-SECTION (Merged) --- */
+        .story-wrapper {
+            max-width: 800px; /* Limits width for readability */
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* Elegant Divider between header and story */
+        .section-divider {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, transparent, var(--gold-accent), transparent);
+            margin: 0 auto 50px auto;
+            max-width: 60%;
+            opacity: 0.5;
+        }
+
+        .story-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ddd;
+            text-align: justify; /* Academic/Elite look */
+        }
+
+        .story-content h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-main);
+        }
+
+        .story-content p { margin-bottom: 25px; }
+
+        .story-content strong { color: var(--text-main); font-weight: 600; }
+
+        .story-content a {
+            color: var(--gold-accent);
+            border-bottom: 1px dotted var(--gold-accent);
+        }
+
+        .story-content a:hover {
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+
+        /* Mentors Section */
+        .mentors-title {
+            font-size: 1.8rem;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-style: italic;
+            color: var(--gold-accent);
+        }
+
+        .mentor-tribute {
+            border-left: 3px solid var(--gold-accent);
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .mentor-tribute h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--gold-accent);
+            margin-bottom: 10px;
+        }
+
+        .mentor-tribute p {
+            margin-bottom: 0;
+            font-style: italic;
+            color: #ccc;
+        }
+
+        /* --- PLACEHOLDER SECTIONS --- */
         .section-placeholder {
             padding: 80px 20px;
             border-top: 1px solid #222;
             text-align: center;
+            background-color: var(--bg-panel);
         }
 
         .section-placeholder h2 {
@@ -202,14 +276,15 @@
             font-size: 0.8rem;
             color: #444;
             border-top: 1px solid #1a1a1a;
+            background-color: var(--bg-dark);
         }
 
         /* Mobile Adjustments */
         @media (max-width: 600px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero .subtitle { font-size: 1.2rem; }
-            nav ul { gap: 15px; }
+            .header-content h1 { font-size: 2.5rem; }
+            .header-content .subtitle { font-size: 1.1rem; }
             .contact-line { flex-direction: column; gap: 10px; }
+            .section-divider { max-width: 80%; }
         }
     </style>
 </head>
@@ -218,57 +293,56 @@
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#story">My Story</a></li>
             <li><a href="#experience">Work Experience</a></li>
             <li><a href="#research">Contributions in Research</a></li>
             <li><a href="#education">Education & Skills</a></li>
         </ul>
     </nav>
 
-    <section id="home" class="hero">
+    <section id="home">
         
-        <img src="profile.jpg" alt="Mamoor Ali Khan" class="profile-pic">
+        <div class="header-content">
+            <img src="profile.jpg" alt="Mamoor Ali Khan" class="profile-pic">
 
-        <h1>Mamoor Ali Khan</h1>
-        
-        <div class="subtitle">Research Manager | Data Analyst | Project Lead</div>
-        
-        <div class="contact-line">
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i> 
-                <span>Notre Dame, Indiana</span>
+            <h1>Mamoor Ali Khan</h1>
+            <div class="subtitle">Research Manager | Data Analyst | Project Lead</div>
+            
+            <div class="contact-line">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i> 
+                    <span>Notre Dame, Indiana</span>
+                </div>
+                <a href="mailto:skhan24@nd.edu" class="contact-item">
+                    <i class="fas fa-envelope"></i> 
+                    <span>skhan24@nd.edu</span>
+                </a>
             </div>
-            <a href="mailto:skhan24@nd.edu" class="contact-item">
-                <i class="fas fa-envelope"></i> 
-                <span>skhan24@nd.edu</span>
-            </a>
+
+            <div class="social-links">
+                
+                <a href="https://www.dropbox.com/scl/fi/eomamml30qifisjtle7t8/resume_mamooralikhan.pdf?rlkey=h5bfp0ajxb5no1432zzivfng6&dl=0" target="_blank" class="social-item">
+                    <i class="fas fa-file-alt social-icon"></i>
+                    <span class="social-text">Download CV</span>
+                </a>
+
+                <a href="https://linkedin.com/in/mamoor-ali-khan-5106a9171/?skipRedirect=true" target="_blank" class="social-item">
+                    <i class="fab fa-linkedin social-icon"></i>
+                    <span class="social-text">LinkedIn</span>
+                </a>
+
+                <a href="https://www.instagram.com/adventourist1/" target="_blank" class="social-item">
+                    <i class="fab fa-instagram social-icon"></i>
+                    <span class="social-text">Travels & Hobby</span>
+                </a>
+            </div>
         </div>
 
-        <div class="social-links">
-            
-            <a href="https://www.dropbox.com/scl/fi/eomamml30qifisjtle7t8/resume_mamooralikhan.pdf?rlkey=h5bfp0ajxb5no1432zzivfng6&dl=0" target="_blank" class="social-item">
-                <i class="fas fa-file-alt social-icon"></i>
-                <span class="social-text">Download Curriculum Vitae</span>
-            </a>
+        <hr class="section-divider">
 
-            <a href="https://linkedin.com/in/mamoor-ali-khan-5106a9171/?skipRedirect=true" target="_blank" class="social-item">
-                <i class="fab fa-linkedin social-icon"></i>
-                <span class="social-text">Professional Profile</span>
-            </a>
-
-            <a href="https://www.instagram.com/adventourist1/" target="_blank" class="social-item">
-                <i class="fab fa-instagram social-icon"></i>
-                <span class="social-text">Travels & <br>Hobbies</span>
-            </a>
-        </div>
-
-    </section>
-
-    <section id="story" class="story-section">
-        <div class="story-container">
-            <h2>My Journey</h2>
-            
+        <div class="story-wrapper">
             <div class="story-content">
+                <h2>My Journey</h2>
+                
                 <p>
                     It began in 2013. Fresh out of Computer Science, I found myself not in a tech startup, but as an intern in a pharmaceutical firm. It was there, amidst the rows of numbers and spreadsheets, that I discovered my true language: <strong>Data</strong>. 
                 </p>
@@ -279,9 +353,7 @@
                     This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of progressive data wrangling. Though I will always consider myself a student of the craft, I have built a proven track record of wrangling data into any shape, creating complex tables, and designing intricate plots. I like to think of myself as a "Data Wizard" :-)
                 </p>
 
-                <hr class="story-divider">
-
-                <h3>Giants Upon Whose Shoulders I Stand</h3>
+                <h3 class="mentors-title">Giants Upon Whose Shoulders I Stand</h3>
                 
                 <p>
                     My story is incomplete without acknowledging the titans who shaped me. I write this with the highest level of distinction and gratitude.
@@ -301,107 +373,12 @@
                     </p>
                 </div>
 
-                <hr class="story-divider">
-
-                <p>
+                <p style="margin-top: 40px; text-align: center;">
                     With this foundation, I have managed multiple multi-national projects and now find myself in the United States, serving as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank">Kellogg Institute at the University of Notre Dame</a>.
-                </p>
-                <p class="call-to-action">
-                    Please explore my Work Experience and Research Contributions to see the technical results of this journey.
                 </p>
             </div>
         </div>
     </section>
-
-    <style>
-        /* --- COPY THIS CSS INTO YOUR STYLE TAG OR LEAVE HERE --- */
-        .story-section {
-            padding: 80px 20px;
-            background-color: var(--bg-panel); /* Slightly lighter than main bg */
-            border-top: 1px solid #222;
-        }
-
-        .story-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .story-section h2 {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--gold-accent);
-        }
-
-        .story-section h3 {
-            font-size: 2rem;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-style: italic;
-            color: var(--text-main);
-        }
-
-        .story-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-main);
-            text-align: justify;
-        }
-
-        .story-content p {
-            margin-bottom: 25px;
-        }
-
-        .story-content a {
-            color: var(--gold-accent);
-            border-bottom: 1px dotted var(--gold-accent);
-            font-weight: 500;
-        }
-
-        .story-content a:hover {
-            color: #fff;
-            border-bottom: 1px solid #fff;
-        }
-
-        /* Divider Line */
-        .story-divider {
-            border: 0;
-            height: 1px;
-            background-image: linear-gradient(to right, transparent, var(--gold-accent), transparent);
-            margin: 50px 0;
-        }
-
-        /* Mentor Tribute Blocks */
-        .mentor-tribute {
-            border-left: 3px solid var(--gold-accent);
-            padding-left: 25px;
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px 25px;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .mentor-tribute h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: var(--gold-accent);
-            margin-bottom: 10px;
-        }
-
-        .mentor-tribute p {
-            margin-bottom: 0;
-            font-style: italic;
-            color: #ccc;
-        }
-
-        .call-to-action {
-            text-align: center;
-            font-weight: 500;
-            margin-top: 40px;
-            color: var(--text-muted);
-        }
-    </style>
 
     <section id="experience" class="section-placeholder">
         <h2>Work Experience</h2>
