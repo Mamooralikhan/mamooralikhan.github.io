@@ -79,7 +79,7 @@
 
         /* --- TITLE PAGE (HERO SECTION) --- */
         .hero {
-            min-height: 90vh; /* Takes up most of the screen */
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -87,6 +87,17 @@
             text-align: center;
             padding: 20px;
             background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 70%);
+        }
+
+        /* Profile Picture Style */
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold-accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 25px;
         }
 
         .hero h1 {
@@ -103,34 +114,38 @@
             margin-bottom: 30px;
         }
 
+        /* Contact Line */
         .hero .contact-line {
+            display: flex;
+            gap: 25px;
             color: var(--text-muted);
             margin-bottom: 40px;
             font-size: 1.1rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* --- BUTTONS & LINKS --- */
-        .btn-gold {
-            display: inline-block;
-            padding: 12px 30px;
-            border: 1px solid var(--gold-accent);
+        .contact-item i {
             color: var(--gold-accent);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            margin-top: 20px;
         }
 
-        .btn-gold:hover {
-            background-color: var(--gold-accent);
-            color: var(--bg-dark);
+        .contact-item:hover {
+            color: var(--text-main);
         }
 
+        /* --- SOCIAL & CV ICONS --- */
         .social-links {
             display: flex;
-            gap: 25px;
-            margin-top: 30px;
-            align-items: center;
+            gap: 40px; /* Increased gap for cleaner look */
+            margin-top: 10px;
+            align-items: flex-start;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -139,23 +154,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            width: 120px; /* Fixed width for alignment */
         }
 
         .social-icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--text-muted);
+            transition: transform 0.3s ease, color 0.3s ease;
         }
 
         .social-item:hover .social-icon {
             color: var(--gold-accent);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         .social-text {
             font-size: 0.75rem;
             color: var(--text-muted);
-            max-width: 200px;
             line-height: 1.4;
         }
 
@@ -193,6 +209,7 @@
             .hero h1 { font-size: 2.5rem; }
             .hero .subtitle { font-size: 1.2rem; }
             nav ul { gap: 15px; }
+            .contact-line { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -209,15 +226,31 @@
     </nav>
 
     <section id="home" class="hero">
+        
+        <img src="profile.jpg" alt="Mamoor Ali Khan" class="profile-pic">
+
         <h1>Mamoor Ali Khan</h1>
         
         <div class="subtitle">Research Manager | Data Analyst | Project Lead</div>
         
         <div class="contact-line">
-            Notre Dame, Indiana &bull; mamoorali321@gmail.com &bull; +1 (574) 409-5894
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i> 
+                <span>Notre Dame, Indiana</span>
+            </div>
+            <a href="mailto:skhan24@nd.edu" class="contact-item">
+                <i class="fas fa-envelope"></i> 
+                <span>skhan24@nd.edu</span>
+            </a>
         </div>
 
         <div class="social-links">
+            
+            <a href="https://www.dropbox.com/scl/fi/eomamml30qifisjtle7t8/resume_mamooralikhan.pdf?rlkey=h5bfp0ajxb5no1432zzivfng6&dl=0" target="_blank" class="social-item">
+                <i class="fas fa-file-alt social-icon"></i>
+                <span class="social-text">Download Curriculum Vitae</span>
+            </a>
+
             <a href="https://linkedin.com/in/mamoor-ali-khan-5106a9171/?skipRedirect=true" target="_blank" class="social-item">
                 <i class="fab fa-linkedin social-icon"></i>
                 <span class="social-text">Professional Profile</span>
@@ -225,11 +258,10 @@
 
             <a href="https://www.instagram.com/adventourist1/" target="_blank" class="social-item">
                 <i class="fab fa-instagram social-icon"></i>
-                <span class="social-text">I record my travels here<br>(Hobby & Passion)</span>
+                <span class="social-text">Travels & <br>Hobbies</span>
             </a>
         </div>
 
-        <a href="#" class="btn-gold">Download Curriculum Vitae</a>
     </section>
 
     <section id="story" class="section-placeholder">
