@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamoor Ali Khan | Research Manager & Data Analyst</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- WSJ / ACADEMIC PALETTE --- */
+        :root {
+            --bg-paper: #ffffff;      /* Pure White */
+            --text-ink: #111111;      /* Newsprint Black */
+            --text-charcoal: #444444; /* Dark Grey for secondary text */
+            --accent-line: #e0e0e0;   /* Light borders */
+            --link-color: #2c3e50;    /* Professional Navy/Slate */
+        }
+
+        /* --- GLOBAL RESET --- */
+        * { box-sizing: border-box; }
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-paper);
+            color: var(--text-ink);
+            font-family: 'Merriweather', serif; /* The "Journal" readability */
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-ink);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--link-color);
+            transition: all 0.3s ease;
+            border-bottom: 1px dotted var(--link-color);
+        }
+        a:hover {
+            border-bottom: 1px solid var(--link-color);
+            background-color: #f9f9f9;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-separator {
+            border-bottom: 1px solid var(--accent-line);
+            margin: 0 auto;
+            max-width: 900px;
+        }
+
+        /* --- NAVIGATION --- */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            border-bottom: 4px double var(--text-ink); /* Newspaper double line */
+            padding: 15px 0;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-ink);
+            border-bottom: none;
+            font-weight: 700;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-charcoal);
+            text-decoration: underline;
+        }
+
+        /* --- HERO / INTRO SECTION --- */
+        .hero-section {
+            text-align: center;
+            padding-bottom: 60px;
+        }
+
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #ccc;
+            padding: 4px; /* Frame look */
+            background: #fff;
+            margin-bottom: 25px;
+        }
+
+        .hero-name {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.1rem;
+            color: var(--text-charcoal);
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .contact-bar {
+            margin-bottom: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+        .contact-bar span { margin: 0 10px; color: #ccc; }
+
+        /* Instagram Hobby Box */
+        .hobby-box {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            padding: 25px;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            font-size: 0.95rem;
+            color: var(--text-charcoal);
+            border-radius: 4px;
+        }
+        .hobby-box i { font-size: 1.2rem; margin-right: 8px; color: #C13584; } /* Instagram Brand Color */
+
+        /* --- JOURNEY SECTION --- */
+        .section-heading {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-bottom: 10px;
+        }
+        
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--text-ink);
+            margin: 15px auto 0 auto;
+        }
+
+        .journey-text {
+            column-count: 2;
+            column-gap: 50px;
+            column-rule: 1px solid #eee;
+            text-align: justify;
+            margin-bottom: 60px;
+        }
+        
+        .journey-text p { margin-top: 0; margin-bottom: 20px; }
+
+        /* Mentors Grid */
+        .mentors-wrapper {
+            background-color: #fcfcfc;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 50px 0;
+            margin-top: 40px;
+        }
+
+        .mentors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .mentor-card h4 { font-size: 1.4rem; margin-bottom: 10px; }
+        .mentor-card p { font-size: 0.95rem; color: var(--text-charcoal); margin: 0; }
+
+        /* --- WORK EXPERIENCE (GRAPHIC ANIMATION) --- */
+        /* Animation Classes */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            padding: 40px 0;
+        }
+        
+        .timeline-item:last-child { border-bottom: none; }
+
+        .job-left {
+            width: 30%;
+            padding-right: 30px;
+            text-align: right;
+            border-right: 3px solid #f0f0f0;
+        }
+
+        .job-right {
+            width: 70%;
+            padding-left: 30px;
+        }
+
+        .job-date {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-charcoal);
+        }
+
+        .job-title { font-size: 1.5rem; margin-bottom: 5px; }
+        .job-company { 
+            font-size: 0.9rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            color: #666; 
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* --- PLACEHOLDERS --- */
+        .placeholder-box {
+            text-align: center;
+            padding: 80px 20px;
+            background: #fafafa;
+            border: 1px dashed #ccc;
+            color: #888;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 50px;
+            font-size: 0.8rem;
+            color: #666;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .journey-text { column-count: 1; }
+            .mentors-grid { grid-template-columns: 1fr; }
+            .timeline-item { flex-direction: column; }
+            .job-left { 
+                width: 100%; 
+                text-align: left; 
+                border-right: none; 
+                border-left: 3px solid #f0f0f0;
+                padding-left: 20px;
+                margin-bottom: 15px;
+            }
+            .job-right { width: 100%; padding-left: 20px; }
+            .nav-links { gap: 15px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#experience">Work Experience</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#affiliations">Affiliations</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="container hero-section">
+        <img src="profile.jpg" alt="Mamoor Ali Khan" class="profile-pic">
+        <h1 class="hero-name">Mamoor Ali Khan</h1>
+        <div class="hero-title">Research Manager & Data Analyst</div>
+        
+        <div class="contact-bar">
+            <a href="mailto:skhan24@nd.edu">skhan24@nd.edu</a>
+            <span>|</span>
+            <a href="https://www.dropbox.com/scl/fi/eomamml30qifisjtle7t8/resume_mamooralikhan.pdf?rlkey=h5bfp0ajxb5no1432zzivfng6&dl=0" target="_blank">Download CV</a>
+        </div>
+
+        <div class="hobby-box">
+            <p>
+                <i class="fab fa-instagram"></i> 
+                <strong>Beyond the Data:</strong> While my profession is defined by rigorous research, my passion lies in exploration. 
+                <a href="https://www.instagram.com/adventourist1/" target="_blank">Follow me on Instagram</a> 
+                to see the world through my lens, where I document my travels and showcase my photography and editing work.
+            </p>
+        </div>
+    </section>
+
+    <div class="section-separator"></div>
+
+    <section class="container">
+        <h2 class="section-heading">My Journey</h2>
+        
+        <div class="journey-text">
+            <p>
+                It began in 2013. Fresh out of Computer Science, I found myself not in a tech startup, but as an intern in a pharmaceutical firm. It was there, amidst the rows of numbers and spreadsheets, that I discovered my true language: <strong>Data</strong>. 
+            </p>
+            <p>
+                I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I made a pivotal decision to pursue a Master’s in Development Studies, a decision that finally married my technical programming roots with the human-centric world of development practice.
+            </p>
+            <p>
+                This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of progressive data wrangling. Though I will always consider myself a student of the craft, I have built a proven track record of wrangling data into any shape, creating complex tables, and designing intricate plots. I like to think of myself as a "Data Wizard" :-)
+            </p>
+        </div>
+    </section>
+
+    <div class="mentors-wrapper">
+        <div class="mentors-grid">
+            <div class="mentor-card">
+                <h4><a href="https://www.miriamgolden.com/" target="_blank">Dr. Miriam Golden</a></h4>
+                <p>
+                    She trusted a naive boy with her most precious projects. I still recall the sting of embarrassment in early meetings, acutely aware of my lack of international education. Yet, where others might have seen a liability, Dr. Golden never lost faith. She has been the unshakable pillar of my career and has fundamentally shaped my life. I offer her my deepest respect; I simply cannot thank her enough.
+                </p>
+            </div>
+            <div class="mentor-card">
+                <h4><a href="https://saadgulzar.com/" target="_blank">Dr. Saad Gulzar</a></h4>
+                <p>
+                    Dr. Gulzar is the guiding light that taught me to fly. He opened doors I did not know existed, giving me multiple opportunities within his research and introducing me to brilliant minds at Stanford, Yale, and Princeton. He didn't just give me a role; he gave me a horizon.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <section id="experience" class="container">
+        <h2 class="section-heading">Work Experience</h2>
+
+        <div class="timeline-item reveal-item">
+            <div class="job-left">
+                <div class="job-date">Oct 2025 - Present</div>
+            </div>
+            <div class="job-right">
+                <h3 class="job-title">Research Manager</h3>
+                <span class="job-company">Kellogg Institute, University of Notre Dame</span>
+                <p>In this capacity, I demonstrate strong global leadership by managing international research teams across Colombia, Italy, the United Kingdom, and the United States. My role centers on quantitative analysis and methodological rigor; I oversee the entire lifecycle of data collection and management for multiple ongoing projects, supervising coding workflows to ensure absolute consistency. Beyond the technical scope, I drive strategic operations by managing research budgets, reporting on project fund allocation, and guiding the analytical writing for high-level research reports and academic papers.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item reveal-item">
+            <div class="job-left">
+                <div class="job-date">May 2023 - Sept 2025</div>
+            </div>
+            <div class="job-right">
+                <h3 class="job-title">Senior Associate</h3>
+                <span class="job-company">Princeton University (Based in Pakistan)</span>
+                <p>Operating on the ground in Pakistan, specifically within Khyber Pakhtunkhwa (KP), I led advanced data analysis and stakeholder management for Princeton's research initiatives. I collaborated closely with principal investigators to produce complex project reports, piloting survey instruments locally to ensure they effectively captured the region's nuances. I exercised operational leadership by training local field staff on research protocols and monitoring teams to ensure strict adherence to procedures. Furthermore, I fostered critical government relations by developing new partnerships with the KP Local Government Department and Election Commission.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item reveal-item">
+            <div class="job-left">
+                <div class="job-date">Jun 2022 - Apr 2023</div>
+            </div>
+            <div class="job-right">
+                <h3 class="job-title">Lead Research Manager</h3>
+                <span class="job-company">Yale University (Based in Pakistan)</span>
+                <p>While stationed in Pakistan, I managed a massive, multi-national research program spanning six countries—Argentina, Bangladesh, India, Kenya, Lebanon, and Pakistan. This role required strategic program management from my base in the region, where I hired country managers and supervised social experiments across all territories. I established a centralized coordination cell to streamline communication strategies and developed a robust research database to organize complex datasets. My work culminated in a comprehensive analysis of these experiments, where I designed the complete analysis strategy and presented findings in detailed reports.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item reveal-item">
+            <div class="job-left">
+                <div class="job-date">Oct 2018 - May 2022</div>
+            </div>
+            <div class="job-right">
+                <h3 class="job-title">Project Manager</h3>
+                <span class="job-company">European University Institute (Based in Pakistan)</span>
+                <p>From my base in Pakistan, I focused on political communication and data integrity, establishing a coordination strategy to effectively engage with provincial incumbents across four provinces. I built relationships within the assembly to enroll incumbents in the study and developed the local communication strategy. My technical skills were pivotal in gathering, correcting, and validating research data to create representative visualizations for high-stakes presentations. I also ensured regulatory compliance by independently managing documentation and filings, helping the team navigate complex local regulatory requirements.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item reveal-item">
+            <div class="job-left">
+                <div class="job-date">Apr 2016 - Oct 2018</div>
+            </div>
+            <div class="job-right">
+                <h3 class="job-title">Program Consultant</h3>
+                <span class="job-company">USPCASE | USAID</span>
+                <p>As a Program Consultant for the U.S.-Pakistan Center on Advanced Studies in Energy, I conducted thorough reviews of internal systems and operations to devise and deploy strategic improvement plans. I developed targeted training plans to address areas of need and produced detailed, relevant reports to support critical business decisions. My contributions to the field were recognized at the National and International Conferences on Sustainable Green Technologies in 2016 and 2017.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item reveal-item">
+            <div class="job-left">
+                <div class="job-date">Jan 2014 - Jun 2015</div>
+            </div>
+            <div class="job-right">
+                <h3 class="job-title">Assistant Product Manager</h3>
+                <span class="job-company">Libra Private Limited</span>
+                <p>Leveraging market analytics, I led category, brand, and competitive analyses to identify key consumer trends and drive strategic conclusions. I managed cross-functional teams to commercialize new products, working within a product pod environment alongside product developers, design teams, and software personnel. My role also involved rigorous vendor management, collaborating with vendors to verify service-level performance and influencing supplier manufacturing processes and technology decision-making to optimize customer service policies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="container">
+        <h2 class="section-heading">Contributions in Research</h2>
+        <div class="placeholder-box">
+            <p>Content to be uploaded.</p>
+        </div>
+    </section>
+
+    <section id="affiliations" class="container">
+        <h2 class="section-heading">Affiliations</h2>
+        <div class="placeholder-box">
+            <p>Content to be uploaded.</p>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Mamoor Ali Khan. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Simple Intersection Observer for "Graphic" Reveal
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                threshold: 0.1 // Trigger when 10% of the item is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            const items = document.querySelectorAll('.reveal-item');
+            items.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+
+</body>
+</html>
