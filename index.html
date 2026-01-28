@@ -20,6 +20,7 @@
             --accent-gold: #b38b4d;   /* Muted Antique Gold */
             --accent-navy: #1e2a38;   /* Deep Academic Navy */
             --border-line: #dcd8d0;   /* Subtle borders */
+            --bg-highlight: #f0ede6;  /* Slightly darker cream for highlights */
         }
 
         /* --- GLOBAL RESET --- */
@@ -48,7 +49,6 @@
             transition: all 0.3s ease;
         }
         
-        /* Standard Paragraph Links */
         p a { 
             border-bottom: 1px dotted var(--accent-navy); 
         }
@@ -60,7 +60,7 @@
         /* --- SECTION BANNERS (CHICAGO THEME) --- */
         .section-banner {
             height: 280px; 
-            background-attachment: fixed; /* Parallax for Desktop */
+            background-attachment: fixed; /* Parallax */
             background-position: center;
             background-size: cover;
             position: relative;
@@ -72,7 +72,7 @@
         }
 
         .banner-overlay {
-            background: rgba(10, 10, 15, 0.4); /* Chic Dark Overlay */
+            background: rgba(10, 10, 15, 0.4); 
             width: 100%;
             height: 100%;
             display: flex;
@@ -89,9 +89,10 @@
             padding: 15px 40px;
             background: rgba(0,0,0,0.5);
             backdrop-filter: blur(4px);
+            text-align: center;
         }
 
-        /* BACKGROUND IMAGES (Pointing to local 'images' folder) */
+        /* BACKGROUND IMAGES (Local) */
         .bg-journey { background-image: url('images/journey.jpg'); }
         .bg-experience { background-image: url('images/experience.jpg'); }
         .bg-research { background-image: url('images/research.jpg'); }
@@ -164,7 +165,6 @@
             letter-spacing: 1px;
         }
 
-        /* --- CONTACT ICONS --- */
         .contact-icons {
             display: flex;
             justify-content: center;
@@ -184,7 +184,6 @@
             transform: translateY(-3px);
         }
 
-        /* Instagram Box */
         .hobby-box {
             background-color: #fff;
             border: 1px solid var(--border-line);
@@ -217,7 +216,6 @@
         
         .journey-text p { margin-top: 0; margin-bottom: 25px; }
 
-        /* Mentors */
         .mentors-header {
             text-align: center;
             margin-bottom: 50px;
@@ -249,7 +247,6 @@
         }
         .mentor-card:hover { transform: translateY(-5px); border-color: var(--accent-gold); }
         
-        /* Clearly Clickable Mentor Links */
         .mentor-link {
             font-size: 1.4rem;
             color: var(--accent-navy);
@@ -265,119 +262,86 @@
 
         .mentor-card p { font-size: 0.95rem; color: var(--text-charcoal); margin: 0; margin-top: 15px; }
 
-        /* --- WORK EXPERIENCE (COMPACT LINEAR SERIES) --- */
-        .timeline-container {
-            position: relative;
-            padding-left: 30px; /* Space for the line */
-        }
-
-        /* The Continuous Line */
+        /* --- WORK EXPERIENCE (COMPACT) --- */
+        .timeline-container { position: relative; padding-left: 30px; }
         .timeline-container::before {
-            content: '';
-            position: absolute;
-            left: 6px; /* Align with dots */
-            top: 10px;
-            bottom: 20px;
-            width: 2px;
-            background: var(--border-line);
+            content: ''; position: absolute; left: 6px; top: 10px; bottom: 20px; width: 2px; background: var(--border-line);
         }
-
-        .timeline-series-item {
-            position: relative;
-            margin-bottom: 15px; /* Compact spacing */
-        }
-
-        /* The Timeline Dot */
+        .timeline-series-item { position: relative; margin-bottom: 15px; }
         .timeline-series-item::after {
-            content: '';
-            position: absolute;
-            left: -28px; /* Position on the line */
-            top: 20px; /* Align with summary */
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #fff;
-            border: 2px solid var(--accent-gold);
-            z-index: 2;
+            content: ''; position: absolute; left: -28px; top: 20px; width: 10px; height: 10px; border-radius: 50%; background: #fff; border: 2px solid var(--accent-gold); z-index: 2;
         }
-
-        /* The Card */
         .series-card {
-            background: #fff;
-            border: 1px solid var(--border-line);
-            border-radius: 4px;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            background: #fff; border: 1px solid var(--border-line); border-radius: 4px; overflow: hidden; transition: all 0.3s ease;
         }
-
-        .series-card:hover {
-            border-color: var(--accent-gold);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
+        .series-card:hover { border-color: var(--accent-gold); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         summary {
-            list-style: none;
-            padding: 15px 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #fff;
+            list-style: none; padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff;
         }
         summary::-webkit-details-marker { display: none; }
+        .series-header { display: flex; align-items: center; width: 100%; gap: 20px; }
+        .series-date { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--text-charcoal); width: 140px; flex-shrink: 0; font-weight: 600; }
+        .series-info { display: flex; flex-direction: column; }
+        .series-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--text-ink); font-weight: 700; }
+        .series-company { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-gold); }
+        .arrow-icon { color: var(--text-charcoal); font-size: 0.9rem; transition: transform 0.3s ease; }
+        details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-gold); }
+        .series-content { padding: 0 20px 20px 180px; border-top: 1px solid #f0f0f0; color: var(--text-charcoal); font-size: 0.95rem; line-height: 1.6; background: #fafafa; padding-top: 15px; }
 
-        .series-header {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            gap: 20px;
-        }
-
-        .series-date {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            color: var(--text-charcoal);
-            width: 140px; /* Fixed width for alignment */
-            flex-shrink: 0;
-            font-weight: 600;
-        }
-
-        .series-info {
+        /* --- RESEARCH CONTRIBUTIONS --- */
+        .research-list {
             display: flex;
             flex-direction: column;
+            gap: 40px;
         }
 
-        .series-title {
+        .research-item {
+            background: #fff;
+            border: 1px solid var(--border-line);
+            padding: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .research-header {
+            padding: 30px 30px 15px 30px;
+        }
+
+        .paper-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--text-ink);
-            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--accent-navy);
+            margin-bottom: 10px;
+            line-height: 1.3;
         }
 
-        .series-company {
+        .paper-citation {
+            font-size: 0.95rem;
+            color: var(--text-charcoal);
+            font-style: italic;
+        }
+
+        .contribution-block {
+            background-color: var(--bg-highlight);
+            padding: 20px 30px;
+            border-top: 1px solid var(--border-line);
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .role-label {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--accent-gold);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
         }
 
-        .arrow-icon {
-            color: var(--text-charcoal);
-            font-size: 0.9rem;
-            transition: transform 0.3s ease;
-        }
-        
-        details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-gold); }
-        
-        .series-content {
-            padding: 0 20px 20px 180px; /* Indent text to align with title */
-            border-top: 1px solid #f0f0f0;
-            color: var(--text-charcoal);
+        .role-description {
             font-size: 0.95rem;
-            line-height: 1.6;
-            background: #fafafa;
-            padding-top: 15px;
+            color: var(--text-ink);
+            margin: 0;
         }
 
         /* --- PLACEHOLDERS --- */
@@ -400,15 +364,9 @@
             border-top: 1px solid var(--border-line);
         }
 
-        /* Responsive & Mobile Fixes */
+        /* Responsive */
         @media (max-width: 1024px) {
-            /* FIX FOR MOBILE PARALLAX ISSUES */
-            .section-banner {
-                background-attachment: scroll; /* Disables fixed attachment on mobile */
-                background-position: center;
-                height: 200px; /* Slightly smaller banners on phone */
-            }
-
+            .section-banner { background-attachment: scroll; background-position: center; height: 200px; }
             .journey-text { column-count: 1; }
             .mentors-grid { grid-template-columns: 1fr; }
             .nav-links { gap: 20px; font-size: 0.8rem; }
@@ -639,13 +597,156 @@
 
     <div id="research" class="section-banner bg-research">
         <div class="banner-overlay">
-            <h2 class="banner-title">Contributions</h2>
+            <h2 class="banner-title">Contributions to Academic Inquiry</h2>
         </div>
     </div>
 
     <section class="container">
-        <div class="placeholder-box">
-            <p>Research contributions to be uploaded.</p>
+        <div class="research-list">
+            
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">Good Politicians: Experimental Evidence on Motivations for Political Candidacy and Government Performance</h3>
+                    <div class="paper-citation">Gulzar, Saad, and Muhammad Yasir Khan. Review of Economic Studies, vol. 91, 2024.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Project Director. Developed survey tools, supervised data collection, delivered data, and wrote preliminary analysis along with cleaning.</p>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">Random Acts of Kindness? How Gender Shapes Helping Behaviors Around the World</h3>
+                    <div class="paper-citation">Gulzar, Saad, and Salma Mousa. Science, 2024.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Project Director. Developed survey tools, supervised data collection, delivered data, and wrote all analysis along with cleaning. Also wrote the entire appendix. Completed the 2025 gender survey for the project using conjoint analysis and wrote the analysis.</p>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">Pessimistic Beliefs of Norms: Descriptive Findings on Women's Political Participation in Pakistan</h3>
+                    <div class="paper-citation">Gulzar, Saad, Luke Sonnet, and Muhammad Yasir Khan. Working paper, September 2020.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Project Director. Developed survey tools, supervised data collection, delivered data, and wrote preliminary analysis along with cleaning.</p>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">Preferences for Redistribution of Legislators: Survey Evidence from Three Countries</h3>
+                    <div class="paper-citation">Ferroni, Matteo F., and Miriam A. Golden. Working paper, October 2025.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Project Manager Pakistan. Completed the legislator data collection in Pakistan for the project.</p>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">Political Responsiveness, Information Provision, and Capacity Gaps</h3>
+                    <div class="paper-citation">Golden, Miriam, Saad Gulzar, and Luke Sonnet. Comparative Political Studies, vol. 58, no. 1, 2025.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Started as Research Assistant supervising endline. Progressed to assisting in writing/cleaning, gathering election data of GE 2018, and creating a database of GE 2018 elections Pakistan. Helped in merging datasets and cross-checking progress of MPs. Over the years, maintained relationships with MPs in KP, arranged multiple conferences (including KP Governance Conference 2019), and helped in data for forecasting exercises.</p>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">The Global Legislators Database: Characteristics of National Legislators in the World's Democracies</h3>
+                    <div class="paper-citation">Carnes, Nicholas, et al. British Journal of Political Science, vol. 55, no. 1, 2025.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Assisted in writing code for cleaning and analysis of the paper.</p>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">Effects on Reelection Rates of the Introduction of Merit Civil Service Appointments in US States</h3>
+                    <div class="paper-citation">Golden, Miriam, Eugenia Nazrullaeva, and Dylan Potts. Working paper, August 2025.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Assisted in writing code for cleaning and analysis of the paper.</p>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">Inaccurate Forecasting of a Randomized Controlled Trial</h3>
+                    <div class="paper-citation">Ahrenshop, Mats, Miriam Golden, Saad Gulzar, and Luke Sonnet. Journal of Experimental Political Science, vol. 11, 2024.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Arranged workshops in Pakistan with MPs, arranged conferences, collected data in Pakistan for forecasting, cleaned data, and performed preliminary analysis.</p>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">Norms, Beliefs, and Networks: Descriptive Findings on Women's Political Participation in Pakistan</h3>
+                    <div class="paper-citation">Gulzar, Saad, Luke Sonnet, and Muhammad Yasir Khan. Working paper, August 2020.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Project Director. Developed survey tools, supervised data collection, delivered data, and wrote preliminary analysis along with cleaning.</p>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">Personalities and Public Sector Performance: Evidence from a Health Experiment in Pakistan</h3>
+                    <div class="paper-citation">Callen, Michael, et al. Economic Development and Cultural Change, vol. 73, no. 3, April 2025.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Assisted in writing code for cleaning and analysis of the paper.</p>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">Strong Support, Weak Policies: Views on Corruption of Citizens and Legislators in Three Countries</h3>
+                    <div class="paper-citation">Ferroni, Matteo F., Raymond Fisman, and Miriam Golden. Working paper, August 2025.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Project Manager Pakistan. Completed the legislator data collection in Pakistan for the project.</p>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">The Model Challenges: Gathering, Aggregating, and Evaluating Covid Mortality Models</h3>
+                    <div class="paper-citation">Golden, Miriam A., Tara Slough, Haoyu Zhai, et al. Working paper, September 2025.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Wrote code for data cleaning and gathering. Arranged the datasets made available to challengers for submission and performed rigorous web scraping to maintain a dynamic database.</p>
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="research-header">
+                    <h3 class="paper-title">School Improvement Plan</h3>
+                    <div class="paper-citation">Farah Rehman. Policy Paper, FCDO.</div>
+                </div>
+                <div class="contribution-block">
+                    <span class="role-label">Role & Contribution</span>
+                    <p class="role-description">Created a school improvement plan illustration that will serve as a guiding light for the Government of Punjab, Pakistan.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
