@@ -47,43 +47,10 @@
         p a { border-bottom: 1px dotted var(--accent-navy); }
         p a:hover { color: var(--accent-gold); border-bottom: 1px solid var(--accent-gold); }
 
-        /* --- NAVIGATION --- */
-        .top-nav {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            background-color: rgba(249, 248, 244, 0.98);
-            border-bottom: 1px solid var(--accent-gold);
-            padding: 10px 0;
-            z-index: 1000;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .nav-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.75rem; 
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-ink);
-            border-bottom: none;
-            font-weight: 700;
-        }
-        .nav-links a:hover { color: var(--accent-gold); }
-
-        /* --- NEW: CENTERED HEADER PROFILE --- */
+        /* --- PROFILE HEADER (NOW ON TOP) --- */
         .profile-header {
             text-align: center;
-            padding: 60px 20px 40px 20px;
+            padding: 60px 20px 30px 20px; /* Spacing adjustment */
             max-width: 800px;
             margin: 0 auto;
             background-color: var(--bg-paper);
@@ -119,7 +86,41 @@
         .insta-note a { color: #555; border-bottom: 1px dotted #ccc; }
         .insta-note a:hover { color: #C13584; border-bottom: 1px solid #C13584; }
 
-        /* --- SECTION BANNERS --- */
+        /* --- NAVIGATION (BELOW HEADER - STICKY) --- */
+        .top-nav {
+            position: sticky;
+            top: 0; /* Sticks to top when scrolled */
+            width: 100%;
+            background-color: rgba(249, 248, 244, 0.98);
+            border-top: 1px solid var(--border-line);
+            border-bottom: 1px solid var(--accent-gold);
+            padding: 10px 0;
+            z-index: 1000;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-ink);
+            border-bottom: none;
+            font-weight: 700;
+        }
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* --- SECTION BANNERS (PARALLAX) --- */
         .section-banner {
             height: 280px; 
             background-attachment: fixed; /* PARALLAX */
@@ -178,7 +179,7 @@
         /* MENTORS COL (STICKY) */
         .mentors-col {
             position: sticky;
-            top: 100px;
+            top: 80px; /* Adjust for sticky nav height */
         }
         .mentors-title {
             font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase;
@@ -259,15 +260,6 @@
 </head>
 <body>
 
-    <nav class="top-nav">
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#experience">Work</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#affiliations">Affiliations</a></li>
-        </ul>
-    </nav>
-
     <header id="home" class="profile-header">
         <img src="images/profile.jpg" alt="Mamoor Ali Khan" class="profile-pic">
         <h1 class="hero-name">Mamoor Ali Khan</h1>
@@ -284,6 +276,15 @@
             Beyond the data, I <a href="https://www.instagram.com/adventourist1/" target="_blank">document my travels</a> through photography.
         </div>
     </header>
+
+    <nav class="top-nav">
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#experience">Work</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#affiliations">Affiliations</a></li>
+        </ul>
+    </nav>
 
     <section class="content-split-container">
         
