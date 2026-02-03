@@ -8,19 +8,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- ELITE ACADEMIC PALETTE --- */
         :root {
-            --bg-paper: #f9f8f4;      /* Warm 'Cream Paper' */
-            --text-ink: #1c1c1c;      /* Soft Black */
-            --text-charcoal: #4a4a4a; /* Secondary Grey */
-            --accent-gold: #b38b4d;   /* Muted Antique Gold */
-            --accent-navy: #1e2a38;   /* Deep Academic Navy */
-            --border-line: #dcd8d0;   /* Subtle borders */
-            --bg-highlight: #f0ede6;  /* Slightly darker cream for highlights */
+            --bg-paper: #f9f8f4;
+            --text-ink: #1c1c1c;
+            --text-charcoal: #4a4a4a;
+            --accent-gold: #b38b4d;
+            --accent-navy: #1e2a38;
+            --border-line: #dcd8d0;
+            --bg-highlight: #f0ede6;
         }
 
         /* --- GLOBAL RESET --- */
@@ -32,8 +31,9 @@
             background-color: var(--bg-paper);
             color: var(--text-ink);
             font-family: 'Merriweather', serif; 
-            line-height: 1.8;
+            line-height: 1.7; 
             scroll-behavior: smooth;
+            font-size: 14px; /* SMALL ACADEMIC BASE */
         }
 
         h1, h2, h3, h4 {
@@ -43,33 +43,54 @@
             font-weight: 700;
         }
 
-        a {
-            text-decoration: none;
-            color: var(--accent-navy);
-            transition: all 0.3s ease;
-        }
-        
-        /* Standard Paragraph Links */
-        p a { 
-            border-bottom: 1px dotted var(--accent-navy); 
-        }
-        p a:hover { 
-            color: var(--accent-gold); 
-            border-bottom: 1px solid var(--accent-gold); 
+        a { text-decoration: none; color: var(--accent-navy); transition: all 0.3s ease; }
+        p a { border-bottom: 1px dotted var(--accent-navy); }
+        p a:hover { color: var(--accent-gold); border-bottom: 1px solid var(--accent-gold); }
+
+        /* --- NAVIGATION --- */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: rgba(249, 248, 244, 0.98);
+            border-bottom: 1px solid var(--accent-gold);
+            padding: 10px 0;
+            z-index: 1000;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        /* --- SECTION BANNERS (CHICAGO THEME - LOCAL) --- */
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-ink);
+            border-bottom: none;
+            font-weight: 700;
+        }
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* --- SECTION BANNERS (YOUR ORIGINAL CODE) --- */
         .section-banner {
             height: 280px; 
-            background-attachment: fixed; /* Parallax */
+            background-attachment: fixed; /* THE ORIGINAL PARALLAX */
             background-position: center;
             background-size: cover;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 60px;
-            margin-top: 60px;
+            margin-bottom: 0;
         }
 
         .banner-overlay {
@@ -83,11 +104,11 @@
 
         .banner-title {
             color: #fff;
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             border: 1px solid rgba(255,255,255,0.7);
-            padding: 15px 40px;
+            padding: 10px 30px;
             background: rgba(0,0,0,0.5);
             backdrop-filter: blur(4px);
             text-align: center;
@@ -99,69 +120,51 @@
         .bg-research { background-image: url('images/research.jpg'); }
         .bg-affiliations { background-image: url('images/affiliations.jpg'); }
 
-        /* --- NAVIGATION --- */
-        .top-nav {
-            position: sticky;
-            top: 0;
-            background-color: rgba(249, 248, 244, 0.98);
-            border-bottom: 1px solid var(--accent-gold);
-            padding: 15px 0;
-            z-index: 1000;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .nav-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-ink);
-            border-bottom: none;
-            font-weight: 700;
-        }
-
-        .nav-links a:hover { color: var(--accent-gold); }
-
-        /* --- HERO SECTION --- */
-        .hero-section {
-            text-align: center;
-            padding: 80px 20px 40px 20px;
-            max-width: 900px;
+        /* --- SPLIT HERO SECTION (Bio + Journey) --- */
+        .hero-split-container {
+            display: grid;
+            grid-template-columns: 280px 1fr; /* Sidebar / Content */
+            gap: 50px;
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 60px 20px;
+            align-items: start;
+            /* CRITICAL FIX: Solid background to prevent floating text */
+            background-color: var(--bg-paper); 
+            position: relative; 
+            z-index: 10;
+        }
+
+        /* LEFT COL: BIO (Sticky within container) */
+        .hero-bio-col {
+            text-align: center;
+            position: sticky;
+            top: 80px; 
         }
 
         .profile-pic {
-            width: 170px;
-            height: 170px;
+            width: 140px; 
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #fff;
+            border: 3px solid #fff;
             box-shadow: 0 0 0 1px var(--accent-gold);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .hero-name {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem; 
+            margin-bottom: 5px;
             color: var(--accent-navy);
+            line-height: 1.1;
         }
 
         .hero-title {
             font-family: 'Merriweather', serif;
-            font-size: 1.1rem;
+            font-size: 0.8rem;
             color: var(--text-charcoal);
             font-style: italic;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -169,241 +172,148 @@
         .contact-icons {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .icon-link {
-            font-size: 1.6rem;
+            font-size: 1.2rem;
             color: var(--text-charcoal);
             transition: all 0.3s ease;
             border-bottom: none !important;
         }
-        
-        .icon-link:hover {
-            color: var(--accent-gold);
-            transform: translateY(-3px);
-        }
+        .icon-link:hover { color: var(--accent-gold); transform: translateY(-3px); }
 
-        .hobby-box {
-            background-color: #fff;
-            border: 1px solid var(--border-line);
-            border-left: 4px solid var(--accent-gold);
-            padding: 20px 30px;
-            max-width: 650px;
-            margin: 0 auto;
-            font-size: 0.9rem;
-            color: var(--text-charcoal);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
-        }
-        .hobby-box i { font-size: 1.2rem; margin-right: 10px; color: #C13584; }
-
-        /* --- CONTENT UTILITIES --- */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px 80px 20px;
-        }
-
-        /* --- JOURNEY SECTION --- */
-        .journey-text {
-            column-count: 2;
-            column-gap: 60px;
-            column-rule: 1px solid var(--border-line);
-            text-align: justify;
-            margin-bottom: 80px;
-            font-size: 1.05rem;
-        }
-        
-        .journey-text p { margin-top: 0; margin-bottom: 25px; }
-
-        .mentors-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .mentors-header h3 {
-            font-size: 2rem;
-            color: var(--accent-navy);
-            margin-bottom: 10px;
-        }
-        .mentors-header .separator {
-            width: 60px;
-            height: 2px;
-            background: var(--accent-gold);
-            margin: 0 auto;
-        }
-
-        .mentors-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .mentor-card {
-            background: #fff;
-            padding: 30px;
-            border: 1px solid var(--border-line);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
-            transition: transform 0.3s ease;
-        }
-        .mentor-card:hover { transform: translateY(-5px); border-color: var(--accent-gold); }
-        
-        .mentor-link {
-            font-size: 1.4rem;
-            color: var(--accent-navy);
-            margin: 0 0 10px 0;
-            display: inline-block;
-            border-bottom: 2px solid var(--accent-gold);
-            padding-bottom: 2px;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
-        .mentor-link i { font-size: 0.8em; margin-left: 8px; color: var(--accent-gold); }
-        .mentor-link:hover { color: var(--accent-gold); border-bottom-color: var(--accent-navy); }
-
-        .mentor-card p { font-size: 0.95rem; color: var(--text-charcoal); margin: 0; margin-top: 15px; }
-
-        /* --- WORK EXPERIENCE --- */
-        .timeline-container { position: relative; padding-left: 30px; }
-        .timeline-container::before {
-            content: ''; position: absolute; left: 6px; top: 10px; bottom: 20px; width: 2px; background: var(--border-line);
-        }
-        .timeline-series-item { position: relative; margin-bottom: 15px; }
-        .timeline-series-item::after {
-            content: ''; position: absolute; left: -28px; top: 20px; width: 10px; height: 10px; border-radius: 50%; background: #fff; border: 2px solid var(--accent-gold); z-index: 2;
-        }
-        .series-card {
-            background: #fff; border: 1px solid var(--border-line); border-radius: 4px; overflow: hidden; transition: all 0.3s ease;
-        }
-        .series-card:hover { border-color: var(--accent-gold); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        summary {
-            list-style: none; padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff;
-        }
-        summary::-webkit-details-marker { display: none; }
-        .series-header { display: flex; align-items: center; width: 100%; gap: 20px; }
-        .series-date { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--text-charcoal); width: 140px; flex-shrink: 0; font-weight: 600; }
-        .series-info { display: flex; flex-direction: column; }
-        .series-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--text-ink); font-weight: 700; }
-        .series-company { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-gold); }
-        .arrow-icon { color: var(--text-charcoal); font-size: 0.9rem; transition: transform 0.3s ease; }
-        details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-gold); }
-        .series-content { padding: 0 20px 20px 180px; border-top: 1px solid #f0f0f0; color: var(--text-charcoal); font-size: 0.95rem; line-height: 1.6; background: #fafafa; padding-top: 15px; }
-
-        /* --- RESEARCH CONTRIBUTIONS --- */
-        .research-category {
-            margin-bottom: 60px;
-        }
-        
-        .research-category-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-gold);
-            border-bottom: 2px solid var(--border-line);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-
-        .research-list {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .research-item {
-            background: #fff;
-            border: 1px solid var(--border-line);
-            padding: 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-        }
-
-        .research-header {
-            padding: 30px 30px 15px 30px;
-        }
-
-        .paper-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-        
-        .paper-title a {
-            color: var(--accent-navy);
-            border-bottom: 1px dotted var(--accent-navy);
-        }
-        .paper-title a:hover {
-            color: var(--accent-gold);
-            border-bottom: 1px solid var(--accent-gold);
-        }
-
-        .paper-citation {
-            font-size: 0.95rem;
-            color: var(--text-charcoal);
+        /* MINIMAL INSTAGRAM NOTE */
+        .insta-note {
+            font-size: 0.75rem;
+            color: #888;
             font-style: italic;
-            margin-left: 40px; 
-            padding-left: 15px;
-            border-left: 3px solid var(--border-line);
-        }
-
-        .contribution-block {
-            background-color: var(--bg-highlight);
-            padding: 20px 30px;
+            margin-top: 20px;
             border-top: 1px solid var(--border-line);
-            border-left: 4px solid var(--accent-gold);
+            padding-top: 15px;
+            line-height: 1.4;
+        }
+        .insta-note a { color: #555; border-bottom: 1px dotted #ccc; }
+        .insta-note a:hover { color: #C13584; border-bottom: 1px solid #C13584; }
+
+        /* RIGHT COL: JOURNEY & MENTORS */
+        .hero-journey-col {
+            padding-top: 10px;
         }
 
-        .role-label {
+        .journey-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-line);
+            padding-bottom: 8px;
+            display: block;
+        }
+
+        .journey-columns {
+            column-count: 2;
+            column-gap: 40px;
+            column-rule: 1px solid #e0e0e0;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+        
+        .journey-columns p {
+            font-size: 0.9rem; /* Small, dense text */
+            line-height: 1.7;
+            color: var(--text-charcoal);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        /* MENTORS GRID (Bottom of Journey) */
+        .mentors-section {
+            border-top: 1px solid var(--border-line);
+            padding-top: 25px;
+        }
+        .mentors-title {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: var(--accent-gold);
+            color: var(--accent-navy);
+            margin-bottom: 15px;
             font-weight: 700;
-            display: block;
-            margin-bottom: 8px;
         }
-
-        .role-description {
-            font-size: 0.95rem;
-            color: var(--text-ink);
-            margin: 0;
-            white-space: pre-line;
+        .mentors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
         }
-
-        /* --- PLACEHOLDERS --- */
-        .placeholder-box {
-            text-align: center;
-            padding: 80px 20px;
+        .mentor-card {
             background: #fff;
-            border: 1px dashed #ccc;
-            color: #888;
+            border: 1px solid var(--border-line);
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.01);
+        }
+        .mentor-link {
+            font-size: 0.95rem;
+            color: var(--accent-navy);
+            margin: 0 0 10px 0;
+            display: inline-block;
+            border-bottom: 1px solid var(--accent-gold);
+            padding-bottom: 1px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        .mentor-card p {
+            font-size: 0.8rem;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-charcoal);
             font-style: italic;
         }
 
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 60px;
-            font-size: 0.85rem;
-            color: var(--text-charcoal);
-            background-color: #f4f2ed;
-            border-top: 1px solid var(--border-line);
+        /* --- CONTAINER UTILS (For other sections) --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            background-color: var(--bg-paper);
+            position: relative;
+            z-index: 10;
         }
 
+        /* --- TIMELINE STYLES --- */
+        .timeline-container { position: relative; padding-left: 25px; }
+        .timeline-container::before { content: ''; position: absolute; left: 6px; top: 10px; bottom: 20px; width: 1px; background: var(--border-line); }
+        .timeline-series-item { position: relative; margin-bottom: 12px; }
+        .timeline-series-item::after { content: ''; position: absolute; left: -28px; top: 18px; width: 8px; height: 8px; border-radius: 50%; background: #fff; border: 2px solid var(--accent-gold); z-index: 2; }
+        .series-card { background: #fff; border: 1px solid var(--border-line); border-radius: 3px; overflow: hidden; transition: all 0.3s ease; }
+        .series-card:hover { border-color: var(--accent-gold); box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        summary { list-style: none; padding: 12px 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff; }
+        summary::-webkit-details-marker { display: none; }
+        .series-header { display: flex; align-items: center; width: 100%; gap: 15px; }
+        .series-date { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; color: var(--text-charcoal); width: 120px; flex-shrink: 0; font-weight: 600; }
+        .series-info { display: flex; flex-direction: column; }
+        .series-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text-ink); font-weight: 700; }
+        .series-company { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-gold); }
+        .arrow-icon { color: var(--text-charcoal); font-size: 0.8rem; transition: transform 0.3s ease; }
+        details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-gold); }
+        .series-content { padding: 0 18px 18px 153px; border-top: 1px solid #f0f0f0; color: var(--text-charcoal); font-size: 0.85rem; line-height: 1.6; background: #fafafa; padding-top: 12px; }
+
+        /* --- RESEARCH STYLES --- */
+        .research-category-title { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-gold); border-bottom: 2px solid var(--border-line); padding-bottom: 8px; margin-bottom: 25px; }
+
+        /* FOOTER */
+        footer { text-align: center; padding: 60px; font-size: 0.75rem; color: var(--text-charcoal); background-color: #f4f2ed; border-top: 1px solid var(--border-line); position: relative; z-index: 10; }
+
         /* Responsive */
-        @media (max-width: 1024px) {
-            .section-banner { background-attachment: scroll; background-position: center; height: 200px; }
-            .journey-text { column-count: 1; }
+        @media (max-width: 900px) {
+            .hero-split-container { grid-template-columns: 1fr; gap: 40px; }
+            .hero-bio-col { position: relative; top: 0; border-bottom: 1px dashed var(--border-line); padding-bottom: 30px; }
+            .journey-columns { column-count: 1; }
             .mentors-grid { grid-template-columns: 1fr; }
-            .nav-links { gap: 20px; font-size: 0.8rem; }
-            .banner-title { font-size: 2rem; padding: 15px 30px; }
-            .hero-name { font-size: 2.5rem; }
             .series-header { flex-direction: column; align-items: flex-start; gap: 5px; }
-            .series-date { width: auto; font-size: 0.75rem; color: var(--accent-gold); }
-            .series-content { padding: 15px 20px; }
-            .paper-citation { margin-left: 20px; } 
+            .series-date { width: auto; font-size: 0.7rem; color: var(--accent-gold); }
+            .series-content { padding: 15px 15px; }
         }
     </style>
 </head>
@@ -412,85 +322,73 @@
     <nav class="top-nav">
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#journey">Journey</a></li>
             <li><a href="#experience">Work</a></li>
             <li><a href="#research">Research</a></li>
             <li><a href="#affiliations">Affiliations</a></li>
         </ul>
     </nav>
 
-    <section id="home" class="hero-section">
-        <img src="images/profile.jpg" alt="Mamoor Ali Khan" class="profile-pic">
-        <h1 class="hero-name">Mamoor Ali Khan</h1>
-        <div class="hero-title">Research Operations Specialist</div>
+    <section id="home" class="hero-split-container">
         
-        <div class="contact-icons">
-            <a href="mailto:skhan24@nd.edu" class="icon-link" title="Email Me">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://linkedin.com/in/mamoor-ali-khan-5106a9171/?skipRedirect=true" target="_blank" class="icon-link" title="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://www.dropbox.com/scl/fi/l1b0zx35sj032045oajtc/cvmak.pdf?rlkey=9a55m6v82eoqxasv9vf0yxcin&dl=0" target="_blank" class="icon-link" title="Download CV">
-                <i class="fas fa-file-alt"></i>
-            </a>
-        </div>
-
-        <div class="hobby-box">
-            <p>
-                <i class="fab fa-instagram"></i> 
-                <strong>Beyond the Data:</strong> While my profession is defined by rigorous research, my passion lies in exploration. 
-                <a href="https://www.instagram.com/adventourist1/" target="_blank">Follow me on Instagram</a> 
-                to see the world through my lens, where I document my travels and showcase my photography and editing work.
-            </p>
-        </div>
-    </section>
-
-    <div id="journey" class="section-banner bg-journey">
-        <div class="banner-overlay">
-            <h2 class="banner-title">My Journey</h2>
-        </div>
-    </div>
-
-    <section class="container">
-        <div class="journey-text">
-            <p>
-                It began in 2013. Fresh out of Computer Science, I found myself not in a tech startup, but as an intern in a pharmaceutical firm. It was there, amidst the rows of numbers and spreadsheets, that I discovered my true language: <strong>Data</strong>. 
-            </p>
-            <p>
-                I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I made a pivotal decision to pursue a Master’s in Development Studies, a decision that finally married my technical programming roots with the human-centric world of development practice.
-            </p>
-            <p>
-                This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)
-            </p>
-            <p>
-                <strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.
-            </p>
-        </div>
-
-        <div class="mentors-header">
-            <h3>In Gratitude: The Pillars of My Journey</h3>
-            <div class="separator"></div>
-        </div>
-
-        <div class="mentors-grid">
-            <div class="mentor-card">
-                <a href="https://www.miriamgolden.com/" target="_blank" class="mentor-link">
-                    Dr. Miriam Golden <i class="fas fa-external-link-alt"></i>
-                </a>
-                <p>
-                    She trusted a naive boy with her most precious projects. I still recall the sting of embarrassment in early meetings, acutely aware of my lack of international education. Yet, where others might have seen a liability, Dr. Golden never lost faith. She has been the unshakable pillar of my career and has fundamentally shaped my life. I offer her my deepest respect; I simply cannot thank her enough.
-                </p>
+        <div class="hero-bio-col">
+            <img src="images/profile.jpg" alt="Mamoor Ali Khan" class="profile-pic">
+            <h1 class="hero-name">Mamoor Ali Khan</h1>
+            <div class="hero-title">Research Operations Specialist</div>
+            
+            <div class="contact-icons">
+                <a href="mailto:skhan24@nd.edu" class="icon-link" title="Email Me"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/mamoor-ali-khan-5106a9171/?skipRedirect=true" target="_blank" class="icon-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.dropbox.com/scl/fi/l1b0zx35sj032045oajtc/cvmak.pdf?rlkey=9a55m6v82eoqxasv9vf0yxcin&dl=0" target="_blank" class="icon-link" title="Download CV"><i class="fas fa-file-alt"></i></a>
             </div>
-            <div class="mentor-card">
-                <a href="https://saadgulzar.com/" target="_blank" class="mentor-link">
-                    Dr. Saad Gulzar <i class="fas fa-external-link-alt"></i>
-                </a>
-                <p>
-                    Dr. Gulzar is the catalyst for my professional ascent. He opened doors I did not know existed, giving me multiple opportunities within his research and introducing me to brilliant minds at Stanford, Yale, and Princeton. He didn't just give me a role; he gave me a horizon.
-                </p>
+
+            <div class="insta-note">
+                <i class="fab fa-instagram" style="margin-right:5px;"></i>
+                Beyond the data, I <a href="https://www.instagram.com/adventourist1/" target="_blank">document my travels</a> through photography.
             </div>
         </div>
+
+        <div class="hero-journey-col">
+            <h2 class="journey-heading">My Journey</h2>
+            
+            <div class="journey-columns">
+                <p>
+                    It began in 2013. Fresh out of Computer Science, I found myself not in a tech startup, but as an intern in a pharmaceutical firm. It was there, amidst the rows of numbers and spreadsheets, that I discovered my true language: <strong>Data</strong>. 
+                </p>
+                <p>
+                    I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I made a pivotal decision to pursue a Master’s in Development Studies, a decision that finally married my technical programming roots with the human-centric world of development practice.
+                </p>
+                <p>
+                    This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank" style="color:var(--accent-navy); text-decoration: underline;">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)
+                </p>
+                <p>
+                    <strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank" style="color:var(--accent-navy); text-decoration: underline;">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.
+                </p>
+            </div>
+
+            <div class="mentors-section">
+                <div class="mentors-title">In Gratitude: My Mentors</div>
+                <div class="mentors-grid">
+                    <div class="mentor-card">
+                        <a href="https://www.miriamgolden.com/" target="_blank" class="mentor-link">
+                            Dr. Miriam Golden <i class="fas fa-external-link-alt" style="font-size:0.8em"></i>
+                        </a>
+                        <p>
+                            She trusted a naive boy with her most precious projects. I still recall the sting of embarrassment in early meetings, acutely aware of my lack of international education. Yet, where others might have seen a liability, Dr. Golden never lost faith. She has been the unshakable pillar of my career and has fundamentally shaped my life. I offer her my deepest respect; I simply cannot thank her enough.
+                        </p>
+                    </div>
+                    
+                    <div class="mentor-card">
+                        <a href="https://saadgulzar.com/" target="_blank" class="mentor-link">
+                            Dr. Saad Gulzar <i class="fas fa-external-link-alt" style="font-size:0.8em"></i>
+                        </a>
+                        <p>
+                            Dr. Gulzar is the catalyst for my professional ascent. He opened doors I did not know existed, giving me multiple opportunities within his research and introducing me to brilliant minds at Stanford, Yale, and Princeton. He didn't just give me a role; he gave me a horizon.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <div id="experience" class="section-banner bg-experience">
