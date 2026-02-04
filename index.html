@@ -11,20 +11,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- FUTURISTIC GLASS PALETTE --- */
+        /* --- SUPREME ACADEMIC PALETTE (RESTORED) --- */
         :root {
-            --bg-paper: #f0f4f8;       /* Very light blue-grey base */
-            --text-ink: #0f172a;       /* Deep Slate */
-            --text-charcoal: #334155;
-            --accent-cyan: #06b6d4;    /* Future Cyan */
-            --accent-navy: #0f172a;    
-            --border-line: rgba(255, 255, 255, 0.4);    
+            --bg-paper: #f9f8f4;       /* The "Supreme" Warm White */
+            --text-ink: #1c1c1c;       /* Sharp Black */
+            --text-charcoal: #4a4a4a;
+            --accent-gold: #b38b4d;    /* Muted Gold */
+            --accent-navy: #1e2a38;    /* Academic Navy */
+            --border-line: #dcd8d0;    
             
             /* GLASS VARIABLES */
-            --glass-bg: rgba(255, 255, 255, 0.65); 
-            --glass-border: rgba(255, 255, 255, 0.7);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            --blur-strength: blur(16px);
+            --glass-bg: rgba(255, 255, 255, 0.85); /* Whiter, cleaner glass */
+            --glass-border: rgba(255, 255, 255, 0.9);
+            --glass-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* Soft, expensive shadow */
+            --blur-strength: blur(12px);
         }
 
         /* --- GLOBAL RESET --- */
@@ -33,12 +33,10 @@
         body, html {
             margin: 0;
             padding: 0;
-            background-color: var(--bg-paper);
-            /* Subtle gradient background for body to make glass cards pop */
-            background-image: linear-gradient(to bottom right, #f0f4f8, #dbeafe); 
+            background-color: var(--bg-paper); /* Restored Background */
             color: var(--text-ink);
             font-family: 'Merriweather', serif; 
-            line-height: 1.7; 
+            line-height: 1.8; 
             scroll-behavior: smooth;
             font-size: 16px; 
         }
@@ -52,27 +50,27 @@
 
         a { text-decoration: none; color: var(--accent-navy); transition: all 0.3s ease; }
         p a { border-bottom: 1px dotted var(--accent-navy); }
-        p a:hover { color: var(--accent-cyan); border-bottom: 1px solid var(--accent-cyan); }
+        p a:hover { color: var(--accent-gold); border-bottom: 1px solid var(--accent-gold); }
 
         /* --- 1. HEADER CONTAINER (Background Image) --- */
         .liquid-header-bg {
-            /* Abstract Tech Background */
+            /* High-End Abstract Tech Background */
             background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Dark overlay */
+        /* Dark overlay for contrast */
         .liquid-header-bg::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.5); 
+            background: rgba(30, 42, 56, 0.5); /* Navy tint */
             z-index: 1;
         }
 
@@ -81,21 +79,21 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            max-width: 1000px;
+            max-width: 950px;
             
-            /* THE GLASS EFFECT */
+            /* CLEAN GLASS EFFECT */
             background: var(--glass-bg);
             backdrop-filter: var(--blur-strength);
             -webkit-backdrop-filter: var(--blur-strength);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            border-radius: 12px;
             box-shadow: var(--glass-shadow);
             
             /* Layout: Image Left, Text Right */
             display: grid;
             grid-template-columns: 200px 1fr; 
-            gap: 40px;
-            padding: 40px;
+            gap: 50px;
+            padding: 45px;
             align-items: center;
         }
 
@@ -104,10 +102,9 @@
             width: 180px;
             height: 180px;
             object-fit: cover;
-            border-radius: 12px; /* Soft square */
-            border: 2px solid rgba(255,255,255,0.9);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            margin: 0 auto;
+            border-radius: 4px; /* Sharp Square with slight radius */
+            border: 1px solid var(--accent-navy);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
             display: block;
         }
 
@@ -117,27 +114,30 @@
         }
 
         .hero-name {
-            font-size: 3rem; 
-            margin: 0 0 5px 0;
-            color: var(--text-ink);
-            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+            font-size: 3.2rem; 
+            margin: 0 0 8px 0;
+            color: var(--accent-navy); /* Sharp Navy Color */
+            line-height: 1.1;
+            /* No text-shadow for cleaner look */
         }
 
         .hero-title {
             font-family: 'Montserrat', sans-serif; 
-            font-size: 0.9rem;
-            color: #0369a1; /* Darker Cyan/Blue for contrast on glass */
-            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-charcoal);
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            border-left: 3px solid var(--accent-gold);
+            padding-left: 12px;
         }
 
         .contact-icons {
             display: flex;
             justify-content: flex-start;
             gap: 25px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .icon-link {
@@ -145,15 +145,16 @@
             color: var(--text-charcoal);
             border-bottom: none !important;
         }
-        .icon-link:hover { color: var(--accent-cyan); transform: translateY(-3px); }
+        .icon-link:hover { color: var(--accent-gold); transform: translateY(-2px); }
 
         .insta-note {
-            font-size: 0.85rem;
-            color: #475569;
+            font-size: 0.9rem;
+            color: #666;
             font-style: italic;
             border-top: 1px solid rgba(0,0,0,0.1);
-            padding-top: 10px;
+            padding-top: 15px;
             display: inline-block;
+            width: 100%;
         }
 
         /* --- 3. GLASS NAVIGATION (STICKY) --- */
@@ -163,13 +164,12 @@
             z-index: 1000;
             
             /* GLASS EFFECT */
-            background: rgba(255, 255, 255, 0.7); /* Slightly more transparent */
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            background: rgba(249, 248, 244, 0.95); /* Matches Supreme BG */
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--accent-gold);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             
-            padding: 12px 0;
+            padding: 15px 0;
             text-align: center;
         }
 
@@ -179,15 +179,15 @@
         }
 
         .nav-links a {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--text-ink);
             font-weight: 700;
             border-bottom: none;
         }
-        .nav-links a:hover { color: var(--accent-cyan); text-shadow: 0 0 10px rgba(6, 182, 212, 0.4); }
+        .nav-links a:hover { color: var(--accent-gold); }
 
         /* --- 4. CONTENT LAYOUT --- */
         .content-container {
@@ -196,7 +196,7 @@
             gap: 60px;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 80px 20px;
             align-items: start;
         }
 
@@ -204,29 +204,30 @@
         .journey-col { text-align: justify; }
         
         .journey-heading {
-            font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--text-ink);
-            margin-bottom: 25px; border-bottom: 3px solid var(--accent-cyan); padding-bottom: 5px; display: inline-block;
+            font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent-navy);
+            margin-bottom: 30px; border-bottom: 2px solid var(--border-line); padding-bottom: 10px; display: inline-block;
         }
-        .journey-col p { font-size: 1rem; margin-bottom: 20px; color: var(--text-charcoal); }
+        .journey-col p { font-size: 1rem; margin-bottom: 25px; color: var(--text-charcoal); }
 
         /* Mentors (Right Sidebar) */
-        .mentors-col { position: sticky; top: 80px; }
+        .mentors-col { position: sticky; top: 100px; }
         
         .mentors-title {
             font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase;
-            letter-spacing: 2px; color: var(--accent-cyan); margin-bottom: 20px; font-weight: 700; 
-            border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 5px; text-align: right;
+            letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 20px; font-weight: 700; 
+            border-bottom: 1px solid var(--border-line); padding-bottom: 5px; text-align: right;
         }
 
         /* --- 5. GLASS MENTOR CARDS --- */
         .mentor-card {
-            /* SAME GLASS EFFECT AS HEADER */
-            background: rgba(255, 255, 255, 0.6); /* Slightly more transparent than header */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            border-radius: 12px;
+            background: #fff;
+            border: 1px solid var(--border-line);
+            border-radius: 8px;
+            
+            /* SUBTLE GLASS FEEL */
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
             
             padding: 25px;
             margin-bottom: 25px;
@@ -235,20 +236,20 @@
 
         /* ZOOM & GLOW EFFECT */
         .mentor-card:hover {
-            transform: scale(1.05) translateY(-5px);
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.2); /* Cyan glow */
-            border-color: var(--accent-cyan);
+            transform: scale(1.03) translateY(-3px);
+            background: #fff;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
+            border-color: var(--accent-gold);
             z-index: 10;
         }
 
         .mentor-link {
-            font-size: 1.1rem; color: var(--text-ink); margin: 0 0 10px 0; display: inline-block;
-            border-bottom: 1px solid var(--accent-cyan); padding-bottom: 1px; font-family: 'Playfair Display', serif; font-weight: 700;
+            font-size: 1.1rem; color: var(--accent-navy); margin: 0 0 10px 0; display: inline-block;
+            border-bottom: 1px solid var(--accent-gold); padding-bottom: 1px; font-family: 'Playfair Display', serif; font-weight: 700;
         }
-        .mentor-card p { font-size: 0.9rem; margin: 0; line-height: 1.5; font-style: italic; }
+        .mentor-card p { font-size: 0.9rem; margin: 0; line-height: 1.6; font-style: italic; }
 
-        /* --- BANNERS --- */
+        /* --- BANNERS (FIXED & WORKING LINKS) --- */
         .section-banner {
             height: 250px; 
             background-attachment: fixed; 
@@ -260,7 +261,7 @@
             justify-content: center;
         }
         .banner-overlay {
-            background: rgba(15, 23, 42, 0.6); 
+            background: rgba(30, 42, 56, 0.4); 
             width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
         }
         .banner-title {
@@ -269,10 +270,11 @@
             backdrop-filter: blur(5px);
         }
 
-        /* Images */
-        .bg-journey { background-image: url('images/journey.jpg'); }
-        .bg-experience { background-image: url('images/experience.jpg'); }
-        /* ... others ... */
+        /* FIXED IMAGES (Unsplash Links) */
+        .bg-journey { background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop'); }
+        .bg-experience { background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop'); }
+        .bg-research { background-image: url('https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=2070&auto=format&fit=crop'); }
+        .bg-affiliations { background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop'); }
 
         /* --- CONTAINER UTILS --- */
         .container {
@@ -282,31 +284,30 @@
 
         /* --- TIMELINE --- */
         .timeline-container { position: relative; padding-left: 30px; }
-        .timeline-container::before { content: ''; position: absolute; left: 6px; top: 10px; bottom: 20px; width: 1px; background: #cbd5e1; }
+        .timeline-container::before { content: ''; position: absolute; left: 6px; top: 10px; bottom: 20px; width: 1px; background: var(--border-line); }
         .timeline-series-item { position: relative; margin-bottom: 15px; }
-        .timeline-series-item::after { content: ''; position: absolute; left: -28px; top: 18px; width: 8px; height: 8px; border-radius: 50%; background: #fff; border: 2px solid var(--accent-cyan); z-index: 2; }
-        .series-card { background: #fff; border: 1px solid #cbd5e1; border-radius: 4px; overflow: hidden; transition: all 0.3s ease; }
-        .series-card:hover { border-color: var(--accent-cyan); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .timeline-series-item::after { content: ''; position: absolute; left: -28px; top: 18px; width: 8px; height: 8px; border-radius: 50%; background: #fff; border: 2px solid var(--accent-gold); z-index: 2; }
+        .series-card { background: #fff; border: 1px solid var(--border-line); border-radius: 4px; overflow: hidden; transition: all 0.3s ease; }
+        .series-card:hover { border-color: var(--accent-gold); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         summary { list-style: none; padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff; }
         summary::-webkit-details-marker { display: none; }
         .series-header { display: flex; align-items: center; width: 100%; gap: 15px; }
-        .series-date { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--accent-cyan); width: 130px; flex-shrink: 0; font-weight: 600; }
+        .series-date { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--accent-gold); width: 130px; flex-shrink: 0; font-weight: 600; }
         .series-info { display: flex; flex-direction: column; }
         .series-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--text-ink); font-weight: 700; }
         .series-company { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-charcoal); }
         .arrow-icon { color: var(--text-charcoal); font-size: 0.9rem; transition: transform 0.3s ease; }
-        details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-cyan); }
+        details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-gold); }
         .series-content { padding: 0 20px 20px 165px; border-top: 1px solid #f0f0f0; color: var(--text-charcoal); font-size: 0.95rem; line-height: 1.6; background: #fafafa; padding-top: 15px; }
 
         /* --- RESEARCH STYLES --- */
-        .research-category-title { font-family: 'Montserrat', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-navy); border-bottom: 2px solid #cbd5e1; padding-bottom: 10px; margin-bottom: 30px; }
+        .research-category-title { font-family: 'Montserrat', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-navy); border-bottom: 2px solid var(--border-line); padding-bottom: 10px; margin-bottom: 30px; }
 
         /* FOOTER */
-        footer { text-align: center; padding: 40px; font-size: 0.8rem; color: var(--text-charcoal); background-color: #f1f5f9; border-top: 1px solid #cbd5e1; position: relative; z-index: 10; }
+        footer { text-align: center; padding: 40px; font-size: 0.8rem; color: var(--text-charcoal); background-color: #f1f5f9; border-top: 1px solid var(--border-line); position: relative; z-index: 10; }
 
         /* Responsive */
         @media (max-width: 900px) {
-            /* Switch to vertical on mobile */
             .glass-profile-card { grid-template-columns: 1fr; text-align: center; gap: 20px; }
             .header-text-side { text-align: center; }
             .profile-pic { margin: 0 auto; width: 150px; height: 150px; }
@@ -369,10 +370,10 @@
                 I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I made a pivotal decision to pursue a Master’s in Development Studies, a decision that finally married my technical programming roots with the human-centric world of development practice.
             </p>
             <p>
-                This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank" style="color:var(--accent-cyan); text-decoration: underline;">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)
+                This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank" style="color:var(--accent-navy); text-decoration: underline;">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)
             </p>
             <p>
-                <strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank" style="color:var(--accent-cyan); text-decoration: underline;">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.
+                <strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank" style="color:var(--accent-navy); text-decoration: underline;">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.
             </p>
         </div>
 
@@ -405,7 +406,7 @@
             <h2 class="banner-title">Experience</h2>
         </div>
     </div>
-
+    
     <section class="container">
         <div class="timeline-container">
             
