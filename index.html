@@ -11,15 +11,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- ELITE ACADEMIC PALETTE --- */
+        /* --- FUTURISTIC & BRIGHT PALETTE --- */
         :root {
-            --bg-paper: #f9f8f4;
-            --text-ink: #1c1c1c;
-            --text-charcoal: #4a4a4a;
-            --accent-gold: #b38b4d;
-            --accent-navy: #1e2a38;
-            --border-line: #dcd8d0;
-            --bg-highlight: #f0ede6;
+            --bg-paper: #ffffff;
+            --text-ink: #0a0a0a;
+            --text-charcoal: #2d2d2d;
+            /* Bright, dynamic accents */
+            --accent-primary: #2563eb; /* Electric Blue */
+            --accent-secondary: #7c3aed; /* Vibrant Purple */
+            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --border-line: #e5e7eb;
+            
+            /* Glassmorphism Variables */
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --blur-strength: 12px;
         }
 
         /* --- GLOBAL RESET & TYPOGRAPHY --- */
@@ -31,9 +38,9 @@
             background-color: var(--bg-paper);
             color: var(--text-ink);
             font-family: 'Merriweather', serif; 
-            line-height: 1.7; 
+            line-height: 1.6; 
             scroll-behavior: smooth;
-            font-size: 14px; /* SMALL ACADEMIC BASE */
+            font-size: 18px; /* INCREASED BASE SIZE */
         }
 
         h1, h2, h3, h4 {
@@ -43,21 +50,46 @@
             font-weight: 700;
         }
 
-        a { text-decoration: none; color: var(--accent-navy); transition: all 0.3s ease; }
-        p a { border-bottom: 1px dotted var(--accent-navy); }
-        p a:hover { color: var(--accent-gold); border-bottom: 1px solid var(--accent-gold); }
+        /* Gradient Text Effect for Futuristic Feel */
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        /* --- NAVIGATION --- */
+        a { text-decoration: none; color: var(--accent-primary); transition: all 0.3s ease; font-weight: 600; }
+        p a { border-bottom: 2px solid rgba(37, 99, 235, 0.2); }
+        p a:hover { color: var(--accent-secondary); border-color: var(--accent-secondary); }
+
+        /* --- BACKGROUND --- */
+        /* Creating the "Background on top" effect for the glass to sit on */
+        .page-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+            z-index: -1;
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+        }
+
+        /* --- NAVIGATION (GLASS TABS) --- */
         .top-nav {
             position: sticky;
-            top: 0;
-            width: 100%;
-            background-color: rgba(249, 248, 244, 0.98);
-            border-bottom: 1px solid var(--accent-gold);
-            padding: 10px 0;
+            top: 10px;
+            width: 90%;
+            margin: 0 auto;
+            /* Morphed Glass Effect */
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-strength));
+            -webkit-backdrop-filter: blur(var(--blur-strength));
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 12px 0;
             z-index: 1000;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: var(--glass-shadow);
         }
 
         .nav-links {
@@ -66,190 +98,138 @@
             margin: 0;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
         }
 
         .nav-links a {
             font-family: 'Playfair Display', serif;
-            font-size: 0.75rem; 
+            font-size: 0.9rem; 
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-ink);
+            letter-spacing: 1px;
+            color: var(--text-charcoal);
             border-bottom: none;
             font-weight: 700;
         }
-        .nav-links a:hover { color: var(--accent-gold); }
+        .nav-links a:hover { 
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        /* --- SECTION BANNERS (PARALLAX) --- */
-        .section-banner {
-            height: 280px; 
-            background-attachment: fixed; /* PARALLAX ON DESKTOP */
-            background-position: center;
-            background-size: cover;
-            position: relative;
+        /* --- HERO SECTION (MOVED PROFILE) --- */
+        .hero-section {
             display: flex;
-            align-items: center;
             justify-content: center;
-            margin-bottom: 0;
+            padding: 40px 20px 20px 20px; /* Reduced whitespace */
         }
 
-        .banner-overlay {
-            background: rgba(10, 10, 15, 0.4); 
-            width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
-        }
-
-        .banner-title {
-            color: #fff; font-size: 1.8rem; letter-spacing: 3px; text-transform: uppercase;
-            border: 1px solid rgba(255,255,255,0.7); padding: 10px 30px;
-            background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); text-align: center;
-        }
-
-        /* BACKGROUND IMAGES */
-        .bg-journey { background-image: url('images/journey.jpg'); }
-        .bg-experience { background-image: url('images/experience.jpg'); }
-        .bg-research { background-image: url('images/research.jpg'); }
-        .bg-affiliations { background-image: url('images/affiliations.jpg'); }
-
-        /* --- 3-COLUMN HERO SECTION --- */
-        .hero-3col-container {
-            display: grid;
-            grid-template-columns: 260px 1fr 260px; /* Bio | Journey | Mentors */
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            align-items: start;
-            background-color: var(--bg-paper); 
-            position: relative; 
-            z-index: 10;
-        }
-
-        /* COLUMN 1: BIO (Sticky) */
-        .col-left-bio {
+        /* Crystal Glass Box */
+        .glass-profile-box {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 30px 50px;
             text-align: center;
-            position: sticky;
-            top: 80px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .profile-pic {
-            width: 140px; height: 140px; border-radius: 50%; object-fit: cover;
-            border: 3px solid #fff; box-shadow: 0 0 0 1px var(--accent-gold); margin-bottom: 15px;
+            width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+            border: 4px solid #fff; 
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); 
+            margin-bottom: 15px;
         }
 
         .hero-name {
-            font-size: 1.8rem; margin-bottom: 5px; color: var(--accent-navy); line-height: 1.1;
+            font-size: 2.5rem; margin-bottom: 5px; line-height: 1.1;
         }
 
         .hero-title {
-            font-family: 'Merriweather', serif; font-size: 0.75rem; color: var(--text-charcoal);
-            font-style: italic; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
+            font-family: 'Merriweather', serif; font-size: 1rem; color: var(--text-charcoal);
+            font-style: italic; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;
+            opacity: 0.8;
         }
 
         .contact-icons {
-            display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;
+            display: flex; justify-content: center; gap: 20px; margin-bottom: 15px;
         }
 
         .icon-link {
-            font-size: 1.2rem; color: var(--text-charcoal); transition: all 0.3s ease; border-bottom: none !important;
+            font-size: 1.5rem; color: var(--accent-primary); transition: all 0.3s ease; border-bottom: none !important;
         }
-        .icon-link:hover { color: var(--accent-gold); transform: translateY(-3px); }
+        .icon-link:hover { color: var(--accent-secondary); transform: scale(1.1); }
 
         .insta-note {
-            font-size: 0.75rem; color: #888; font-style: italic; margin-top: 20px;
-            border-top: 1px solid var(--border-line); padding-top: 15px; line-height: 1.4;
-        }
-        .insta-note a { color: #555; border-bottom: 1px dotted #ccc; }
-        .insta-note a:hover { color: #C13584; border-bottom: 1px solid #C13584; }
-
-        /* COLUMN 2: JOURNEY TEXT */
-        .col-center-journey {
-            padding-top: 5px;
-            text-align: justify;
+            font-size: 0.85rem; color: #555; font-style: italic; margin-top: 10px;
+            padding-top: 10px; border-top: 1px solid rgba(0,0,0,0.05); width: 100%;
         }
 
+        /* --- MAIN CONTENT GRID --- */
+        /* Restructured to reduce whitespace and accommodate the new layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Journey takes more space, Mentors less */
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 20px 60px 20px;
+            align-items: start;
+        }
+
+        /* JOURNEY TEXT */
         .journey-heading {
-            font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent-gold);
-            margin-bottom: 20px; border-bottom: 2px solid var(--border-line); padding-bottom: 8px; display: block; text-align: center;
+            font-family: 'Playfair Display', serif; font-size: 1.8rem; 
+            background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 15px; border-bottom: 2px solid var(--border-line); padding-bottom: 5px; 
+            display: inline-block;
         }
         
         .col-center-journey p {
-            font-size: 0.95rem; line-height: 1.8; color: var(--text-charcoal); margin-top: 0; margin-bottom: 20px;
+            font-size: 1.05rem; line-height: 1.7; color: var(--text-charcoal); margin-top: 0; margin-bottom: 15px; /* Tighter margins */
         }
 
-        /* COLUMN 3: MENTORS (Sticky) */
-        .col-right-mentors {
-            position: sticky;
-            top: 80px;
-        }
-
+        /* MENTORS */
         .mentors-title {
-            font-family: 'Montserrat', sans-serif; font-size: 0.7rem; text-transform: uppercase;
-            letter-spacing: 1.5px; color: var(--accent-navy); margin-bottom: 15px; font-weight: 700; border-bottom: 1px solid var(--border-line); padding-bottom: 5px;
+            font-family: 'Montserrat', sans-serif; font-size: 0.85rem; text-transform: uppercase;
+            letter-spacing: 1.5px; color: var(--accent-secondary); margin-bottom: 15px; font-weight: 700; 
+            border-bottom: 1px solid var(--border-line); padding-bottom: 5px;
         }
 
         .mentor-card {
-            background: #fff; border: 1px solid var(--border-line); padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.01); margin-bottom: 20px;
+            background: #fff; border: 1px solid var(--border-line); padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 15px;
+            transition: transform 0.3s ease;
         }
+        .mentor-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-color: var(--accent-primary); }
+
         .mentor-link {
-            font-size: 0.9rem; color: var(--accent-navy); margin: 0 0 8px 0; display: inline-block;
-            border-bottom: 1px solid var(--accent-gold); padding-bottom: 1px; font-family: 'Playfair Display', serif; font-weight: 700;
+            font-size: 1rem; color: var(--accent-primary); margin: 0 0 8px 0; display: inline-block;
+            border-bottom: 1px solid transparent; font-family: 'Playfair Display', serif; font-weight: 700;
         }
         .mentor-card p {
-            font-size: 0.8rem; margin: 0; line-height: 1.5; color: var(--text-charcoal); font-style: italic;
+            font-size: 0.9rem; margin: 0; line-height: 1.5; color: var(--text-charcoal); font-style: italic;
         }
-
-        /* --- CONTAINER UTILS --- */
-        .container {
-            max-width: 900px; margin: 0 auto; padding: 60px 20px;
-            background-color: var(--bg-paper); position: relative; z-index: 10;
-        }
-
-        /* --- TIMELINE STYLES --- */
-        .timeline-container { position: relative; padding-left: 25px; }
-        .timeline-container::before { content: ''; position: absolute; left: 6px; top: 10px; bottom: 20px; width: 1px; background: var(--border-line); }
-        .timeline-series-item { position: relative; margin-bottom: 12px; }
-        .timeline-series-item::after { content: ''; position: absolute; left: -28px; top: 18px; width: 8px; height: 8px; border-radius: 50%; background: #fff; border: 2px solid var(--accent-gold); z-index: 2; }
-        .series-card { background: #fff; border: 1px solid var(--border-line); border-radius: 3px; overflow: hidden; transition: all 0.3s ease; }
-        .series-card:hover { border-color: var(--accent-gold); box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
-        summary { list-style: none; padding: 12px 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff; }
-        summary::-webkit-details-marker { display: none; }
-        .series-header { display: flex; align-items: center; width: 100%; gap: 15px; }
-        .series-date { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; color: var(--text-charcoal); width: 120px; flex-shrink: 0; font-weight: 600; }
-        .series-info { display: flex; flex-direction: column; }
-        .series-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text-ink); font-weight: 700; }
-        .series-company { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-gold); }
-        .arrow-icon { color: var(--text-charcoal); font-size: 0.8rem; transition: transform 0.3s ease; }
-        details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-gold); }
-        .series-content { padding: 0 18px 18px 153px; border-top: 1px solid #f0f0f0; color: var(--text-charcoal); font-size: 0.85rem; line-height: 1.6; background: #fafafa; padding-top: 12px; }
-
-        /* --- RESEARCH STYLES --- */
-        .research-category-title { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-gold); border-bottom: 2px solid var(--border-line); padding-bottom: 8px; margin-bottom: 25px; }
-
-        /* FOOTER */
-        footer { text-align: center; padding: 60px; font-size: 0.75rem; color: var(--text-charcoal); background-color: #f4f2ed; border-top: 1px solid var(--border-line); position: relative; z-index: 10; }
 
         /* Responsive */
-        @media (max-width: 900px) {
-            
-            /* MOBILE LAYOUT RESET */
-            .hero-3col-container { grid-template-columns: 1fr; gap: 40px; }
-            .col-left-bio { position: relative; top: 0; border-bottom: 1px dashed var(--border-line); padding-bottom: 30px; }
-            .col-right-mentors { position: relative; top: 0; margin-top: 30px; }
-            .series-header { flex-direction: column; align-items: flex-start; gap: 5px; }
-            .series-date { width: auto; font-size: 0.7rem; color: var(--accent-gold); }
-            .series-content { padding: 15px 15px; }
-
-            /* FIX FOR MOBILE BANNERS (Ugly Cropping) */
-            .section-banner {
-                background-attachment: scroll; /* Disable fixed to show full image */
-                background-position: center center;
-                height: 200px; /* Optional: slightly smaller on phone */
-            }
+        @media (max-width: 800px) {
+            .content-grid { grid-template-columns: 1fr; gap: 30px; }
+            .hero-name { font-size: 2rem; }
+            .glass-profile-box { padding: 25px 20px; }
+            .nav-links { gap: 15px; font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
+
+    <div class="page-background"></div>
 
     <nav class="top-nav">
         <ul class="nav-links">
@@ -260,11 +240,10 @@
         </ul>
     </nav>
 
-    <section id="home" class="hero-3col-container">
-        
-        <div class="col-left-bio">
+    <section id="home" class="hero-section">
+        <div class="glass-profile-box">
             <img src="images/profile.jpg" alt="Mamoor Ali Khan" class="profile-pic">
-            <h1 class="hero-name">Mamoor Ali Khan</h1>
+            <h1 class="hero-name"><span class="gradient-text">Mamoor Ali Khan</span></h1>
             <div class="hero-title">Research Operations Specialist</div>
             
             <div class="contact-icons">
@@ -278,7 +257,10 @@
                 Beyond the data, I <a href="https://www.instagram.com/adventourist1/" target="_blank">document my travels</a> through photography.
             </div>
         </div>
+    </section>
 
+    <section class="content-grid">
+        
         <div class="col-center-journey">
             <h2 class="journey-heading">My Journey</h2>
             
@@ -289,10 +271,10 @@
                 I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I made a pivotal decision to pursue a Master’s in Development Studies, a decision that finally married my technical programming roots with the human-centric world of development practice.
             </p>
             <p>
-                This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank" style="color:var(--accent-navy); text-decoration: underline;">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)
+                This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)
             </p>
             <p>
-                <strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank" style="color:var(--accent-navy); text-decoration: underline;">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.
+                <strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.
             </p>
         </div>
 
@@ -319,6 +301,18 @@
         </div>
 
     </section>
+
+
+/*--------------------------This is the Experience Section--------------------------*/
+/*--------------------------This is the Experience Section--------------------------*/
+/*--------------------------This is the Experience Section--------------------------*/
+/*--------------------------This is the Experience Section--------------------------*/
+/*--------------------------This is the Experience Section--------------------------*/
+/*--------------------------This is the Experience Section--------------------------*/
+
+
+
+
 
     <div id="experience" class="section-banner bg-experience">
         <div class="banner-overlay">
