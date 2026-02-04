@@ -14,7 +14,7 @@
         /* --- ELITE ACADEMIC PALETTE --- */
         :root {
             --bg-paper: #ffffff;
-            --bg-subtle: #f8f9fa; /* Very subtle grey for contrast */
+            --bg-subtle: #f8f9fa;
             --text-ink: #0f172a;
             --text-charcoal: #334155;
             --text-muted: #64748b;
@@ -24,11 +24,11 @@
             --accent-secondary: #8d7b68; /* Bronze */
             --border-line: #e2e8f0;
             
-            /* GLASS VARIABLES (Restored) */
-            --glass-bg: rgba(255, 255, 255, 0.75); /* More transparent for effect */
-            --glass-border: 1px solid rgba(255, 255, 255, 0.8);
-            --glass-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.06);
-            --blur-strength: 16px; /* Stronger blur */
+            /* GLASS VARIABLES */
+            --glass-bg: rgba(255, 255, 255, 0.85); /* High opacity for readability */
+            --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Deeper shadow for "pop" */
+            --blur-strength: 20px; /* Heavy blur to diffuse the banner image */
         }
 
         /* --- GLOBAL RESET --- */
@@ -43,7 +43,7 @@
             line-height: 1.6; 
             scroll-behavior: smooth;
             font-size: 16px; 
-            /* Subtle pattern to make the glass pop */
+            /* Subtle texture */
             background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
             background-size: 40px 40px;
         }
@@ -84,19 +84,44 @@
         }
         .nav-links a:hover { color: var(--accent-secondary); }
 
-        /* --- CONTAINER (WIDENED TO FIX EMPTY SPACE) --- */
+        /* --- CONTAINER --- */
         .container {
-            max-width: 1250px; /* Increased from 1000px to fill screen */
+            max-width: 1250px; 
             margin: 0 auto;
-            padding: 50px 30px;
+            padding: 40px 30px;
         }
 
-        /* --- SECTION 1: PROFILE HERO (Glass) --- */
-        .profile-section {
-            display: flex; justify-content: center; margin-bottom: 50px;
+        /* --- SECTION 1: PROFILE HERO (Banner + Glass) --- */
+        .profile-banner-wrapper {
+            /* This creates the banner area */
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 50px;
+            /* Placeholder for South Asia / Gender Experiments theme */
+            /* Using a generic Unsplash ID for 'South Asia crowd/women' */
+            background-image: url('https://images.unsplash.com/photo-1566996695689-53531b40289f?q=80&w=2069&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center 30%; /* Focus on faces/crowd */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 60px 40px; /* Padding creates space around the glass box */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Dark overlay to ensure text readability if the image is bright */
+        .profile-banner-wrapper::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.3); /* Navy tint */
+            z-index: 0;
         }
 
         .glass-profile {
+            /* The Glass Box sits on top */
+            position: relative; z-index: 1;
             background: var(--glass-bg);
             border: var(--glass-border);
             box-shadow: var(--glass-shadow);
@@ -105,22 +130,23 @@
             border-radius: 8px;
             padding: 40px;
             width: 100%;
+            max-width: 1100px; /* Constrain width slightly for aesthetics */
             display: flex; flex-direction: row; align-items: center;
             gap: 50px;
         }
 
         .profile-pic {
-            width: 260px; height: 320px; /* Large Rectangle */
+            width: 260px; height: 320px; 
             border-radius: 4px; object-fit: cover;
-            border: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08); flex-shrink: 0;
+            border: 4px solid rgba(255,255,255,0.8); /* Thicker border to pop against banner */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15); flex-shrink: 0;
         }
 
         .profile-content { flex: 1; text-align: left; }
 
-        .hero-name { font-size: 2.8rem; margin-bottom: 5px; line-height: 1.1; }
+        .hero-name { font-size: 2.8rem; margin-bottom: 5px; line-height: 1.1; color: var(--accent-primary); }
         .hero-title {
-            font-family: 'Merriweather', serif; font-size: 1rem; color: var(--text-muted);
+            font-family: 'Merriweather', serif; font-size: 1rem; color: var(--text-charcoal); /* Darker for glass contrast */
             font-style: italic; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px;
         }
 
@@ -132,11 +158,10 @@
         }
         .icon-link:hover { color: var(--accent-secondary); border-color: var(--accent-secondary); transform: translateY(-2px); background: #fff; }
 
-        /* Instagram Pill */
         .insta-note {
             display: inline-flex; align-items: center; gap: 12px;
             padding: 12px 24px;
-            background: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.5); /* Semi-transparent */
             border: 1px solid var(--border-line);
             border-radius: 50px;
             font-size: 0.9rem; color: var(--text-charcoal);
@@ -150,7 +175,7 @@
         /* --- SECTION 2: GRID (Journey + Mentors) --- */
         .main-grid {
             display: grid;
-            grid-template-columns: 2.2fr 1fr; /* Optimized ratio for wider screen */
+            grid-template-columns: 2.2fr 1fr;
             gap: 50px; align-items: start;
         }
 
@@ -161,7 +186,7 @@
         .content-text p { font-size: 1.05rem; margin-bottom: 20px; text-align: justify; color: var(--text-charcoal); }
 
         .mentors-col {
-            background: rgba(255, 255, 255, 0.6); /* Semi-transparent */
+            background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(5px);
             padding: 25px; border-radius: 4px; border: 1px solid var(--border-line);
         }
@@ -173,54 +198,36 @@
         .mentor-link { font-size: 1rem; color: var(--accent-primary); margin-bottom: 5px; display: block; font-family: 'Playfair Display', serif; font-weight: 700; }
         .mentor-card p { font-size: 0.9rem; margin: 0; font-style: italic; color: var(--text-muted); }
 
-        /* --- RESTORED TIMELINE AESTHETIC --- */
-        /* This recreates the exact look of your screenshot with glass cards */
-        
+        /* --- TIMELINE AESTHETIC --- */
         .timeline-container { position: relative; padding-left: 30px; margin-top: 20px; }
-        
-        /* The Vertical Line */
         .timeline-container::before { 
             content: ''; position: absolute; left: 8px; top: 0; bottom: 0; 
             width: 2px; background: var(--border-line); z-index: 0;
         }
-
         .timeline-series-item { position: relative; margin-bottom: 25px; }
-
-        /* The Dot on the Line */
         .timeline-series-item::after { 
             content: ''; position: absolute; left: -26px; top: 22px; 
             width: 10px; height: 10px; border-radius: 50%; 
             background: #fff; border: 3px solid var(--accent-secondary); z-index: 1; 
         }
 
-        /* The Glass Card */
         .series-card {
-            background: var(--glass-bg); /* Frosted Glass */
+            background: var(--glass-bg);
             border: var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            backdrop-filter: blur(var(--blur-strength));
-            -webkit-backdrop-filter: blur(var(--blur-strength));
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Lighter shadow for cards */
+            backdrop-filter: blur(10px); /* Lighter blur for cards */
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 6px;
             overflow: hidden;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        
         .series-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-color: var(--accent-secondary); }
 
-        summary {
-            list-style: none; padding: 20px 25px; cursor: pointer; 
-            display: flex; justify-content: space-between; align-items: flex-start; /* Align top for multiline */
-        }
+        summary { list-style: none; padding: 20px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; }
         summary::-webkit-details-marker { display: none; }
 
         .series-header { display: flex; flex-direction: column; gap: 5px; width: 100%; }
-        
-        /* Matching the screenshot text hierarchy */
-        .series-date { 
-            font-family: 'Montserrat', sans-serif; font-size: 0.85rem; 
-            color: var(--accent-secondary); font-weight: 700; letter-spacing: 0.5px;
-        }
-        
+        .series-date { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--accent-secondary); font-weight: 700; letter-spacing: 0.5px; }
         .series-title-row { font-size: 1.1rem; color: var(--accent-primary); }
         .series-title { font-family: 'Playfair Display', serif; font-weight: 700; margin-right: 5px; }
         .series-company { font-family: 'Merriweather', serif; font-weight: 400; color: var(--text-charcoal); }
@@ -228,13 +235,9 @@
         .arrow-icon { margin-top: 5px; color: var(--text-muted); font-size: 0.9rem; transition: transform 0.3s ease; }
         details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-secondary); }
 
-        .series-content { 
-            padding: 0 25px 25px 25px; 
-            color: var(--text-charcoal); font-size: 0.95rem; line-height: 1.7; 
-            border-top: 1px solid rgba(0,0,0,0.05);
-        }
+        .series-content { padding: 0 25px 25px 25px; color: var(--text-charcoal); font-size: 0.95rem; line-height: 1.7; border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- SECTIONS BELOW (COMPATIBILITY) --- */
+        /* --- BOTTOM SECTIONS --- */
         .section-banner {
             height: 200px; 
             background-attachment: fixed; background-position: center; background-size: cover;
@@ -262,6 +265,7 @@
 
         @media (max-width: 900px) {
             .container { padding: 30px 15px; }
+            .profile-banner-wrapper { padding: 30px 15px; background-attachment: scroll; }
             .glass-profile { flex-direction: column; text-align: center; padding: 30px 20px; gap: 20px; }
             .profile-pic { width: 100%; height: 350px; }
             .profile-content { text-align: center; }
@@ -287,7 +291,8 @@
 
     <div class="container">
         
-        <section id="home" class="profile-section">
+        <section id="home" class="profile-banner-wrapper">
+            
             <div class="glass-profile">
                 <img src="images/profile.jpg" alt="Mamoor Ali Khan" class="profile-pic">
                 
@@ -307,6 +312,7 @@
                     </div>
                 </div>
             </div>
+
         </section>
 
         <div class="main-grid">
@@ -350,6 +356,7 @@
             </div>
 
         </div>
+
     </div>
 
     <div id="experience" class="section-banner bg-experience">
