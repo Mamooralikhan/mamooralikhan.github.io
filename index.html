@@ -13,7 +13,7 @@
     <style>
         /* --- ELITE ACADEMIC PALETTE --- */
         :root {
-            --bg-paper: #f0f2f5; 
+            --bg-paper: #f8f9fa; /* Restored clean background */
             --text-ink: #0f172a;
             --text-charcoal: #334155;
             --text-muted: #64748b;
@@ -21,7 +21,7 @@
             /* ACCENTS */
             --accent-primary: #0f172a; /* Navy */
             --accent-secondary: #8d7b68; /* Bronze */
-            --accent-glow: rgba(141, 123, 104, 0.4); /* Glow color for futuristic effect */
+            --accent-glow: rgba(141, 123, 104, 0.4); 
             --border-line: #e2e8f0;
             
             /* --- LIQUID GLASS VARIABLES --- */
@@ -44,9 +44,9 @@
             line-height: 1.6; 
             scroll-behavior: smooth;
             font-size: 16px; 
-            /* Subtle Grid Pattern for Tech feel */
-            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
-            background-size: 40px 40px;
+            /* RESTORED: Subtle radial pattern (removed the grid) */
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 30px 30px;
         }
 
         h1, h2, h3, h4 {
@@ -82,20 +82,32 @@
         /* --- CONTAINER --- */
         .container { max-width: 1250px; margin: 0 auto; padding: 50px 30px; }
 
-        /* --- FULL WIDTH BANNER FIX --- */
+        /* --- HERO BANNER (ABSTRACT & PARALLAX) --- */
         .profile-banner-wrapper {
             width: 100%;
-            /* Added Background Color fallback + New Image URL */
-            background: linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.2)), url('https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=2064&auto=format&fit=crop'); 
-            background-color: #334155; /* Fallback color if image fails */
-            background-size: cover;
+            /* ABSTRACT BACKGROUND: Professional, Abstract Liquid Slate */
+            background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop'); 
+            
+            /* PARALLAX EFFECT RESTORED */
+            background-attachment: fixed; 
             background-position: center;
-            padding: 80px 20px;
+            background-size: cover;
+            
+            padding: 100px 20px;
             display: flex; justify-content: center; align-items: center;
+            position: relative;
+        }
+
+        /* Overlay to ensure glass box pops */
+        .profile-banner-wrapper::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.3); /* Navy tint */
+            z-index: 0;
         }
 
         /* --- LIQUID GLASS PROFILE --- */
         .glass-profile {
+            position: relative; z-index: 1;
             background: var(--liquid-bg);
             border: var(--liquid-border);
             box-shadow: var(--liquid-shadow);
@@ -141,11 +153,11 @@
 
         /* --- SECTION 2: GRID --- */
         .main-grid { display: grid; grid-template-columns: 2.2fr 1fr; gap: 50px; align-items: start; }
+        
         .journey-heading {
             font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent-primary);
             margin-bottom: 20px; display: inline-block;
-            background: -webkit-linear-gradient(45deg, #0f172a, #8d7b68);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            border-bottom: 3px solid var(--accent-secondary);
         }
         .content-text p { font-size: 1.05rem; margin-bottom: 20px; text-align: justify; color: var(--text-charcoal); }
 
@@ -158,16 +170,16 @@
         .mentor-card { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .mentor-card:last-child { border-bottom: none; padding-bottom: 0; }
         .mentor-link { font-size: 1.1rem; font-family: 'Playfair Display', serif; display: block; margin-bottom: 5px; }
-
-        /* --- FUTURISTIC EXPERIENCE SECTION (RE-DESIGN) --- */
         
-        /* 1. Remove the line */
+        /* --- FUTURISTIC EXPERIENCE SECTION (Applied to your Content) --- */
+        /* Removes the line and makes cards float */
+        
         .timeline-container { padding-left: 0; margin-top: 30px; }
-        .timeline-container::before { display: none; } /* Removes vertical line */
-        .timeline-series-item::after { display: none; } /* Removes dots */
-        .timeline-series-item { margin-bottom: 20px; }
+        .timeline-container::before { display: none; } /* No vertical line */
+        .timeline-series-item::after { display: none; } /* No dots */
+        .timeline-series-item { margin-bottom: 25px; }
 
-        /* 2. Floating Glass Blocks */
+        /* Floating Glass Cards */
         .series-card {
             background: rgba(255, 255, 255, 0.75);
             border: 1px solid rgba(255, 255, 255, 0.9);
@@ -175,19 +187,19 @@
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-radius: 12px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy futuristic transition */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
         }
 
-        /* 3. Futuristic Hover Effect (Glow + Lift) */
+        /* Hover Effect: Glow + Lift */
         .series-card:hover {
             transform: translateY(-5px) scale(1.01);
             background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 0 15px var(--accent-glow); /* Glowing Halo */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 0 15px var(--accent-glow);
             border-color: var(--accent-secondary);
         }
 
-        /* 4. Left Accent Bar (Tech Indicator) */
+        /* Accent Bar */
         .series-card::before {
             content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
             background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
@@ -195,13 +207,13 @@
         }
         .series-card:hover::before { opacity: 1; }
 
-        /* 5. Summary Styling */
+        /* Summary styling (matches your <details> structure) */
         summary { padding: 25px 30px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
         summary::-webkit-details-marker { display: none; }
 
         .series-header { display: flex; align-items: center; gap: 30px; width: 100%; }
         
-        /* Date as a "Tag" */
+        /* Styled Date Tag */
         .series-date { 
             font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; 
             color: #fff; background: var(--accent-secondary); 
@@ -219,31 +231,60 @@
             padding: 0 30px 30px 30px; 
             color: var(--text-charcoal); 
             border-top: 1px solid rgba(0,0,0,0.05);
-            animation: fadeIn 0.5s ease;
+        }
+
+        /* --- OTHER BANNERS (PARALLAX + MOBILE FIX) --- */
+        .section-banner {
+            height: 220px; 
+            background-attachment: fixed; /* Parallax for Desktop */
+            background-position: center;
+            background-size: cover;
+            display: flex; align-items: center; justify-content: center; 
+            margin: 60px 0;
+            position: relative;
         }
         
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .banner-overlay {
+            background: rgba(15, 23, 42, 0.4); 
+            width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+        }
 
-        /* --- OTHER SECTIONS --- */
-        .section-banner { height: 220px; background-attachment: fixed; background-size: cover; display: flex; align-items: center; justify-content: center; margin: 60px 0; }
-        .banner-title { color: #fff; font-size: 2.2rem; letter-spacing: 5px; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .banner-title {
+            color: #fff; font-size: 2.2rem; letter-spacing: 5px; text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.5); padding: 10px 30px;
+            backdrop-filter: blur(5px);
+        }
         
-        /* Using gradients as fallbacks for banners */
-        .bg-journey { background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('images/journey.jpg'); }
-        .bg-experience { background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('images/experience.jpg'); }
-        .bg-research { background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('images/research.jpg'); }
-        .bg-affiliations { background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('images/affiliations.jpg'); }
+        /* Background Images */
+        .bg-journey { background-image: url('images/journey.jpg'); }
+        .bg-experience { background-image: url('images/experience.jpg'); }
+        .bg-research { background-image: url('images/research.jpg'); }
+        .bg-affiliations { background-image: url('images/affiliations.jpg'); }
 
         .research-category-title { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-primary); border-bottom: 2px solid var(--accent-secondary); padding-bottom: 10px; margin-bottom: 25px; display: inline-block; }
 
         footer { text-align: center; padding: 50px; font-size: 0.8rem; color: var(--text-muted); margin-top: 80px; border-top: 1px solid var(--border-line); }
 
+        /* --- MOBILE RESPONSIVENESS (Scroll Fixes) --- */
         @media (max-width: 900px) {
+            
+            /* Disable Parallax on Mobile (Restores standard scrolling) */
+            .profile-banner-wrapper, .section-banner {
+                background-attachment: scroll !important;
+                background-position: center center !important;
+            }
+
             .glass-profile { flex-direction: column; text-align: center; gap: 30px; padding: 30px; }
             .profile-pic { width: 180px; height: 180px; }
+            
             .main-grid { grid-template-columns: 1fr; gap: 40px; }
+            
+            /* Adjust timeline headers for mobile */
             .series-header { flex-direction: column; align-items: flex-start; gap: 10px; }
             .series-date { min-width: auto; }
+            
+            .hero-name { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -266,11 +307,11 @@
                 <div class="hero-title">Research Operations Specialist</div>
                 <div class="contact-icons">
                     <a href="mailto:skhan24@nd.edu" class="icon-link" title="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="https://linkedin.com/in/mamoor-ali-khan-5106a9171/" target="_blank" class="icon-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://linkedin.com/in/mamoor-ali-khan-5106a9171/?skipRedirect=true" target="_blank" class="icon-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     <a href="https://www.dropbox.com/scl/fi/l1b0zx35sj032045oajtc/cvmak.pdf?rlkey=9a55m6v82eoqxasv9vf0yxcin&dl=0" target="_blank" class="icon-link" title="CV"><i class="fas fa-file-alt"></i></a>
                 </div>
                 <div class="insta-note" onclick="window.open('https://www.instagram.com/adventourist1/', '_blank')">
-                    <i class="fab fa-instagram"></i> <span>Documenting travels through photography</span>
+                    <i class="fab fa-instagram"></i> <span>Beyond the data, I <a href="https://www.instagram.com/adventourist1/" target="_blank">document my travels</a> through photography.</span>
                 </div>
             </div>
         </div>
@@ -280,21 +321,30 @@
         <div class="main-grid">
             <div class="content-text">
                 <h2 class="journey-heading">My Journey</h2>
-                <p>It began in 2013. Fresh out of Computer Science, I found myself not in a tech startup, but as an intern in a pharmaceutical firm. It was there, amidst the rows of numbers and spreadsheets, that I discovered my true language: <strong>Data</strong>.</p>
-                <p>I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I made a pivotal decision to pursue a Master’s in Development Studies, a decision that finally married my technical programming roots with the human-centric world of development practice.</p>
-                <p>This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)</p>
-                <p><strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.</p>
+                
+                <p>
+                    It began in 2013. Fresh out of Computer Science, I found myself not in a tech startup, but as an intern in a pharmaceutical firm. It was there, amidst the rows of numbers and spreadsheets, that I discovered my true language: <strong>Data</strong>. 
+                </p>
+                <p>
+                    I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I made a pivotal decision to pursue a Master’s in Development Studies, a decision that finally married my technical programming roots with the human-centric world of development practice.
+                </p>
+                <p>
+                    This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank" style="color:var(--accent-navy); text-decoration: underline;">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)
+                </p>
+                <p>
+                    <strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank" style="color:var(--accent-navy); text-decoration: underline;">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.
+                </p>
             </div>
             
             <div class="mentors-col">
                 <div class="mentors-title">In Gratitude</div>
                 <div class="mentor-card">
                     <a href="https://www.miriamgolden.com/" target="_blank" class="mentor-link">Dr. Miriam Golden <i class="fas fa-external-link-alt" style="font-size:0.7em"></i></a>
-                    <p>She trusted a naive boy with her most precious projects... Dr. Golden never lost faith.</p>
+                    <p>She trusted a naive boy with her most precious projects. I still recall the sting of embarrassment in early meetings, acutely aware of my lack of international education. Yet, where others might have seen a liability, Dr. Golden never lost faith. She has been the unshakable pillar of my career and has fundamentally shaped my life. I offer her my deepest respect; I simply cannot thank her enough.</p>
                 </div>
                 <div class="mentor-card">
                     <a href="https://saadgulzar.com/" target="_blank" class="mentor-link">Dr. Saad Gulzar <i class="fas fa-external-link-alt" style="font-size:0.7em"></i></a>
-                    <p>Dr. Gulzar is the catalyst for my professional ascent. He opened doors I did not know existed.</p>
+                    <p>Dr. Gulzar is the catalyst for my professional ascent. He opened doors I did not know existed, giving me multiple opportunities within his research and introducing me to brilliant minds at Stanford, Yale, and Princeton. He didn't just give me a role; he gave me a horizon.</p>
                 </div>
             </div>
         </div>
