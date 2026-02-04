@@ -11,16 +11,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- FUTURISTIC / BRIGHT PALETTE --- */
+        /* --- FUTURISTIC PALETTE --- */
         :root {
-            --bg-paper: #ffffff;
+            --bg-paper: #f8fafc;
             --text-ink: #0f172a;       /* Deep Slate */
             --text-charcoal: #334155;
-            --accent-gold: #0ea5e9;    /* Electric Sky Blue */
-            --accent-navy: #2563eb;    /* Vibrant Royal Blue */
+            --accent-cyan: #06b6d4;    /* Cyan/Teal for "Future" feel */
+            --accent-navy: #0f172a;    
             --border-line: #cbd5e1;    
-            --bg-highlight: #f0f9ff;
-            --shadow-sharp: 4px 4px 0px rgba(14, 165, 233, 0.3); /* Sharp futuristic shadow */
+            --glass-bg: rgba(255, 255, 255, 0.75); /* Frosted Glass Base */
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
         }
 
         /* --- GLOBAL RESET --- */
@@ -32,7 +33,7 @@
             background-color: var(--bg-paper);
             color: var(--text-ink);
             font-family: 'Merriweather', serif; 
-            line-height: 1.6; 
+            line-height: 1.7; 
             scroll-behavior: smooth;
             font-size: 16px; 
         }
@@ -44,83 +45,123 @@
             font-weight: 700;
         }
 
-        a { text-decoration: none; color: var(--accent-navy); transition: all 0.2s ease; }
+        a { text-decoration: none; color: var(--accent-navy); transition: all 0.3s ease; }
         p a { border-bottom: 1px dotted var(--accent-navy); }
-        p a:hover { color: var(--accent-gold); border-bottom: 1px solid var(--accent-gold); }
+        p a:hover { color: var(--accent-cyan); border-bottom: 1px solid var(--accent-cyan); }
 
-        /* --- COMPACT HORIZONTAL HEADER --- */
-        .profile-header-wrapper {
-            background-color: var(--bg-paper);
-            border-bottom: 1px solid var(--border-line);
-            padding: 40px 0; /* Tight top/bottom padding */
-        }
-
-        .header-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 30px;
-            display: grid;
-            grid-template-columns: 1fr 200px; /* Text takes space | Image fixed width */
-            gap: 40px;
+        /* --- 1. HEADER CONTAINER (Background Image) --- */
+        .liquid-header-bg {
+            /* Open Source "Data/Tech" Background */
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px;
+            position: relative;
+            display: flex;
+            justify-content: center;
             align-items: center;
         }
 
-        /* TEXT SIDE (Left) */
+        /* Dark overlay to make the glass pop */
+        .liquid-header-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6); /* Dark blue overlay */
+            z-index: 1;
+        }
+
+        /* --- 2. THE LIQUID GLASS BOX --- */
+        .glass-profile-card {
+            position: relative;
+            z-index: 2; /* Sits above overlay */
+            width: 100%;
+            max-width: 1000px;
+            
+            /* GLASSMORPHISM MAGIC */
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: var(--shadow-glass);
+            
+            /* Layout */
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            gap: 40px;
+            padding: 40px;
+            align-items: center;
+        }
+
         .header-text-side {
-            text-align: right; /* Align towards the image */
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+            text-align: right;
         }
 
         .hero-name {
-            font-size: 3.2rem; 
-            color: var(--text-ink); 
-            line-height: 1;
-            margin-bottom: 5px;
-            letter-spacing: -1px;
+            font-size: 3rem; 
+            margin: 0 0 5px 0;
+            color: var(--text-ink);
+            text-shadow: 0 2px 4px rgba(255,255,255,0.5);
         }
 
         .hero-title {
-            font-family: 'Merriweather', serif; font-size: 0.95rem; color: var(--accent-navy);
-            font-weight: 700; font-style: italic; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif; /* Clean tech font for title */
+            font-size: 0.9rem;
+            color: var(--accent-cyan); /* Future Cyan */
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
         }
 
         .contact-icons {
-            display: flex; gap: 20px; margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+            margin-bottom: 15px;
         }
 
         .icon-link {
-            font-size: 1.4rem; color: var(--text-charcoal); border-bottom: none !important;
+            font-size: 1.4rem;
+            color: var(--text-charcoal);
+            border-bottom: none !important;
         }
-        .icon-link:hover { color: var(--accent-gold); transform: translateY(-2px); }
+        .icon-link:hover { color: var(--accent-cyan); transform: translateY(-3px); }
 
         .insta-note {
-            font-size: 0.8rem; color: #64748b; font-style: italic; 
-            margin-top: 5px;
+            font-size: 0.85rem;
+            color: #475569;
+            font-style: italic;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 10px;
+            display: inline-block;
         }
-        .insta-note a { color: var(--accent-navy); border-bottom: 1px dotted var(--accent-gold); }
 
-        /* IMAGE SIDE (Right) */
+        /* SQUARE IMAGE */
         .profile-pic {
-            width: 180px; height: 180px; 
+            width: 180px;
+            height: 180px;
             object-fit: cover;
-            border-radius: 4px; /* Slight rounding, mostly sharp */
-            border: 2px solid var(--text-ink);
-            box-shadow: var(--shadow-sharp); /* Futuristic offset shadow */
+            border-radius: 8px; /* Slight rounding for polish */
+            border: 2px solid rgba(255,255,255,0.8);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* --- NAVIGATION (STICKY) --- */
-        .top-nav {
+        /* --- 3. GLASS NAVIGATION (STICKY) --- */
+        .glass-nav {
             position: sticky;
-            top: 0; 
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.98); 
-            border-bottom: 2px solid var(--accent-gold); 
-            padding: 8px 0;
+            top: 0;
             z-index: 1000;
+            
+            /* GLASS EFFECT */
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            
+            padding: 12px 0;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .nav-links {
@@ -129,19 +170,72 @@
         }
 
         .nav-links a {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.85rem; 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-ink);
-            border-bottom: none;
             font-weight: 700;
+            border-bottom: none;
         }
-        .nav-links a:hover { color: var(--accent-gold); }
+        .nav-links a:hover { color: var(--accent-cyan); }
 
-        /* --- SECTION BANNERS --- */
+        /* --- 4. CONTENT LAYOUT (Journey + Mentors) --- */
+        .content-container {
+            display: grid;
+            grid-template-columns: 1fr 350px; /* Journey gets space | Mentors fixed */
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            align-items: start;
+        }
+
+        /* Journey Text */
+        .journey-col { text-align: justify; }
+        
+        .journey-heading {
+            font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--text-ink);
+            margin-bottom: 25px; border-bottom: 3px solid var(--accent-cyan); padding-bottom: 5px; display: inline-block;
+        }
+        .journey-col p { font-size: 1rem; margin-bottom: 20px; color: var(--text-charcoal); }
+
+        /* Mentors (Right Sidebar) */
+        .mentors-col { position: sticky; top: 80px; }
+        
+        .mentors-title {
+            font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--accent-cyan); margin-bottom: 20px; font-weight: 700; 
+            border-bottom: 1px solid var(--border-line); padding-bottom: 5px; text-align: right;
+        }
+
+        .mentor-card {
+            background: #fff;
+            border: 1px solid var(--border-line);
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent-cyan); /* Cyan Accent */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* ZOOM EFFECT */
+        .mentor-card:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: var(--text-ink);
+            z-index: 10;
+        }
+
+        .mentor-link {
+            font-size: 1.1rem; color: var(--text-ink); margin: 0 0 10px 0; display: inline-block;
+            border-bottom: 1px solid var(--accent-cyan); padding-bottom: 1px; font-family: 'Playfair Display', serif; font-weight: 700;
+        }
+        .mentor-card p { font-size: 0.9rem; margin: 0; line-height: 1.5; font-style: italic; }
+
+        /* --- BANNERS (PARALLAX) --- */
         .section-banner {
-            height: 200px; /* Reduced height */
+            height: 250px; 
             background-attachment: fixed; 
             background-position: center;
             background-size: cover;
@@ -149,85 +243,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 0;
         }
-
         .banner-overlay {
-            background: rgba(15, 23, 42, 0.5); 
+            background: rgba(15, 23, 42, 0.6); /* Darker blue overlay */
             width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
         }
-
         .banner-title {
             color: #fff; font-size: 2rem; letter-spacing: 3px; text-transform: uppercase;
-            border: 2px solid rgba(255,255,255,0.9); padding: 8px 35px;
-            background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); text-align: center;
+            border: 1px solid rgba(255,255,255,0.8); padding: 10px 40px;
+            backdrop-filter: blur(5px);
         }
 
-        /* BACKGROUND IMAGES */
+        /* Images */
         .bg-journey { background-image: url('images/journey.jpg'); }
         .bg-experience { background-image: url('images/experience.jpg'); }
-        .bg-research { background-image: url('images/research.jpg'); }
-        .bg-affiliations { background-image: url('images/affiliations.jpg'); }
-
-        /* --- SPLIT CONTENT CONTAINER --- */
-        .content-split-container {
-            display: grid;
-            grid-template-columns: 1fr 350px; /* Journey | Mentors */
-            gap: 50px;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 50px 30px; /* Reduced padding */
-            align-items: start;
-            background-color: var(--bg-paper);
-            position: relative;
-            z-index: 10;
-        }
-
-        /* JOURNEY COL */
-        .journey-col { text-align: justify; }
-        
-        .journey-heading {
-            font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--accent-navy);
-            margin-bottom: 15px; border-bottom: 3px solid var(--accent-gold); padding-bottom: 5px; display: inline-block;
-        }
-        .journey-col p {
-            font-size: 1rem; line-height: 1.7; color: var(--text-charcoal); margin-top: 0; margin-bottom: 20px;
-        }
-
-        /* MENTORS COL (STICKY) */
-        .mentors-col { position: sticky; top: 60px; }
-        
-        .mentors-title {
-            font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase;
-            letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 15px; font-weight: 700; 
-            border-bottom: 1px solid var(--border-line); padding-bottom: 5px; text-align: right;
-        }
-
-        /* DYNAMIC MENTOR CARDS */
-        .mentor-card {
-            background: #fff; 
-            border: 1px solid var(--border-line); 
-            padding: 20px;
-            box-shadow: 4px 4px 0px rgba(0,0,0,0.05); /* Hard shadow */
-            margin-bottom: 20px;
-            border-left: 4px solid var(--accent-navy); 
-            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        /* HOVER EFFECT */
-        .mentor-card:hover {
-            transform: translate(-2px, -2px); /* Sharp movement */
-            box-shadow: 6px 6px 0px var(--accent-gold); /* Hard electric shadow */
-            border-color: var(--text-ink);
-        }
-
-        .mentor-link {
-            font-size: 1.1rem; color: var(--accent-navy); margin: 0 0 8px 0; display: inline-block;
-            border-bottom: 1px solid var(--accent-gold); padding-bottom: 1px; font-family: 'Playfair Display', serif; font-weight: 700;
-        }
-        .mentor-card p {
-            font-size: 0.9rem; margin: 0; line-height: 1.5; color: var(--text-charcoal); font-style: italic;
-        }
+        /* ... others ... */
 
         /* --- CONTAINER UTILS --- */
         .container {
@@ -235,56 +265,45 @@
             background-color: var(--bg-paper); position: relative; z-index: 10;
         }
 
-        /* --- TIMELINE STYLES --- */
+        /* --- TIMELINE (Experience) --- */
         .timeline-container { position: relative; padding-left: 30px; }
-        .timeline-container::before { content: ''; position: absolute; left: 6px; top: 10px; bottom: 20px; width: 2px; background: var(--border-line); }
+        .timeline-container::before { content: ''; position: absolute; left: 6px; top: 10px; bottom: 20px; width: 1px; background: var(--border-line); }
         .timeline-series-item { position: relative; margin-bottom: 15px; }
-        .timeline-series-item::after { content: ''; position: absolute; left: -29px; top: 18px; width: 10px; height: 10px; background: #fff; border: 2px solid var(--accent-gold); z-index: 2; transform: rotate(45deg); /* Diamond shape */ }
-        .series-card { background: #fff; border: 1px solid var(--border-line); border-radius: 0; transition: all 0.3s ease; }
-        .series-card:hover { border-color: var(--accent-gold); box-shadow: 4px 4px 0px rgba(14, 165, 233, 0.1); }
+        .timeline-series-item::after { content: ''; position: absolute; left: -28px; top: 18px; width: 8px; height: 8px; border-radius: 50%; background: #fff; border: 2px solid var(--accent-cyan); z-index: 2; }
+        .series-card { background: #fff; border: 1px solid var(--border-line); border-radius: 4px; overflow: hidden; transition: all 0.3s ease; }
+        .series-card:hover { border-color: var(--accent-cyan); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         summary { list-style: none; padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff; }
         summary::-webkit-details-marker { display: none; }
         .series-header { display: flex; align-items: center; width: 100%; gap: 15px; }
-        .series-date { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--accent-gold); width: 130px; flex-shrink: 0; font-weight: 600; }
+        .series-date { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--accent-cyan); width: 130px; flex-shrink: 0; font-weight: 600; }
         .series-info { display: flex; flex-direction: column; }
         .series-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--text-ink); font-weight: 700; }
         .series-company { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-charcoal); }
         .arrow-icon { color: var(--text-charcoal); font-size: 0.9rem; transition: transform 0.3s ease; }
-        details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-gold); }
+        details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-cyan); }
         .series-content { padding: 0 20px 20px 165px; border-top: 1px solid #f0f0f0; color: var(--text-charcoal); font-size: 0.95rem; line-height: 1.6; background: #fafafa; padding-top: 15px; }
-
-        /* --- RESEARCH STYLES --- */
-        .research-category-title { font-family: 'Montserrat', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-navy); border-bottom: 2px solid var(--border-line); padding-bottom: 10px; margin-bottom: 30px; }
-
-        /* FOOTER */
-        footer { text-align: center; padding: 40px; font-size: 0.8rem; color: var(--text-charcoal); background-color: var(--bg-highlight); border-top: 1px solid var(--border-line); position: relative; z-index: 10; }
 
         /* Responsive */
         @media (max-width: 900px) {
-            .header-content { grid-template-columns: 1fr; text-align: center; gap: 20px; }
-            .header-text-side { text-align: center; align-items: center; }
-            .profile-pic { width: 150px; height: 150px; margin: 0 auto; order: -1; } /* Image on top mobile */
+            .glass-profile-card { grid-template-columns: 1fr; text-align: center; gap: 20px; }
+            .header-text-side { text-align: center; order: 2; }
+            .profile-pic { order: 1; margin: 0 auto; width: 150px; height: 150px; }
+            .contact-icons { justify-content: center; }
             
-            .content-split-container { grid-template-columns: 1fr; gap: 40px; }
+            .content-container { grid-template-columns: 1fr; gap: 40px; }
             .mentors-col { position: relative; top: 0; }
-            .mentors-title { text-align: center; }
             
             .series-header { flex-direction: column; align-items: flex-start; gap: 5px; }
             .series-date { width: auto; font-size: 0.75rem; }
             .series-content { padding: 15px 20px; }
-            
-            .section-banner {
-                background-attachment: scroll;
-                background-position: center;
-                height: 180px;
-            }
+            .section-banner { background-attachment: scroll; background-position: center; height: 180px; }
         }
     </style>
 </head>
 <body>
 
-    <header id="home" class="profile-header-wrapper">
-        <div class="header-content">
+    <header id="home" class="liquid-header-bg">
+        <div class="glass-profile-card">
             <div class="header-text-side">
                 <h1 class="hero-name">Mamoor Ali Khan</h1>
                 <div class="hero-title">Research Operations Specialist</div>
@@ -305,7 +324,7 @@
         </div>
     </header>
 
-    <nav class="top-nav">
+    <nav class="glass-nav">
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#experience">Work</a></li>
@@ -314,7 +333,7 @@
         </ul>
     </nav>
 
-    <section class="content-split-container">
+    <section class="content-container">
         
         <div class="journey-col">
             <h2 class="journey-heading">My Journey</h2>
@@ -325,10 +344,10 @@
                 I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I made a pivotal decision to pursue a Master’s in Development Studies, a decision that finally married my technical programming roots with the human-centric world of development practice.
             </p>
             <p>
-                This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank" style="color:var(--accent-navy); text-decoration: underline;">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)
+                This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank" style="color:var(--accent-cyan); text-decoration: underline;">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)
             </p>
             <p>
-                <strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank" style="color:var(--accent-navy); text-decoration: underline;">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.
+                <strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank" style="color:var(--accent-cyan); text-decoration: underline;">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.
             </p>
         </div>
 
