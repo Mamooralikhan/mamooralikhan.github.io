@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -11,21 +13,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- ELITE "ROYAL NEBULA" PALETTE --- */
+        /* --- ELITE "TYRIAN ROYAL" PALETTE --- */
         :root {
             --bg-paper: #ffffff; 
-            --text-ink: #020617; /* Deepest Midnight (Serious) */
+            /* Ink is now a very deep, almost black purple for harmony */
+            --text-ink: #1a0510; 
             --text-charcoal: #334155;
             --text-muted: #64748b;
             
             /* DYNAMIC ACCENTS */
-            --accent-primary: #1e1b4b; /* Dark Indigo */
+            /* Darkest Tyrian base for text headers */
+            --accent-primary: #4a042e; 
             
-            /* The Gradient: Shifts from Indigo to Vibrant Violet */
-            --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); 
-            --accent-solid: #6366f1; /* Fallback solid */
+            /* The Gradient: Deep Tyrian Purple to Rich Royal Magenta */
+            --accent-gradient: linear-gradient(135deg, #660066 0%, #a21caf 100%);
             
-            --accent-glow: rgba(124, 58, 237, 0.25); /* Amethyst Glow */
+            /* Solid fallback */
+            --accent-solid: #7e22ce; 
+            
+            /* Glow */
+            --accent-glow: rgba(162, 28, 175, 0.25); 
             --border-line: #e2e8f0;
             
             /* --- LIQUID GLASS VARIABLES --- */
@@ -33,7 +40,7 @@
             --liquid-border: 1px solid rgba(255, 255, 255, 0.95);
             /* Purple-tinted shadow for "Elite" feel */
             --liquid-shadow: 
-                0 10px 40px rgba(79, 70, 229, 0.08), 
+                0 10px 40px rgba(102, 0, 102, 0.08), 
                 inset 0 0 0 1px rgba(255, 255, 255, 0.6); 
             --liquid-blur: blur(30px) saturate(180%);
         }
@@ -49,7 +56,8 @@
             line-height: 1.6; 
             scroll-behavior: smooth;
             font-size: 16px; 
-            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            /* Subtle radial pattern */
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
             background-size: 30px 30px;
         }
 
@@ -121,7 +129,8 @@
 
         .profile-banner-wrapper::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(255, 255, 255, 0.1); /* Very subtle tint */
+            /* Slight Purple Tint to integrate banner with theme */
+            background: rgba(40, 10, 30, 0.15);
             z-index: 0;
         }
 
@@ -148,7 +157,7 @@
             width: 160px; height: 160px; 
             border-radius: 12px; object-fit: cover;
             border: 3px solid #fff; 
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15); /* Purple tint shadow */
+            box-shadow: 0 10px 30px rgba(102, 0, 102, 0.2); /* Purple shadow */
         }
 
         .profile-center { 
@@ -172,7 +181,6 @@
         .glass-btn {
             display: flex; align-items: center; gap: 10px;
             padding: 10px 20px; 
-            /* Gradient Background for "Dynamic" feel */
             background: #fff;
             border: 1px solid transparent;
             /* Gradient border trick */
@@ -209,8 +217,9 @@
             cursor: pointer; transition: all 0.3s ease;
             width: fit-content;
         }
-        .insta-note:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-color: #8b5cf6; }
+        .insta-note:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-color: var(--accent-solid); }
         .insta-note i { 
+            /* Instagram Gradient matches Tyrian theme nicely */
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             font-size: 1.1rem; 
@@ -223,11 +232,10 @@
         .journey-heading {
             font-family: 'Playfair Display', serif; font-size: 2rem; 
             margin-bottom: 20px; display: inline-block;
-            /* Gradient Text for Header */
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            border-bottom: 3px solid #e0e7ff;
+            border-bottom: 3px solid #f3e8ff;
         }
         .content-text p { font-size: 1.05rem; margin-bottom: 20px; text-align: justify; color: var(--text-charcoal); }
 
@@ -259,7 +267,7 @@
             font-size: 1.1rem; font-family: 'Playfair Display', serif; display: block; margin-bottom: 8px; 
             color: var(--accent-primary);
         }
-        .mentor-link i { color: #7c3aed; } /* Purple Icon */
+        .mentor-link i { color: var(--accent-solid); }
 
         /* --- EXPERIENCE SECTION --- */
         .timeline-container { padding-left: 0; margin-top: 30px; }
@@ -307,7 +315,7 @@
         .series-title { font-size: 1.2rem; color: var(--accent-primary); font-weight: 700; letter-spacing: -0.5px; }
         .series-company { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 4px; }
         .arrow-icon { color: var(--text-muted); transition: transform 0.4s ease; }
-        details[open] summary .arrow-icon { transform: rotate(180deg); color: #7c3aed; }
+        details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-solid); }
         .series-content { padding: 0 30px 30px 30px; color: var(--text-charcoal); border-top: 1px solid rgba(0,0,0,0.05); }
 
         /* --- BANNERS --- */
@@ -331,7 +339,7 @@
         .bg-experience { background-image: url('images/experience.jpg'); }
         .bg-research { background-image: url('images/research.jpg'); }
         .bg-affiliations { background-image: url('images/affiliations.jpg'); }
-        .research-category-title { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-primary); border-bottom: 2px solid #e0e7ff; padding-bottom: 10px; margin-bottom: 25px; display: inline-block; }
+        .research-category-title { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-primary); border-bottom: 2px solid #f3e8ff; padding-bottom: 10px; margin-bottom: 25px; display: inline-block; }
         footer { text-align: center; padding: 50px; font-size: 0.8rem; color: var(--text-muted); margin-top: 80px; border-top: 1px solid var(--border-line); }
 
         /* --- MOBILE RESPONSIVENESS --- */
@@ -425,6 +433,9 @@
 
 </body>
 </html>
+
+
+
 
 
 
