@@ -11,26 +11,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- DYNAMIC BLUE & WHITE PALETTE --- */
+        /* --- ELITE "ROYAL NEBULA" PALETTE --- */
         :root {
-            --bg-paper: #ffffff; /* Pure White */
-            --text-ink: #0f172a; /* Deep Navy for text */
+            --bg-paper: #ffffff; 
+            --text-ink: #020617; /* Deepest Midnight (Serious) */
             --text-charcoal: #334155;
             --text-muted: #64748b;
             
-            /* UPDATED ACCENTS */
-            --accent-primary: #0b1120; /* Very Dark Navy */
-            --accent-secondary: #0066FF; /* DYNAMIC ELECTRIC BLUE */
-            --accent-glow: rgba(0, 102, 255, 0.35); /* Blue Glow */
+            /* DYNAMIC ACCENTS */
+            --accent-primary: #1e1b4b; /* Dark Indigo */
+            
+            /* The Gradient: Shifts from Indigo to Vibrant Violet */
+            --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); 
+            --accent-solid: #6366f1; /* Fallback solid */
+            
+            --accent-glow: rgba(124, 58, 237, 0.25); /* Amethyst Glow */
             --border-line: #e2e8f0;
             
             /* --- LIQUID GLASS VARIABLES --- */
-            --liquid-bg: rgba(255, 255, 255, 0.85); 
+            --liquid-bg: rgba(255, 255, 255, 0.9); 
             --liquid-border: 1px solid rgba(255, 255, 255, 0.95);
+            /* Purple-tinted shadow for "Elite" feel */
             --liquid-shadow: 
-                0 8px 32px rgba(0, 102, 255, 0.08), /* Slight blue tint to shadow */
-                inset 0 0 0 1px rgba(255, 255, 255, 0.5); 
-            --liquid-blur: blur(25px) saturate(180%);
+                0 10px 40px rgba(79, 70, 229, 0.08), 
+                inset 0 0 0 1px rgba(255, 255, 255, 0.6); 
+            --liquid-blur: blur(30px) saturate(180%);
         }
 
         /* --- GLOBAL RESET --- */
@@ -44,8 +49,7 @@
             line-height: 1.6; 
             scroll-behavior: smooth;
             font-size: 16px; 
-            /* Very subtle pattern */
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
             background-size: 30px 30px;
         }
 
@@ -55,17 +59,32 @@
             margin: 0; font-weight: 700;
         }
 
-        a { text-decoration: none; color: var(--accent-primary); transition: all 0.2s ease; font-weight: 600; }
-        p a { border-bottom: 1px solid rgba(0, 102, 255, 0.2); }
-        p a:hover { color: var(--accent-secondary); border-bottom-color: var(--accent-secondary); }
+        /* Dynamic Gradient Text Utility */
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        a { text-decoration: none; color: var(--accent-primary); transition: all 0.3s ease; font-weight: 600; }
+        
+        /* Gradient Underline Effect */
+        p a { 
+            border-bottom: 2px solid transparent;
+            border-image: var(--accent-gradient);
+            border-image-slice: 1;
+        }
+        p a:hover { opacity: 0.8; }
 
         /* --- LIQUID NAVIGATION --- */
         .top-nav {
             position: sticky; top: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.6);
             padding: 15px 0; z-index: 1000; text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
         .nav-links {
@@ -75,9 +94,13 @@
 
         .nav-links a {
             font-family: 'Montserrat', sans-serif; font-size: 0.8rem; 
-            text-transform: uppercase; letter-spacing: 2px; color: var(--text-charcoal); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 2px; color: var(--text-charcoal); font-weight: 700;
         }
-        .nav-links a:hover { color: var(--accent-secondary); }
+        .nav-links a:hover { 
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
         /* --- CONTAINER --- */
         .container { max-width: 1250px; margin: 0 auto; padding: 50px 30px; }
@@ -85,7 +108,7 @@
         /* --- HERO BANNER --- */
         .profile-banner-wrapper {
             width: 100%;
-            /* Geometric Architectural Pattern */
+            /* Geometric Pattern */
             background-image: url('https://unsplash.com/photos/LrwVWQyJJzg/download?force=true&w=1920');
             background-color: #334155; 
             background-attachment: fixed; 
@@ -98,8 +121,7 @@
 
         .profile-banner-wrapper::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            /* Blue tint overlay to match theme */
-            background: rgba(0, 30, 80, 0.2); 
+            background: rgba(255, 255, 255, 0.1); /* Very subtle tint */
             z-index: 0;
         }
 
@@ -116,7 +138,6 @@
             width: fit-content; max-width: 100%;
             margin: 0 auto;
             
-            /* GRID: Pic | Info | Stacked Actions */
             display: grid;
             grid-template-columns: auto auto auto; 
             align-items: center; 
@@ -127,75 +148,94 @@
             width: 160px; height: 160px; 
             border-radius: 12px; object-fit: cover;
             border: 3px solid #fff; 
-            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.2); /* Blue shadow */
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15); /* Purple tint shadow */
         }
 
-        /* Center Column */
         .profile-center { 
             display: flex; flex-direction: column; justify-content: center; 
             max-width: 400px;
         }
-        .hero-name { font-size: 2.2rem; margin-bottom: 5px; line-height: 1.1; color: var(--accent-primary); }
+        
+        .hero-name { 
+            font-size: 2.2rem; margin-bottom: 5px; line-height: 1.1; 
+            color: var(--accent-primary);
+        }
+        
         .hero-title {
             font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--text-charcoal);
             font-style: italic; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;
         }
 
-        /* Right Column (Vertical Stack) */
         .profile-right { display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
 
-        /* BUTTONS (Blue Accent) */
+        /* BUTTONS (Dynamic Gradient) */
         .glass-btn {
             display: flex; align-items: center; gap: 10px;
-            padding: 8px 18px; 
-            background: rgba(255,255,255,0.7);
-            border: 1px solid rgba(255,255,255,0.9);
+            padding: 10px 20px; 
+            /* Gradient Background for "Dynamic" feel */
+            background: #fff;
+            border: 1px solid transparent;
+            /* Gradient border trick */
+            background-image: linear-gradient(#fff, #fff), var(--accent-gradient);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            
             border-radius: 50px;
-            font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-            color: var(--text-charcoal);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+            color: var(--text-ink);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .glass-btn:hover {
-            background: #fff; transform: translateX(3px);
-            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.15);
-            color: var(--accent-secondary); border-color: var(--accent-secondary);
+            transform: translateX(5px);
+            /* Fill with gradient on hover */
+            background: var(--accent-gradient);
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 10px 25px var(--accent-glow);
         }
-        .glass-btn i { font-size: 0.9rem; width: 15px; text-align: center; }
+        .glass-btn i { font-size: 1rem; width: 15px; text-align: center; }
 
         .insta-note {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 8px 16px;
             background: rgba(255,255,255,0.6); 
-            border: 1px solid rgba(255,255,255,0.8);
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
             font-size: 0.75rem; color: var(--text-charcoal);
             cursor: pointer; transition: all 0.3s ease;
             width: fit-content;
         }
-        .insta-note:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 102, 255, 0.1); border-color: var(--accent-secondary); }
-        .insta-note i { color: #C13584; font-size: 1.1rem; }
-        .insta-note span { border-bottom: 1px solid var(--accent-secondary); }
+        .insta-note:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-color: #8b5cf6; }
+        .insta-note i { 
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: 1.1rem; 
+        }
+        .insta-note span { border-bottom: 1px solid #ddd; }
 
         /* --- SECTION 2: GRID --- */
         .main-grid { display: grid; grid-template-columns: 2.2fr 1fr; gap: 50px; align-items: start; }
         
         .journey-heading {
-            font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent-primary);
+            font-family: 'Playfair Display', serif; font-size: 2rem; 
             margin-bottom: 20px; display: inline-block;
-            border-bottom: 3px solid var(--accent-secondary);
+            /* Gradient Text for Header */
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-bottom: 3px solid #e0e7ff;
         }
         .content-text p { font-size: 1.05rem; margin-bottom: 20px; text-align: justify; color: var(--text-charcoal); }
 
-        /* --- INDEPENDENT MENTOR BOXES --- */
         .mentors-col { background: transparent; border: none; padding: 0; box-shadow: none; }
         .mentors-title { 
             font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; 
             letter-spacing: 2px; font-weight: 700; margin-bottom: 20px; 
-            color: var(--accent-secondary); border-bottom: 1px solid var(--border-line); padding-bottom: 5px;
+            color: var(--text-muted); border-bottom: 1px solid var(--border-line); padding-bottom: 5px;
         }
         
         .mentor-card { 
@@ -211,11 +251,15 @@
         }
         .mentor-card:hover { 
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.1), 0 0 15px var(--accent-glow);
-            border-color: var(--accent-secondary);
-            background: rgba(255,255,255,0.95);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08), 0 0 20px var(--accent-glow);
+            border-color: #fff;
+            background: #fff;
         }
-        .mentor-link { font-size: 1.1rem; font-family: 'Playfair Display', serif; display: block; margin-bottom: 8px; color: var(--accent-primary); }
+        .mentor-link { 
+            font-size: 1.1rem; font-family: 'Playfair Display', serif; display: block; margin-bottom: 8px; 
+            color: var(--accent-primary);
+        }
+        .mentor-link i { color: #7c3aed; } /* Purple Icon */
 
         /* --- EXPERIENCE SECTION --- */
         .timeline-container { padding-left: 0; margin-top: 30px; }
@@ -225,8 +269,8 @@
 
         .series-card {
             background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-radius: 12px;
             overflow: hidden;
@@ -237,14 +281,13 @@
         .series-card:hover {
             transform: translateY(-5px) scale(1.01);
             background: #fff;
-            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.1), 0 0 15px var(--accent-glow);
-            border-color: var(--accent-secondary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08), 0 0 15px var(--accent-glow);
         }
 
         .series-card::before {
             content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-            background: var(--accent-secondary); /* Solid Blue Line */
-            opacity: 0.6; transition: opacity 0.3s;
+            background: var(--accent-gradient); /* Gradient Bar */
+            opacity: 0.7; transition: opacity 0.3s;
         }
         .series-card:hover::before { opacity: 1; }
 
@@ -254,15 +297,17 @@
         .series-header { display: flex; align-items: center; gap: 30px; width: 100%; }
         .series-date { 
             font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; 
-            color: #fff; background: var(--accent-secondary); /* Blue Tag */
+            color: #fff; 
+            background: var(--accent-gradient); /* Gradient Date Tag */
             padding: 5px 12px; border-radius: 4px; min-width: 140px; text-align: center;
+            box-shadow: 0 2px 10px var(--accent-glow);
         }
         
         .series-info { display: flex; flex-direction: column; }
         .series-title { font-size: 1.2rem; color: var(--accent-primary); font-weight: 700; letter-spacing: -0.5px; }
         .series-company { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 4px; }
         .arrow-icon { color: var(--text-muted); transition: transform 0.4s ease; }
-        details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-secondary); }
+        details[open] summary .arrow-icon { transform: rotate(180deg); color: #7c3aed; }
         .series-content { padding: 0 30px 30px 30px; color: var(--text-charcoal); border-top: 1px solid rgba(0,0,0,0.05); }
 
         /* --- BANNERS --- */
@@ -286,7 +331,7 @@
         .bg-experience { background-image: url('images/experience.jpg'); }
         .bg-research { background-image: url('images/research.jpg'); }
         .bg-affiliations { background-image: url('images/affiliations.jpg'); }
-        .research-category-title { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-primary); border-bottom: 2px solid var(--accent-secondary); padding-bottom: 10px; margin-bottom: 25px; display: inline-block; }
+        .research-category-title { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-primary); border-bottom: 2px solid #e0e7ff; padding-bottom: 10px; margin-bottom: 25px; display: inline-block; }
         footer { text-align: center; padding: 50px; font-size: 0.8rem; color: var(--text-muted); margin-top: 80px; border-top: 1px solid var(--border-line); }
 
         /* --- MOBILE RESPONSIVENESS --- */
@@ -299,6 +344,9 @@
             .series-header { flex-direction: column; align-items: flex-start; gap: 10px; }
             .series-date { min-width: auto; }
             .hero-name { font-size: 2.2rem; }
+            
+            /* Nav Fix */
+            .nav-links { gap: 15px; flex-wrap: wrap; padding: 0 10px; }
         }
     </style>
 </head>
@@ -318,7 +366,7 @@
             <img src="images/profile.jpg" alt="Mamoor Ali Khan" class="profile-pic">
             
             <div class="profile-center">
-                <h1 class="hero-name">Mamoor Ali Khan</h1>
+                <h1 class="hero-name gradient-text">Mamoor Ali Khan</h1>
                 <div class="hero-title">Research Operations Specialist</div>
                 
                 <div class="insta-note" onclick="window.open('https://www.instagram.com/adventourist1/', '_blank')">
@@ -351,10 +399,10 @@
                     I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I made a pivotal decision to pursue a Master’s in Development Studies, a decision that finally married my technical programming roots with the human-centric world of development practice.
                 </p>
                 <p>
-                    This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank" style="color:var(--accent-secondary); text-decoration: underline;">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)
+                    This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank" style="text-decoration: underline;">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)
                 </p>
                 <p>
-                    <strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank" style="color:var(--accent-secondary); text-decoration: underline;">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.
+                    <strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank" style="text-decoration: underline;">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.
                 </p>
             </div>
             
