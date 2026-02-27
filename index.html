@@ -1,728 +1,1400 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mamoor Ali Khan | Research Operations Specialist</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mamoor Ali Khan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --void: #020408;
+  --deep: #050c14;
+  --surface: #0a1628;
+  --panel: rgba(10, 22, 40, 0.7);
+  --line: rgba(100, 200, 255, 0.08);
+  --line-bright: rgba(100, 200, 255, 0.18);
+  --ice: #64c8ff;
+  --ice-dim: rgba(100, 200, 255, 0.5);
+  --ice-glow: rgba(100, 200, 255, 0.12);
+  --warm: #e8c97a;
+  --warm-dim: rgba(232, 201, 122, 0.4);
+  --text-primary: #d8eaf5;
+  --text-secondary: rgba(200, 220, 240, 0.55);
+  --text-mono: #7eb8d4;
+  --border: rgba(100, 200, 255, 0.1);
+  --border-active: rgba(100, 200, 255, 0.3);
+}
 
-    <style>
-        /* --- THEME 3: RUST / BURNT SIENNA (Mature & Academic) --- */
-        :root {
-            --bg-paper: #ffffff; 
-            --text-ink: #0f172a;
-            --text-charcoal: #334155;
-            --text-muted: #64748b;
-            
-            /* DYNAMIC ACCENTS */
-            --accent-primary: #451a03; /* Rosewood/Dark Brown for Headers */
-            
-            /* The Gradient: Deep Rust to Bright Copper */
-            --accent-gradient: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%);
-            
-            --accent-solid: #a04000; /* Burnt Sienna */
-            --accent-glow: rgba(194, 65, 12, 0.25); /* Copper Glow */
-            --border-line: #e2e8f0;
-            
-            /* --- LIQUID GLASS VARIABLES --- */
-            --liquid-bg: rgba(255, 255, 255, 0.9); 
-            --liquid-border: 1px solid rgba(255, 255, 255, 0.95);
-            --liquid-shadow: 
-                0 10px 40px rgba(124, 45, 18, 0.08), /* Rust tint shadow */
-                inset 0 0 0 1px rgba(255, 255, 255, 0.6); 
-            --liquid-blur: blur(30px) saturate(180%);
-        }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* --- GLOBAL RESET --- */
-        * { box-sizing: border-box; }
-        
-        body, html {
-            margin: 0; padding: 0;
-            background-color: var(--bg-paper);
-            color: var(--text-ink);
-            font-family: 'Merriweather', serif; 
-            line-height: 1.6; 
-            scroll-behavior: smooth;
-            font-size: 16px; 
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 30px 30px;
-        }
+html { scroll-behavior: smooth; }
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--accent-primary);
-            margin: 0; font-weight: 700;
-        }
+body {
+  background: var(--void);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+}
 
-        .gradient-text {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+/* CUSTOM CURSOR */
+.cursor {
+  width: 6px; height: 6px;
+  background: var(--ice);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9999;
+  transition: transform 0.1s ease;
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  width: 32px; height: 32px;
+  border: 1px solid var(--ice-dim);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9998;
+  transition: transform 0.25s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+  mix-blend-mode: screen;
+}
+.cursor-ring.hover {
+  width: 50px; height: 50px;
+  border-color: var(--ice);
+}
 
-        a { text-decoration: none; color: var(--accent-primary); transition: all 0.3s ease; font-weight: 600; }
-        
-        p a { 
-            border-bottom: 2px solid transparent;
-            border-image: var(--accent-gradient);
-            border-image-slice: 1;
-        }
-        p a:hover { opacity: 0.8; }
+/* CANVAS BACKGROUND */
+#bg-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
 
-        /* --- NAVIGATION --- */
-        .top-nav {
-            position: sticky; top: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.6);
-            padding: 15px 0; z-index: 1000; text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-        }
+/* NAVIGATION */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 60px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(2, 4, 8, 0.7);
+  backdrop-filter: blur(20px);
+}
+.nav-logo {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-mono);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.nav-logo span { color: var(--ice); }
+.nav-links {
+  display: flex; gap: 48px; list-style: none;
+}
+.nav-links a {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--ice);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--ice); }
+.nav-links a:hover::after { width: 100%; }
+.nav-time {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+}
 
-        .nav-links { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 50px; }
-        .nav-links a { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-charcoal); font-weight: 700; }
-        .nav-links a:hover { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+/* HERO */
+#home {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 120px 60px 60px;
+  gap: 80px;
+}
+.hero-left { display: flex; flex-direction: column; gap: 32px; }
+.hero-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--ice);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 16px;
+}
+.hero-tag::before {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--ice);
+}
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.hero-name em {
+  font-style: italic;
+  color: var(--ice);
+}
+.hero-role {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-left: 1px solid var(--border-active);
+  padding-left: 20px;
+}
+.hero-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  max-width: 420px;
+  line-height: 1.9;
+  font-weight: 300;
+}
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  margin-top: 8px;
+}
+.btn-primary {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--void);
+  background: var(--ice);
+  padding: 14px 28px;
+  border: none;
+  cursor: none;
+  transition: all 0.3s ease;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+.btn-primary:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(100, 200, 255, 0.3);
+}
+.btn-ghost {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ice);
+  padding: 14px 28px;
+  border: 1px solid var(--border-active);
+  cursor: none;
+  transition: all 0.3s ease;
+  background: transparent;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+.btn-ghost:hover {
+  background: var(--ice-glow);
+  border-color: var(--ice);
+  transform: translateY(-2px);
+}
 
-        /* --- CONTAINER --- */
-        .container { max-width: 1250px; margin: 0 auto; padding: 50px 30px; }
+/* HERO RIGHT - PROFILE CARD */
+.hero-right {
+  display: flex; flex-direction: column; gap: 24px;
+  align-items: flex-end;
+}
+.profile-frame {
+  position: relative;
+  width: 320px;
+}
+.profile-frame::before {
+  content: '';
+  position: absolute;
+  top: -12px; left: -12px;
+  width: 100%; height: 100%;
+  border: 1px solid var(--border-active);
+  z-index: 0;
+  transition: all 0.3s ease;
+}
+.profile-frame:hover::before {
+  top: -16px; left: -16px;
+  border-color: var(--ice);
+}
+.profile-frame::after {
+  content: '';
+  position: absolute;
+  bottom: -12px; right: -12px;
+  width: 60px; height: 60px;
+  border-right: 1px solid var(--ice);
+  border-bottom: 1px solid var(--ice);
+  z-index: 0;
+}
+.profile-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+  position: relative; z-index: 1;
+  filter: grayscale(20%) contrast(1.05);
+  transition: filter 0.4s ease;
+}
+.profile-frame:hover .profile-img { filter: grayscale(0%) contrast(1.1); }
 
-        /* --- HERO BANNER --- */
-        .profile-banner-wrapper {
-            width: 100%;
-            background-image: url('https://unsplash.com/photos/LrwVWQyJJzg/download?force=true&w=1920');
-            background-color: #334155; 
-            background-attachment: fixed; background-position: center; background-size: cover;
-            padding: 60px 20px; display: flex; justify-content: center; align-items: center; position: relative;
-        }
-        .profile-banner-wrapper::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(60, 20, 10, 0.15); z-index: 0; }
+.profile-stats {
+  width: 320px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line-bright);
+  border: 1px solid var(--border);
+}
+.stat-block {
+  background: var(--deep);
+  padding: 20px;
+  transition: background 0.3s ease;
+}
+.stat-block:hover { background: var(--surface); }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--ice);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
 
-        /* --- PROFILE BOX --- */
-        .glass-profile {
-            position: relative; z-index: 1;
-            background: var(--liquid-bg); border: var(--liquid-border); box-shadow: var(--liquid-shadow);
-            backdrop-filter: var(--liquid-blur); -webkit-backdrop-filter: var(--liquid-blur);
-            border-radius: 20px; padding: 35px 45px;
-            width: fit-content; max-width: 100%; margin: 0 auto;
-            display: grid; grid-template-columns: auto auto auto; align-items: center; gap: 35px;
-        }
+/* LOCATION */
+.location-line {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.15em;
+}
+.location-line i { color: var(--warm); font-size: 0.7rem; }
 
-        .profile-pic { width: 160px; height: 160px; border-radius: 12px; object-fit: cover; border: 3px solid #fff; box-shadow: 0 10px 30px rgba(160, 64, 0, 0.15); }
-        .profile-center { display: flex; flex-direction: column; justify-content: center; max-width: 400px; }
-        .hero-name { font-size: 2.2rem; margin-bottom: 5px; line-height: 1.1; color: var(--accent-primary); }
-        .hero-title { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--text-charcoal); font-style: italic; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
-        .profile-right { display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
+/* SECTION STRUCTURE */
+section { position: relative; z-index: 1; }
+.section-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 60px;
+}
+.section-header {
+  display: flex; align-items: center; gap: 24px;
+  margin-bottom: 80px;
+}
+.section-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--ice);
+  letter-spacing: 0.2em;
+}
+.section-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--border-active), transparent);
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
 
-        /* BUTTONS */
-        .glass-btn {
-            display: flex; align-items: center; gap: 10px; padding: 10px 20px; 
-            background: #fff; border: 1px solid transparent;
-            background-image: linear-gradient(#fff, #fff), var(--accent-gradient);
-            background-origin: border-box; background-clip: padding-box, border-box;
-            border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-            color: var(--text-ink); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; white-space: nowrap; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        .glass-btn:hover { transform: translateX(5px); background: var(--accent-gradient); border-color: transparent; color: #fff; box-shadow: 0 10px 25px var(--accent-glow); }
-        .glass-btn i { font-size: 1rem; width: 15px; text-align: center; }
+/* JOURNEY SECTION */
+#journey { border-top: 1px solid var(--line); }
+.journey-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.journey-text p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  line-height: 2;
+  font-weight: 300;
+}
+.journey-text p strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.journey-text a {
+  color: var(--ice);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-active);
+  transition: border-color 0.3s ease;
+}
+.journey-text a:hover { border-color: var(--ice); }
 
-        .insta-note {
-            display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px;
-            background: rgba(255,255,255,0.6); border: 1px solid #e2e8f0; border-radius: 8px;
-            font-size: 0.75rem; color: var(--text-charcoal); cursor: pointer; transition: all 0.3s ease; width: fit-content;
-        }
-        .insta-note:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-color: var(--accent-solid); }
-        .insta-note i { color: #a04000; font-size: 1.1rem; }
-        .insta-note span { border-bottom: 1px solid #ddd; }
+.mentors-panel { display: flex; flex-direction: column; gap: 2px; }
+.mentors-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line-bright);
+}
+.mentor-entry {
+  border: 1px solid var(--border);
+  padding: 28px;
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+.mentor-entry::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--ice);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  transform-origin: bottom;
+}
+.mentor-entry:hover { border-color: var(--border-active); background: var(--surface); }
+.mentor-entry:hover::before { transform: scaleY(1); }
+.mentor-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+.mentor-entry:hover .mentor-name { color: var(--ice); }
+.mentor-entry p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-weight: 300;
+}
 
-        /* --- CONTENT GRIDS --- */
-        .main-grid { display: grid; grid-template-columns: 2.2fr 1fr; gap: 50px; align-items: start; }
-        .journey-heading {
-            font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; display: inline-block;
-            background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            border-bottom: 3px solid #fdba74;
-        }
-        .content-text p { font-size: 1.05rem; margin-bottom: 20px; text-align: justify; color: var(--text-charcoal); }
+/* EXPERIENCE SECTION */
+#experience { border-top: 1px solid var(--line); }
+.exp-list { display: flex; flex-direction: column; gap: 2px; }
+.exp-item {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+.exp-item:hover { border-color: var(--border-active); }
 
-        .mentors-col { background: transparent; border: none; padding: 0; box-shadow: none; }
-        .mentors-title { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 20px; color: var(--text-muted); border-bottom: 1px solid var(--border-line); padding-bottom: 5px; }
-        .mentor-card { 
-            background: var(--liquid-bg); border: var(--liquid-border); box-shadow: var(--liquid-shadow);
-            backdrop-filter: var(--liquid-blur); -webkit-backdrop-filter: var(--liquid-blur);
-            border-radius: 15px; padding: 25px; margin-bottom: 25px; transition: all 0.3s ease;
-        }
-        .mentor-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08), 0 0 20px var(--accent-glow); border-color: #fff; background: #fff; }
-        .mentor-link { font-size: 1.1rem; font-family: 'Playfair Display', serif; display: block; margin-bottom: 8px; color: var(--accent-primary); }
-        .mentor-link i { color: var(--accent-solid); }
+.exp-summary {
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  align-items: center;
+  gap: 32px;
+  cursor: none;
+  transition: background 0.3s ease;
+}
+.exp-item:hover .exp-summary { background: rgba(100, 200, 255, 0.03); }
 
-        /* --- TIMELINES --- */
-        .timeline-container { padding-left: 0; margin-top: 30px; } .timeline-container::before { display: none; } .timeline-series-item::after { display: none; } .timeline-series-item { margin-bottom: 25px; }
-        .series-card {
-            background: rgba(255, 255, 255, 0.8); border: 1px solid #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 12px; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;
-        }
-        .series-card:hover { transform: translateY(-5px) scale(1.01); background: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.08), 0 0 15px var(--accent-glow); }
-        .series-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent-gradient); opacity: 0.7; transition: opacity 0.3s; }
-        .series-card:hover::before { opacity: 1; }
-        summary { padding: 25px 30px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; } summary::-webkit-details-marker { display: none; }
-        .series-header { display: flex; align-items: center; gap: 30px; width: 100%; }
-        .series-date { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #fff; background: var(--accent-gradient); padding: 5px 12px; border-radius: 4px; min-width: 140px; text-align: center; box-shadow: 0 2px 10px var(--accent-glow); }
-        .series-info { display: flex; flex-direction: column; }
-        .series-title { font-size: 1.2rem; color: var(--accent-primary); font-weight: 700; letter-spacing: -0.5px; }
-        .series-company { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 4px; }
-        .arrow-icon { color: var(--text-muted); transition: transform 0.4s ease; } details[open] summary .arrow-icon { transform: rotate(180deg); color: var(--accent-solid); }
-        .series-content { padding: 0 30px 30px 30px; color: var(--text-charcoal); border-top: 1px solid rgba(0,0,0,0.05); }
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
 
-        .section-banner { height: 220px; background-attachment: fixed; background-position: center; background-size: cover; display: flex; align-items: center; justify-content: center; margin: 60px 0; position: relative; }
-        .banner-overlay { background: rgba(15, 23, 42, 0.4); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-        .banner-title { color: #fff; font-size: 2.2rem; letter-spacing: 5px; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.5); padding: 10px 30px; backdrop-filter: blur(5px); }
-        
-        .bg-journey { background-image: url('images/journey.jpg'); } .bg-experience { background-image: url('images/experience.jpg'); } .bg-research { background-image: url('images/research.jpg'); } .bg-affiliations { background-image: url('images/affiliations.jpg'); }
-        .research-category-title { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-primary); border-bottom: 2px solid #fdba74; padding-bottom: 10px; margin-bottom: 25px; display: inline-block; }
-        footer { text-align: center; padding: 50px; font-size: 0.8rem; color: var(--text-muted); margin-top: 80px; border-top: 1px solid var(--border-line); }
+.exp-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-mono);
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+}
+.exp-info { display: flex; flex-direction: column; gap: 4px; }
+.exp-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+.exp-org {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--ice);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.exp-toggle {
+  width: 28px; height: 28px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-secondary);
+  font-size: 0.6rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+details[open] .exp-toggle {
+  border-color: var(--ice);
+  color: var(--ice);
+  background: var(--ice-glow);
+  transform: rotate(45deg);
+}
 
-        @media (max-width: 900px) {
-            .profile-banner-wrapper, .section-banner { background-attachment: scroll !important; background-position: center center !important; }
-            .glass-profile { grid-template-columns: 1fr; text-align: center; gap: 30px; padding: 30px; width: 100%; }
-            .profile-center { align-items: center; }
-            .profile-right { flex-direction: row; flex-wrap: wrap; justify-content: center; width: 100%; }
-            .main-grid { grid-template-columns: 1fr; gap: 40px; }
-            .series-header { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .series-date { min-width: auto; }
-            .hero-name { font-size: 2.2rem; }
-            .nav-links { gap: 15px; flex-wrap: wrap; padding: 0 10px; }
-        }
-    </style>
+.exp-body {
+  padding: 0 32px 28px 224px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  font-weight: 300;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+/* RESEARCH SECTION */
+#research { border-top: 1px solid var(--line); }
+.research-notice {
+  border: 1px solid var(--border);
+  padding: 20px 28px;
+  margin-bottom: 48px;
+  display: flex; align-items: center; gap: 16px;
+  background: var(--panel);
+}
+.research-notice i { color: var(--warm); font-size: 0.8rem; flex-shrink: 0; }
+.research-notice p {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  line-height: 1.7;
+}
+
+.research-category {
+  margin-bottom: 48px;
+}
+.cat-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 24px 28px;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  background: var(--surface);
+  cursor: none;
+}
+.cat-role {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--ice);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.cat-focus {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.cat-focus strong { color: var(--text-primary); font-weight: 500; }
+
+.research-list {
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+.research-summary-btn {
+  padding: 18px 28px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  cursor: none;
+  transition: color 0.3s ease;
+}
+.research-summary-btn:hover { color: var(--ice); }
+details[open] .research-summary-btn { color: var(--ice); }
+details[open] .research-summary-btn .r-toggle { transform: rotate(45deg); color: var(--ice); }
+.r-toggle { transition: transform 0.3s ease; color: var(--text-secondary); }
+
+.paper-list {
+  padding: 24px 28px;
+  display: flex; flex-direction: column; gap: 0;
+}
+.paper-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.paper-item:last-child { border-bottom: none; }
+.paper-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  letter-spacing: 0.1em;
+}
+.paper-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+  line-height: 1.4;
+}
+.paper-title:hover { color: var(--ice); }
+.paper-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+}
+.paper-journal {
+  color: var(--warm);
+  margin-left: 8px;
+}
+
+/* AFFILIATIONS */
+#affiliations { border-top: 1px solid var(--line); }
+.aff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--line-bright);
+}
+.aff-item {
+  background: var(--panel);
+  padding: 36px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+.aff-item:hover {
+  background: var(--surface);
+  border-color: var(--border-active);
+}
+.aff-period {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--text-mono);
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+}
+.aff-role {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.aff-org {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--ice);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.aff-org:hover { color: var(--text-primary); }
+.aff-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-top: 12px;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 40px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 1;
+}
+.footer-sig {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+.footer-mono {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.15em;
+}
+.footer-mono span { color: var(--ice); }
+
+/* SCROLL INDICATOR */
+.scroll-hint {
+  position: absolute;
+  bottom: 40px; left: 60px;
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.15em;
+  z-index: 2;
+}
+.scroll-line {
+  width: 40px; height: 1px;
+  background: var(--border-active);
+  position: relative; overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute; top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--ice);
+  animation: scrollpulse 2s ease-in-out infinite;
+}
+@keyframes scrollpulse {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* HORIZONTAL DIVIDER BANNER */
+.divider-bar {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 60px;
+  display: flex; gap: 60px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative; z-index: 1;
+}
+.divider-bar-inner {
+  display: flex; gap: 60px;
+  animation: marquee 25s linear infinite;
+}
+.divider-item {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 16px;
+}
+.divider-item::before {
+  content: '◆';
+  color: var(--ice);
+  font-size: 0.4rem;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* FADE IN ANIMATION */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 20px 24px; }
+  .nav-time { display: none; }
+  #home { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 48px; }
+  .hero-right { align-items: center; }
+  .profile-frame { width: 260px; }
+  .profile-stats { width: 260px; }
+  .journey-grid { grid-template-columns: 1fr; gap: 48px; }
+  .section-wrap { padding: 80px 24px; }
+  .exp-summary { grid-template-columns: 1fr auto; }
+  .exp-date { display: none; }
+  .exp-body { padding: 0 24px 24px; padding-top: 24px; }
+  .aff-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+  .nav-links { gap: 20px; }
+  .divider-bar { padding: 14px 24px; }
+}
+</style>
 </head>
 <body>
 
-    <nav class="top-nav">
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#experience">Work</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#affiliations">Affiliations</a></li>
-        </ul>
-    </nav>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-    <section id="home" class="profile-banner-wrapper">
-        <div class="glass-profile">
-            <img src="images/profile.jpg" alt="Mamoor Ali Khan" class="profile-pic">
-            <div class="profile-center">
-                <h1 class="hero-name gradient-text">Mamoor Ali Khan</h1>
-                <div class="hero-title">Research Operations Specialist</div>
-                <div class="insta-note" onclick="window.open('https://www.instagram.com/adventourist1/', '_blank')">
-                    <i class="fab fa-instagram"></i> <span>Documenting travels through photography</span>
-                </div>
-            </div>
-            <div class="profile-right">
-                <a href="mailto:skhan24@nd.edu" class="glass-btn"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="https://linkedin.com/in/mamoor-ali-khan-5106a9171/?skipRedirect=true" target="_blank" class="glass-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://www.dropbox.com/scl/fi/l1b0zx35sj032045oajtc/cvmak.pdf?rlkey=9a55m6v82eoqxasv9vf0yxcin&dl=0" target="_blank" class="glass-btn"><i class="fas fa-file-alt"></i> CV</a>
-            </div>
-        </div>
-    </section>
+<canvas id="bg-canvas"></canvas>
 
-    <div class="container">
-        <div class="main-grid">
-            <div class="content-text">
-                <h2 class="journey-heading">My Journey</h2>
-                <p>It began in 2013. Fresh out of Computer Science, I found myself not in a tech startup, but as an intern in a pharmaceutical firm. It was there, amidst the rows of numbers and spreadsheets, that I discovered my true language: <strong>Data</strong>.</p>
-                <p>I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I made a pivotal decision to pursue a Master’s in Development Studies, a decision that finally married my technical programming roots with the human-centric world of development practice.</p>
-                <p>This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank" style="text-decoration: underline;">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)
-</p>
-                <p><strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank" style="text-decoration: underline;">Kellogg Institute, University of Notre Dame</a>. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself—transcending the fear of embarrassment and failure.</p>
-            </div>
-            
-            <div class="mentors-col">
-                <div class="mentors-title">In Gratitude</div>
-                <div class="mentor-card">
-                    <a href="https://www.miriamgolden.com/" target="_blank" class="mentor-link">Dr. Miriam Golden <i class="fas fa-external-link-alt" style="font-size:0.7em"></i></a>
-                    <p>She trusted a naive boy with her most precious projects. I still recall the sting of embarrassment in early meetings, acutely aware of my lack of international education. Yet, where others might have seen a liability, Dr. Golden never lost faith. She has been the unshakable pillar of my career and has fundamentally shaped my life. I offer her my deepest respect; I simply cannot thank her enough.</p>
-                </div>
-                <div class="mentor-card">
-                    <a href="https://saadgulzar.com/" target="_blank" class="mentor-link">Dr. Saad Gulzar <i class="fas fa-external-link-alt" style="font-size:0.7em"></i></a>
-                    <p>Dr. Gulzar is the catalyst for my professional ascent. He opened doors I did not know existed, giving me multiple opportunities within his research and introducing me to brilliant minds at Stanford, Yale, and Princeton. He didn't just give me a role; he gave me a horizon.</p>
-                </div>
-            </div>
-        </div>
+<nav>
+  <div class="nav-logo">MAK <span>//</span> 2026</div>
+  <ul class="nav-links">
+    <li><a href="#home">Index</a></li>
+    <li><a href="#experience">Work</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#affiliations">Affiliations</a></li>
+  </ul>
+  <div class="nav-time" id="navTime"></div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-left">
+    <div class="hero-tag fade-up">Research Operations Specialist</div>
+    <h1 class="hero-name fade-up">
+      Mamoor<br><em>Ali</em> Khan
+    </h1>
+    <div class="hero-role fade-up">Kellogg Institute &nbsp;·&nbsp; University of Notre Dame</div>
+    <p class="hero-desc fade-up">
+      From the streets of Peshawar to Notre Dame. A decade of bridging quantitative rigor with the human complexities of development research across four continents.
+    </p>
+    <div class="hero-actions fade-up">
+      <a href="mailto:skhan24@nd.edu" class="btn-primary">
+        <i class="fas fa-envelope" style="margin-right:8px; font-size:0.7rem;"></i> Get in Touch
+      </a>
+      <a href="https://www.dropbox.com/scl/fi/l1b0zx35sj032045oajtc/cvmak.pdf?rlkey=9a55m6v82eoqxasv9vf0yxcin&dl=0" target="_blank" class="btn-ghost">
+        <i class="fas fa-file-alt" style="margin-right:8px; font-size:0.7rem;"></i> View CV
+      </a>
+      <a href="https://linkedin.com/in/mamoor-ali-khan-5106a9171/" target="_blank" class="btn-ghost">
+        <i class="fab fa-linkedin" style="margin-right:8px; font-size:0.7rem;"></i> LinkedIn
+      </a>
     </div>
-
-</body>
-</html>
-
-
-
-
-
-
-    <div id="experience" class="section-banner bg-experience">
-        <div class="banner-overlay">
-            <h2 class="banner-title">Experience</h2>
-        </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll to explore
     </div>
+  </div>
 
-    <section class="container">
-        <div class="timeline-container">
-            
-            <div class="timeline-series-item">
-                <div class="series-card">
-                    <details>
-                        <summary>
-                            <div class="series-header">
-                                <span class="series-date">Oct 2025 - Present</span>
-                                <div class="series-info">
-                                    <span class="series-title">Research Manager</span>
-                                    <span class="series-company">Kellogg Institute, Notre Dame</span>
-                                </div>
-                            </div>
-                            <i class="fas fa-chevron-down arrow-icon"></i>
-                        </summary>
-                        <div class="series-content">
-                            <p>In this capacity, I demonstrate strong global leadership by managing international research teams across Colombia, India, Nepal, Pakistan and the United States. My role centers on quantitative analysis and methodological rigor; I oversee the entire lifecycle of data collection and management for multiple ongoing projects, supervising coding workflows to ensure absolute consistency. Beyond the technical scope, I drive strategic operations by managing research budgets, reporting on project fund allocation, and guiding the analytical writing for high-level research reports and academic papers.</p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-            <div class="timeline-series-item">
-                <div class="series-card">
-                    <details>
-                        <summary>
-                            <div class="series-header">
-                                <span class="series-date">May 2023 - Sept 2025</span>
-                                <div class="series-info">
-                                    <span class="series-title">Senior Associate</span>
-                                    <span class="series-company">Princeton University (Based in Pakistan)</span>
-                                </div>
-                            </div>
-                            <i class="fas fa-chevron-down arrow-icon"></i>
-                        </summary>
-                        <div class="series-content">
-                            <p>Operating on the ground in Pakistan, specifically within Khyber Pakhtunkhwa (KP), I led advanced data analysis and stakeholder management for Princeton's research initiatives. I collaborated closely with principal investigators to produce complex project reports, piloting survey instruments locally to ensure they effectively captured the region's nuances. I exercised operational leadership by training local field staff on research protocols and monitoring teams to ensure strict adherence to procedures. Furthermore, I fostered critical government relations by developing new partnerships with the KP Local Government Department and Election Commission.</p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-            <div class="timeline-series-item">
-                <div class="series-card">
-                    <details>
-                        <summary>
-                            <div class="series-header">
-                                <span class="series-date">Jun 2022 - Apr 2023</span>
-                                <div class="series-info">
-                                    <span class="series-title">Lead Research Manager</span>
-                                    <span class="series-company">Yale University (Based in Pakistan)</span>
-                                </div>
-                            </div>
-                            <i class="fas fa-chevron-down arrow-icon"></i>
-                        </summary>
-                        <div class="series-content">
-                            <p>While stationed in Pakistan, I managed a massive, multi-national research program spanning six countries—Argentina, Bangladesh, India, Kenya, Lebanon, and Pakistan. This role required strategic program management from my base in the region, where I hired country managers and supervised social experiments across all territories. I established a centralized coordination cell to streamline communication strategies and developed a robust research database to organize complex datasets. My work culminated in a comprehensive analysis of these experiments, where I designed the complete analysis strategy and presented findings in detailed reports.</p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-            <div class="timeline-series-item">
-                <div class="series-card">
-                    <details>
-                        <summary>
-                            <div class="series-header">
-                                <span class="series-date">Oct 2018 - May 2022</span>
-                                <div class="series-info">
-                                    <span class="series-title">Project Manager</span>
-                                    <span class="series-company">European University Institute (Based in Pakistan)</span>
-                                </div>
-                            </div>
-                            <i class="fas fa-chevron-down arrow-icon"></i>
-                        </summary>
-                        <div class="series-content">
-                            <p>From my base in Pakistan, I focused on political communication and data integrity, establishing a coordination strategy to effectively engage with provincial incumbents across four provinces. I built relationships within the assembly to enroll incumbents in the study and developed the local communication strategy. My technical skills were pivotal in gathering, correcting, and validating research data to create representative visualizations for high-stakes presentations. I also ensured regulatory compliance by independently managing documentation and filings, helping the team navigate complex local regulatory requirements.</p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-            <div class="timeline-series-item">
-                <div class="series-card">
-                    <details>
-                        <summary>
-                            <div class="series-header">
-                                <span class="series-date">Apr 2016 - Oct 2018</span>
-                                <div class="series-info">
-                                    <span class="series-title">Program Consultant</span>
-                                    <span class="series-company">USPCASE | USAID</span>
-                                </div>
-                            </div>
-                            <i class="fas fa-chevron-down arrow-icon"></i>
-                        </summary>
-                        <div class="series-content">
-                            <p>As a Program Consultant for the U.S.-Pakistan Center on Advanced Studies in Energy, I conducted thorough reviews of internal systems and operations to devise and deploy strategic improvement plans. I developed targeted training plans to address areas of need and produced detailed, relevant reports to support critical business decisions. My contributions to the field were recognized at the National and International Conferences on Sustainable Green Technologies in 2016 and 2017.</p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-            <div class="timeline-series-item">
-                <div class="series-card">
-                    <details>
-                        <summary>
-                            <div class="series-header">
-                                <span class="series-date">Jan 2014 - Jun 2015</span>
-                                <div class="series-info">
-                                    <span class="series-title">Assistant Product Manager</span>
-                                    <span class="series-company">Libra Private Limited</span>
-                                </div>
-                            </div>
-                            <i class="fas fa-chevron-down arrow-icon"></i>
-                        </summary>
-                        <div class="series-content">
-                            <p>Leveraging market analytics, I led category, brand, and competitive analyses to identify key consumer trends and drive strategic conclusions. I managed cross-functional teams to commercialize new products, working within a product pod environment alongside product developers, design teams, and software personnel. My role also involved rigorous vendor management, collaborating with vendors to verify service-level performance and influencing supplier manufacturing processes and technology decision-making to optimize customer service policies.</p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <div id="research" class="section-banner bg-research">
-        <div class="banner-overlay">
-            <h2 class="banner-title">Research Operations</h2>
-        </div>
+  <div class="hero-right fade-up">
+    <div class="location-line" style="margin-bottom:8px;">
+      <i class="fas fa-location-dot"></i>
+      <span style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.15em;">Notre Dame, Indiana, US</span>
     </div>
-
-    <section class="container">
-        
-        <div style="background-color: #fff; border: 1px solid var(--accent-navy); padding: 20px; margin-bottom: 40px; text-align: center;">
-            <p style="margin: 0; font-size: 0.9rem; color: var(--accent-navy); font-style: italic;">
-                <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
-                <strong>Portfolio Statement:</strong> This portfolio spans nearly a decade of technical execution and operational leadership. While I do not claim authorship, I served as the technical backbone for these studies—driving rigorous data cleaning, coding in R, and statistical analysis alongside the management of complex field operations and stakeholder relationships.
-            </p>
-        </div>
-
-        <div class="series-card" style="margin-bottom: 20px; padding: 0;">
-    <div style="padding: 25px;">
-        <h3 class="research-category-title" style="margin-bottom: 10px; border: none; color: var(--accent-primary); font-size: 1.1rem;">
-            Role: Policy Design & Visualization
-        </h3>
-        <p style="color: var(--text-charcoal); font-size: 0.95rem; line-height: 1.5; margin: 0;">
-            <strong>Operational Focus:</strong> Translating complex policy needs into actionable visual strategies. Responsible for conceptualizing and creating high-level "guiding light" frameworks for government application.
-        </p>
+    <div class="profile-frame">
+      <img src="images/profile.jpg" alt="Mamoor Ali Khan" class="profile-img" onerror="this.style.background='#0a1628'; this.style.minHeight='400px';">
     </div>
-    
-    <details style="border-top: 1px solid rgba(0,0,0,0.05);">
-        <summary style="background-color: rgba(255,255,255,0.5); color: var(--accent-secondary); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
-            <span><i class="fas fa-folder-open" style="margin-right: 10px;"></i> Click to view Policy Portfolio</span>
-            <i class="fas fa-chevron-down arrow-icon"></i>
-        </summary>
-        <div style="padding: 20px; background-color: rgba(255,255,255,0.3);">
-            <ol style="padding-left: 20px; margin: 0; font-size: 0.95rem;">
-                <li style="padding-left: 10px;">
-                    <a href="https://www.dropbox.com/scl/fi/rvruau4xovpwghmruqpqh/Final-SIF.jpg?rlkey=fn3huxzqzhtjbskfxtb3wdz9c&dl=0" target="_blank" style="font-weight: 700; color: var(--accent-primary); text-decoration: underline;">
-                        School Improvement Framework Illustration (Punjab 2026)
-                    </a>
-                    <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-secondary); color: var(--text-charcoal); font-size: 0.9rem;">
-                        <strong>Concept by Farah Rehman</strong> | Official Policy Visual adopted by Govt. of Punjab.
-                        <br><em style="font-size: 0.85rem; color: var(--text-muted);">Created the official illustration for the new 2026 policy, visualizing the strategic shift from teacher-centric metrics to child-centric learning outcomes.</em>
-                    </div>
-                </li>
-            </ol>
-        </div>
-    </details>
+    <div class="profile-stats">
+      <div class="stat-block">
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Years in Field</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Countries</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Publications</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Top Universities</div>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:10px; cursor:pointer;" onclick="window.open('https://www.instagram.com/adventourist1/','_blank')">
+      <i class="fab fa-instagram" style="color:var(--warm); font-size:0.85rem;"></i>
+      <span style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--text-secondary); letter-spacing:0.1em; border-bottom:1px solid var(--border); padding-bottom:2px;">Documenting travels through photography</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE DIVIDER -->
+<div class="divider-bar">
+  <div class="divider-bar-inner">
+    <span class="divider-item">Princeton University</span>
+    <span class="divider-item">Yale University</span>
+    <span class="divider-item">Kellogg Institute</span>
+    <span class="divider-item">Stanford University</span>
+    <span class="divider-item">USAID</span>
+    <span class="divider-item">Review of Economic Studies</span>
+    <span class="divider-item">Science 2024</span>
+    <span class="divider-item">British Journal of Political Science</span>
+    <span class="divider-item">Princeton University</span>
+    <span class="divider-item">Yale University</span>
+    <span class="divider-item">Kellogg Institute</span>
+    <span class="divider-item">Stanford University</span>
+    <span class="divider-item">USAID</span>
+    <span class="divider-item">Review of Economic Studies</span>
+    <span class="divider-item">Science 2024</span>
+    <span class="divider-item">British Journal of Political Science</span>
+  </div>
 </div>
 
-        <div class="series-card" style="margin-bottom: 20px; padding: 0;">
-            <div style="padding: 25px;">
-                <h3 class="research-category-title" style="margin-bottom: 10px; border: none; color: var(--accent-navy); font-size: 1.1rem;">
-                    Role: Project Director
-                </h3>
-                <p style="color: var(--text-charcoal); font-size: 0.95rem; line-height: 1.5; margin: 0;">
-                    <strong>Technical & Operational Focus:</strong> Directed end-to-end research cycles. Responsibilities included developing survey instruments, supervising large-scale data collection, and executing rigorous data cleaning and preliminary statistical analysis using R.
-                </p>
-            </div>
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-num">01 /</span>
+      <div class="section-line"></div>
+      <h2 class="section-title">The Journey</h2>
+    </div>
+    <div class="journey-grid">
+      <div class="journey-text">
+        <p class="fade-up">It began in 2013. Fresh out of Computer Science, I found myself not in a tech startup, but as an intern in a pharmaceutical firm. It was there, amidst rows of numbers and spreadsheets, that I discovered my true language: <strong>Data</strong>.</p>
+        <p class="fade-up">I realized I had a specific talent — I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I pursued a Master's in Development Studies, a decision that married my technical roots with the human-centric world of development practice.</p>
+        <p class="fade-up">This path led to impactful work with USAID and UNHCR projects, but the true turning point was mentorship. I met <a href="https://lukesonnet.com/" target="_blank">Dr. Luke Sonnet</a>, under whose wing I delved into data analysis. My specialty is shaping raw data into panel form and using OLS to solve problems.</p>
+        <p class="fade-up"><strong>From Peshawar to Notre Dame.</strong> Today, I work as a Research Manager at the <a href="https://kellogg.nd.edu/" target="_blank">Kellogg Institute, University of Notre Dame</a>. My journey was paved with grit, the generosity of mentors, and a conviction to believe in oneself.</p>
+      </div>
 
-            <details style="border-top: 1px solid var(--border-line);">
-                <summary style="background-color: var(--bg-highlight); color: var(--accent-gold); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
-                    <span><i class="fas fa-folder-open" style="margin-right: 10px;"></i> Click to view Project Portfolio</span>
-                    <i class="fas fa-chevron-down arrow-icon"></i>
-                </summary>
-                <div style="padding: 20px; background-color: #fff;">
-                    <ol style="padding-left: 20px; margin: 0; font-size: 0.95rem; line-height: 1.6;">
-                        
-                        <li style="margin-bottom: 20px; padding-left: 10px;">
-                            <a href="https://www.dropbox.com/scl/fi/dvhpeg778crdrwew4f60p/gulzarkhan_goodpoliticians.pdf?rlkey=rerhgpmy1gdnab1bviy7dpv5p&raw=1" target="_blank" style="font-weight: 700; color: var(--accent-navy); text-decoration: underline;">
-                                Good Politicians: Experimental Evidence on Motivations for Political Candidacy
-                            </a>
-                            <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-gold); color: var(--text-charcoal); font-size: 0.9rem;">
-                                Gulzar, Saad, and Muhammad Yasir Khan. <br><strong>Review of Economic Studies (2024)</strong>
-                            </div>
-                        </li>
+      <div class="mentors-panel fade-up">
+        <div class="mentors-label">In Gratitude</div>
 
-                        <li style="margin-bottom: 20px; padding-left: 10px;">
-                            <a href="https://www.dropbox.com/scl/fi/ww85o8gmd9sgwrux0rh0o/GulzarMousa_Gender.pdf?rlkey=nttjwi11jmojultkz447fquv9&raw=1" target="_blank" style="font-weight: 700; color: var(--accent-navy); text-decoration: underline;">
-                                Random Acts of Kindness? How Gender Shapes Helping Behaviors Around the World
-                            </a>
-                            <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-gold); color: var(--text-charcoal); font-size: 0.9rem;">
-                                Gulzar, Saad, and Salma Mousa. <br><strong>Science (2024)</strong>
-                            </div>
-                        </li>
-
-                        <li style="margin-bottom: 20px; padding-left: 10px;">
-                            <a href="https://www.dropbox.com/s/27eonmxfdoxr6bs/gulzarkhansonnet_pk.pdf?raw=1" target="_blank" style="font-weight: 700; color: var(--accent-navy); text-decoration: underline;">
-                                Pessimistic Beliefs of Norms: Descriptive Findings on Women's Political Participation
-                            </a>
-                            <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-gold); color: var(--text-charcoal); font-size: 0.9rem;">
-                                Gulzar, Saad, Luke Sonnet, and Muhammad Yasir Khan. <br><strong>Working Paper (2020)</strong>
-                            </div>
-                        </li>
-
-                        <li style="padding-left: 10px;">
-                            <a href="https://www.dropbox.com/s/27eonmxfdoxr6bs/gulzarkhansonnet_pk.pdf?raw=1" target="_blank" style="font-weight: 700; color: var(--accent-navy); text-decoration: underline;">
-                                Norms, Beliefs, and Networks: Descriptive Findings on Women's Political Participation
-                            </a>
-                            <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-gold); color: var(--text-charcoal); font-size: 0.9rem;">
-                                Gulzar, Saad, Luke Sonnet, and Muhammad Yasir Khan. <br><strong>Working Paper (2020)</strong>
-                            </div>
-                        </li>
-
-                    </ol>
-                </div>
-            </details>
+        <div class="mentor-entry">
+          <a href="https://www.miriamgolden.com/" target="_blank" class="mentor-name">Dr. Miriam Golden</a>
+          <p>She trusted a naive boy with her most precious projects. Where others might have seen a liability, Dr. Golden never lost faith. She has been the unshakable pillar of my career and has fundamentally shaped my life.</p>
         </div>
 
-        <div class="series-card" style="margin-bottom: 20px; padding: 0;">
-            <div style="padding: 25px;">
-                <h3 class="research-category-title" style="margin-bottom: 10px; border: none; color: var(--accent-navy); font-size: 1.1rem;">
-                    Role: Country Project Manager (Pakistan)
-                </h3>
-                <p style="color: var(--text-charcoal); font-size: 0.95rem; line-height: 1.5; margin: 0;">
-                    <strong>Operational Focus:</strong> Managed the Pakistan arm of multi-country projects. Specifically responsible for executing complex legislator data collection, ensuring data integrity, and high-level stakeholder management.
-                </p>
-            </div>
-
-            <details style="border-top: 1px solid var(--border-line);">
-                <summary style="background-color: var(--bg-highlight); color: var(--accent-gold); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
-                    <span><i class="fas fa-folder-open" style="margin-right: 10px;"></i> Click to view Project Portfolio</span>
-                    <i class="fas fa-chevron-down arrow-icon"></i>
-                </summary>
-                <div style="padding: 20px; background-color: #fff;">
-                    <ol style="padding-left: 20px; margin: 0; font-size: 0.95rem; line-height: 1.6;">
-                        
-                        <li style="margin-bottom: 20px; padding-left: 10px;">
-                            <a href="https://www.miriamgolden.com/research" target="_blank" style="font-weight: 700; color: var(--accent-navy); text-decoration: underline;">
-                                Preferences for Redistribution of Legislators: Survey Evidence from Three Countries
-                            </a>
-                            <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-gold); color: var(--text-charcoal); font-size: 0.9rem;">
-                                Ferroni, Matteo F., and Miriam A. Golden. <br><strong>Working Paper (2025)</strong>
-                            </div>
-                        </li>
-
-                        <li style="padding-left: 10px;">
-                            <a href="https://www.miriamgolden.com/research" target="_blank" style="font-weight: 700; color: var(--accent-navy); text-decoration: underline;">
-                                Strong Support, Weak Policies: Views on Corruption of Citizens and Legislators
-                            </a>
-                            <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-gold); color: var(--text-charcoal); font-size: 0.9rem;">
-                                Ferroni, Matteo F., Raymond Fisman, and Miriam Golden. <br><strong>Working Paper (2025)</strong>
-                            </div>
-                        </li>
-
-                    </ol>
-                </div>
-            </details>
+        <div class="mentor-entry">
+          <a href="https://saadgulzar.com/" target="_blank" class="mentor-name">Dr. Saad Gulzar</a>
+          <p>Dr. Gulzar is the catalyst for my professional ascent. He opened doors I did not know existed, introducing me to brilliant minds at Stanford, Yale, and Princeton. He gave me not just a role — but a horizon.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="series-card" style="margin-bottom: 20px; padding: 0;">
-            <div style="padding: 25px;">
-                <h3 class="research-category-title" style="margin-bottom: 10px; border: none; color: var(--accent-navy); font-size: 1.1rem;">
-                    Role: Research Support & Data Analysis
-                </h3>
-                <p style="color: var(--text-charcoal); font-size: 0.95rem; line-height: 1.5; margin: 0;">
-                    <strong>Technical Focus:</strong> Provided key technical execution including advanced R coding, large-scale data cleaning, web scraping, and database management. Coordinated high-level field activities, including MP workshops and governance conferences.
-                </p>
-            </div>
+<!-- MARQUEE 2 -->
+<div class="divider-bar" style="animation-direction: reverse;">
+  <div class="divider-bar-inner" style="animation-direction: reverse;">
+    <span class="divider-item">Data Analysis</span>
+    <span class="divider-item">Field Operations</span>
+    <span class="divider-item">Panel Data</span>
+    <span class="divider-item">OLS Regression</span>
+    <span class="divider-item">R Programming</span>
+    <span class="divider-item">Survey Design</span>
+    <span class="divider-item">Political Economy</span>
+    <span class="divider-item">Development Studies</span>
+    <span class="divider-item">Data Analysis</span>
+    <span class="divider-item">Field Operations</span>
+    <span class="divider-item">Panel Data</span>
+    <span class="divider-item">OLS Regression</span>
+    <span class="divider-item">R Programming</span>
+    <span class="divider-item">Survey Design</span>
+    <span class="divider-item">Political Economy</span>
+    <span class="divider-item">Development Studies</span>
+  </div>
+</div>
 
-            <details style="border-top: 1px solid var(--border-line);">
-                <summary style="background-color: var(--bg-highlight); color: var(--accent-gold); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
-                    <span><i class="fas fa-folder-open" style="margin-right: 10px;"></i> Click to view Project Portfolio</span>
-                    <i class="fas fa-chevron-down arrow-icon"></i>
-                </summary>
-                <div style="padding: 20px; background-color: #fff;">
-                    <ol style="padding-left: 20px; margin: 0; font-size: 0.95rem; line-height: 1.6;">
-                        
-                        <li style="margin-bottom: 20px; padding-left: 10px;">
-                            <a href="https://www.dropbox.com/scl/fi/bfklqn3u2ifhl5fsngqno/GoldenGulzarSonnet_Capacity.pdf?rlkey=86t9r06hsjur8zs43l7enwdh1&raw=1" target="_blank" style="font-weight: 700; color: var(--accent-navy); text-decoration: underline;">
-                                Political Responsiveness, Information Provision, and Capacity Gaps
-                            </a>
-                            <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-gold); color: var(--text-charcoal); font-size: 0.9rem;">
-                                Golden, Miriam, Saad Gulzar, and Luke Sonnet. <br><strong>Comparative Political Studies (2025)</strong>
-                            </div>
-                        </li>
-
-                        <li style="margin-bottom: 20px; padding-left: 10px;">
-                            <a href="https://www.cambridge.org/core/journals/british-journal-of-political-science/article/global-legislators-database-characteristics-of-national-legislators-in-the-worlds-democracies/0ED2D5A1E7B1673ADB124E14E8F1DA7D" target="_blank" style="font-weight: 700; color: var(--accent-navy); text-decoration: underline;">
-                                The Global Legislators Database: Characteristics of National Legislators in the World's Democracies
-                            </a>
-                            <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-gold); color: var(--text-charcoal); font-size: 0.9rem;">
-                                Carnes, Nicholas, Joshua Ferrer, Miriam Golden, Esme Lillywhite, Noam Lupu, and Eugenia Nazrullaeva. <br><strong>British Journal of Political Science (2025)</strong>
-                            </div>
-                        </li>
-
-                        <li style="margin-bottom: 20px; padding-left: 10px;">
-                            <a href="https://www.miriamgolden.com/research" target="_blank" style="font-weight: 700; color: var(--accent-navy); text-decoration: underline;">
-                                Effects on Reelection Rates of the Introduction of Merit Civil Service Appointments in US States
-                            </a>
-                            <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-gold); color: var(--text-charcoal); font-size: 0.9rem;">
-                                Golden, Miriam, Eugenia Nazrullaeva, and Dylan Potts. <br><strong>Working Paper (2025)</strong>
-                            </div>
-                        </li>
-
-                        <li style="margin-bottom: 20px; padding-left: 10px;">
-                            <a href="https://www.dropbox.com/scl/fi/yq4q8nkin3jgeqaqen07z/CallenGulzarHasanainKhanRezaee_Personalities.pdf?rlkey=x1mwrszeyd7lrdnwnoi8f7owg&raw=1" target="_blank" style="font-weight: 700; color: var(--accent-navy); text-decoration: underline;">
-                                Personalities and Public Sector Performance: Evidence from a Health Experiment in Pakistan
-                            </a>
-                            <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-gold); color: var(--text-charcoal); font-size: 0.9rem;">
-                                Callen, Michael, Saad Gulzar, Ali Hasanain, Muhammad Yasir Khan, and Arman Rezaee. <br><strong>Economic Development and Cultural Change (2025)</strong>
-                            </div>
-                        </li>
-
-                        <li style="margin-bottom: 20px; padding-left: 10px;">
-                            <a href="https://eos.wzb.eu/ipi/shiny-covid-crowdsourcing/" target="_blank" style="font-weight: 700; color: var(--accent-navy); text-decoration: underline;">
-                                The Model Challenges: Gathering, Aggregating, and Evaluating Covid Mortality Models
-                            </a>
-                            <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-gold); color: var(--text-charcoal); font-size: 0.9rem;">
-                                Golden, Miriam A., Tara Slough, Haoyu Zhai, et al. <br><strong>Working Paper (2025)</strong>
-                            </div>
-                        </li>
-
-                        <li style="padding-left: 10px;">
-                            <a href="https://doi.org/10.1017/XPS.2023.28" target="_blank" style="font-weight: 700; color: var(--accent-navy); text-decoration: underline;">
-                                Inaccurate Forecasting of a Randomized Controlled Trial
-                            </a>
-                            <div style="margin-top: 5px; margin-left: 30px; padding-left: 15px; border-left: 2px solid var(--accent-gold); color: var(--text-charcoal); font-size: 0.9rem;">
-                                Ahrenshop, Mats, Miriam Golden, Saad Gulzar, and Luke Sonnet. <br><strong>Journal of Experimental Political Science (2024)</strong>
-                            </div>
-                        </li>
-
-                    </ol>
-                </div>
-            </details>
-        </div>
-
-    </section>
-
-    <div id="affiliations" class="section-banner bg-affiliations">
-        <div class="banner-overlay">
-            <h2 class="banner-title">Affiliations</h2>
-        </div>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-num">02 /</span>
+      <div class="section-line"></div>
+      <h2 class="section-title">Work Experience</h2>
     </div>
 
-    <section class="container">
-        <div class="timeline-container">
-            
-            <div class="timeline-series-item">
-                <div class="series-card">
-                    <details>
-                        <summary>
-                            <div class="series-header">
-                                <span class="series-date">Since 2025</span>
-                                <div class="series-info">
-                                    <span class="series-title">Mentor</span>
-                                    <span class="series-company">
-                                        <a href="https://csod10.lums.edu.pk/" target="_blank" style="color: var(--accent-gold); border-bottom: 1px dotted var(--accent-gold);">
-                                            Career Services Office (CSO), LUMS
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
-                            <i class="fas fa-chevron-down arrow-icon"></i>
-                        </summary>
-                        <div class="series-content">
-                            <p>Providing professional mentorship and career guidance to students at the Lahore University of Management Sciences to help navigate the development and research sectors.</p>
-                        </div>
-                    </details>
-                </div>
+    <div class="exp-list">
+      <!-- 1 -->
+      <div class="exp-item fade-up">
+        <details>
+          <summary class="exp-summary">
+            <div class="exp-date">Oct 2025<br>Present</div>
+            <div class="exp-info">
+              <span class="exp-title">Research Manager</span>
+              <span class="exp-org">Kellogg Institute, Notre Dame</span>
             </div>
-
-            <div class="timeline-series-item">
-                <div class="series-card">
-                    <details>
-                        <summary>
-                            <div class="series-header">
-                                <span class="series-date">Since 2024</span>
-                                <div class="series-info">
-                                    <span class="series-title">Data and Research Analyst</span>
-                                    <span class="series-company">
-                                        <a href="https://www.cdpr.org.pk/" target="_blank" style="color: var(--accent-gold); border-bottom: 1px dotted var(--accent-gold);">
-                                            Consortium for Development Policy Research (CDPR)
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
-                            <i class="fas fa-chevron-down arrow-icon"></i>
-                        </summary>
-                        <div class="series-content">
-                            <p>Focused on high-level policy research and data analysis, contributing to evidence-based policy making in Pakistan.</p>
-                        </div>
-                    </details>
-                </div>
+            <div class="exp-toggle"><i class="fas fa-plus"></i></div>
+          </summary>
+          <div class="exp-body">
+            Managing international research teams across Colombia, India, Nepal, Pakistan, and the United States. I oversee the full lifecycle of data collection and management for multiple ongoing projects, supervising coding workflows to ensure consistency. Beyond the technical scope, I manage research budgets, report on fund allocation, and guide the analytical writing for research reports and academic papers.
+          </div>
+        </details>
+      </div>
+      <!-- 2 -->
+      <div class="exp-item fade-up">
+        <details>
+          <summary class="exp-summary">
+            <div class="exp-date">May 2023<br>Sept 2025</div>
+            <div class="exp-info">
+              <span class="exp-title">Senior Associate</span>
+              <span class="exp-org">Princeton University — Based in Pakistan</span>
             </div>
-
-            <div class="timeline-series-item">
-                <div class="series-card">
-                    <details>
-                        <summary>
-                            <div class="series-header">
-                                <span class="series-date">Oct 2019 - Dec 2022</span>
-                                <div class="series-info">
-                                    <span class="series-title">Senior Research Associate</span>
-                                    <span class="series-company">
-                                        <a href="https://www.cerp.org.pk/" target="_blank" style="color: var(--accent-gold); border-bottom: 1px dotted var(--accent-gold);">
-                                            Center for Economic Research in Pakistan (CERP)
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
-                            <i class="fas fa-chevron-down arrow-icon"></i>
-                        </summary>
-                        <div class="series-content">
-                            <p>Managed large-scale research projects, coordinated field teams, and ensured data quality for economic research initiatives.</p>
-                        </div>
-                    </details>
-                </div>
+            <div class="exp-toggle"><i class="fas fa-plus"></i></div>
+          </summary>
+          <div class="exp-body">
+            Operating on the ground in Khyber Pakhtunkhwa (KP), I led data analysis and stakeholder management for Princeton's research initiatives. I collaborated with principal investigators to produce project reports, piloted survey instruments locally, trained local field staff on research protocols, and developed partnerships with the KP Local Government Department and Election Commission.
+          </div>
+        </details>
+      </div>
+      <!-- 3 -->
+      <div class="exp-item fade-up">
+        <details>
+          <summary class="exp-summary">
+            <div class="exp-date">Jun 2022<br>Apr 2023</div>
+            <div class="exp-info">
+              <span class="exp-title">Lead Research Manager</span>
+              <span class="exp-org">Yale University — Based in Pakistan</span>
             </div>
-
-            <div class="timeline-series-item">
-                <div class="series-card">
-                    <details>
-                        <summary>
-                            <div class="series-header">
-                                <span class="series-date">Sept 2018 - Aug 2019</span>
-                                <div class="series-info">
-                                    <span class="series-title">Research Supplier (Research Assistant)</span>
-                                    <span class="series-company">Stanford University</span>
-                                </div>
-                            </div>
-                            <i class="fas fa-chevron-down arrow-icon"></i>
-                        </summary>
-                        <div class="series-content">
-                            <p>Provided research assistance and data support for projects led by Dr. Saad Gulzar, contributing to political economy research.</p>
-                        </div>
-                    </details>
-                </div>
+            <div class="exp-toggle"><i class="fas fa-plus"></i></div>
+          </summary>
+          <div class="exp-body">
+            Managed a multi-national research program spanning six countries: Argentina, Bangladesh, India, Kenya, Lebanon, and Pakistan. I hired country managers and supervised social experiments across all territories, established a centralized coordination cell, and developed a robust research database. I also designed the complete analysis strategy and presented findings in detailed reports.
+          </div>
+        </details>
+      </div>
+      <!-- 4 -->
+      <div class="exp-item fade-up">
+        <details>
+          <summary class="exp-summary">
+            <div class="exp-date">Oct 2018<br>May 2022</div>
+            <div class="exp-info">
+              <span class="exp-title">Project Manager</span>
+              <span class="exp-org">European University Institute — Based in Pakistan</span>
             </div>
+            <div class="exp-toggle"><i class="fas fa-plus"></i></div>
+          </summary>
+          <div class="exp-body">
+            Focused on political communication and data integrity, building relationships within provincial assemblies across four provinces to enroll incumbents in the study. I gathered, corrected, and validated research data to create representative visualizations for high-stakes presentations, and managed documentation for complex local regulatory requirements.
+          </div>
+        </details>
+      </div>
+      <!-- 5 -->
+      <div class="exp-item fade-up">
+        <details>
+          <summary class="exp-summary">
+            <div class="exp-date">Apr 2016<br>Oct 2018</div>
+            <div class="exp-info">
+              <span class="exp-title">Program Consultant</span>
+              <span class="exp-org">USPCASE | USAID</span>
+            </div>
+            <div class="exp-toggle"><i class="fas fa-plus"></i></div>
+          </summary>
+          <div class="exp-body">
+            At the U.S.-Pakistan Center on Advanced Studies in Energy, I conducted reviews of internal systems and deployed strategic improvement plans. I developed targeted training plans and produced detailed reports to support business decisions. Contributions were recognized at the National and International Conferences on Sustainable Green Technologies in 2016 and 2017.
+          </div>
+        </details>
+      </div>
+      <!-- 6 -->
+      <div class="exp-item fade-up">
+        <details>
+          <summary class="exp-summary">
+            <div class="exp-date">Jan 2014<br>Jun 2015</div>
+            <div class="exp-info">
+              <span class="exp-title">Assistant Product Manager</span>
+              <span class="exp-org">Libra Private Limited</span>
+            </div>
+            <div class="exp-toggle"><i class="fas fa-plus"></i></div>
+          </summary>
+          <div class="exp-body">
+            Used market analytics to lead category, brand, and competitive analyses. Managed cross-functional teams to commercialize new products, working alongside product developers, design teams, and software personnel. Oversaw vendor management and influenced supplier manufacturing processes and technology decisions.
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-num">03 /</span>
+      <div class="section-line"></div>
+      <h2 class="section-title">Research Operations</h2>
+    </div>
+
+    <div class="research-notice fade-up">
+      <i class="fas fa-info-circle"></i>
+      <p>Portfolio Statement: This portfolio spans nearly a decade of technical execution and operational leadership. While I do not claim authorship, I served as the technical backbone for these studies — driving rigorous data cleaning, coding in R, and statistical analysis alongside complex field operations and stakeholder management.</p>
+    </div>
+
+    <!-- Category 1 -->
+    <div class="research-category fade-up">
+      <div class="cat-header">
+        <div>
+          <div class="cat-role">Role: Policy Design & Visualization</div>
+          <div class="cat-focus"><strong>Operational Focus:</strong> Translating policy needs into actionable visual frameworks for government application.</div>
         </div>
-    </section>
+      </div>
+      <div class="research-list">
+        <details>
+          <summary class="research-summary-btn">
+            <span><i class="fas fa-folder" style="margin-right:10px; color:var(--ice);"></i> View Policy Portfolio</span>
+            <i class="fas fa-plus r-toggle"></i>
+          </summary>
+          <div class="paper-list">
+            <div class="paper-item">
+              <div class="paper-num">01</div>
+              <div>
+                <a href="https://www.dropbox.com/scl/fi/rvruau4xovpwghmruqpqh/Final-SIF.jpg?rlkey=fn3huxzqzhtjbskfxtb3wdz9c&dl=0" target="_blank" class="paper-title">School Improvement Framework Illustration (Punjab 2026)</a>
+                <div class="paper-meta">
+                  Concept by Farah Rehman &nbsp;·&nbsp; Official Policy Visual, Govt. of Punjab
+                  <span class="paper-journal">Adopted Policy Visual, 2026</span><br>
+                  <em style="color:var(--text-secondary); font-size:0.55rem;">Visualizing the strategic shift from teacher-centric metrics to child-centric learning outcomes.</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
 
-    <footer>
-        &copy; 2026 Mamoor Ali Khan. Published in Notre Dame, IN.
-    </footer>
+    <!-- Category 2 -->
+    <div class="research-category fade-up">
+      <div class="cat-header">
+        <div>
+          <div class="cat-role">Role: Project Director</div>
+          <div class="cat-focus"><strong>Technical & Operational Focus:</strong> Directed end-to-end research cycles including survey instruments, large-scale data collection, and statistical analysis in R.</div>
+        </div>
+      </div>
+      <div class="research-list">
+        <details>
+          <summary class="research-summary-btn">
+            <span><i class="fas fa-folder" style="margin-right:10px; color:var(--ice);"></i> View Project Portfolio</span>
+            <i class="fas fa-plus r-toggle"></i>
+          </summary>
+          <div class="paper-list">
+            <div class="paper-item">
+              <div class="paper-num">01</div>
+              <div>
+                <a href="https://www.dropbox.com/scl/fi/dvhpeg778crdrwew4f60p/gulzarkhan_goodpoliticians.pdf?rlkey=rerhgpmy1gdnab1bviy7dpv5p&raw=1" target="_blank" class="paper-title">Good Politicians: Experimental Evidence on Motivations for Political Candidacy</a>
+                <div class="paper-meta">
+                  Gulzar, Saad, and Muhammad Yasir Khan
+                  <span class="paper-journal">Review of Economic Studies, 2024</span>
+                </div>
+              </div>
+            </div>
+            <div class="paper-item">
+              <div class="paper-num">02</div>
+              <div>
+                <a href="https://www.dropbox.com/scl/fi/ww85o8gmd9sgwrux0rh0o/GulzarMousa_Gender.pdf?rlkey=nttjwi11jmojultkz447fquv9&raw=1" target="_blank" class="paper-title">Random Acts of Kindness? How Gender Shapes Helping Behaviors Around the World</a>
+                <div class="paper-meta">
+                  Gulzar, Saad, and Salma Mousa
+                  <span class="paper-journal">Science, 2024</span>
+                </div>
+              </div>
+            </div>
+            <div class="paper-item">
+              <div class="paper-num">03</div>
+              <div>
+                <a href="https://www.dropbox.com/s/27eonmxfdoxr6bs/gulzarkhansonnet_pk.pdf?raw=1" target="_blank" class="paper-title">Pessimistic Beliefs of Norms: Descriptive Findings on Women's Political Participation</a>
+                <div class="paper-meta">
+                  Gulzar, Saad, Luke Sonnet, and Muhammad Yasir Khan
+                  <span class="paper-journal">Working Paper, 2020</span>
+                </div>
+              </div>
+            </div>
+            <div class="paper-item">
+              <div class="paper-num">04</div>
+              <div>
+                <a href="https://www.dropbox.com/s/27eonmxfdoxr6bs/gulzarkhansonnet_pk.pdf?raw=1" target="_blank" class="paper-title">Norms, Beliefs, and Networks: Descriptive Findings on Women's Political Participation</a>
+                <div class="paper-meta">
+                  Gulzar, Saad, Luke Sonnet, and Muhammad Yasir Khan
+                  <span class="paper-journal">Working Paper, 2020</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
 
+    <!-- Category 3 -->
+    <div class="research-category fade-up">
+      <div class="cat-header">
+        <div>
+          <div class="cat-role">Role: Country Project Manager (Pakistan)</div>
+          <div class="cat-focus"><strong>Operational Focus:</strong> Managed the Pakistan arm of multi-country projects including legislator data collection, data integrity, and stakeholder management.</div>
+        </div>
+      </div>
+      <div class="research-list">
+        <details>
+          <summary class="research-summary-btn">
+            <span><i class="fas fa-folder" style="margin-right:10px; color:var(--ice);"></i> View Project Portfolio</span>
+            <i class="fas fa-plus r-toggle"></i>
+          </summary>
+          <div class="paper-list">
+            <div class="paper-item">
+              <div class="paper-num">01</div>
+              <div>
+                <a href="https://www.miriamgolden.com/research" target="_blank" class="paper-title">Preferences for Redistribution of Legislators: Survey Evidence from Three Countries</a>
+                <div class="paper-meta">
+                  Ferroni, Matteo F., and Miriam A. Golden
+                  <span class="paper-journal">Working Paper, 2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="paper-item">
+              <div class="paper-num">02</div>
+              <div>
+                <a href="https://www.miriamgolden.com/research" target="_blank" class="paper-title">Strong Support, Weak Policies: Views on Corruption of Citizens and Legislators</a>
+                <div class="paper-meta">
+                  Ferroni, Matteo F., Raymond Fisman, and Miriam Golden
+                  <span class="paper-journal">Working Paper, 2025</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- Category 4 -->
+    <div class="research-category fade-up">
+      <div class="cat-header">
+        <div>
+          <div class="cat-role">Role: Research Support & Data Analysis</div>
+          <div class="cat-focus"><strong>Technical Focus:</strong> Advanced R coding, large-scale data cleaning, web scraping, database management, and coordination of MP workshops and governance conferences.</div>
+        </div>
+      </div>
+      <div class="research-list">
+        <details>
+          <summary class="research-summary-btn">
+            <span><i class="fas fa-folder" style="margin-right:10px; color:var(--ice);"></i> View Project Portfolio</span>
+            <i class="fas fa-plus r-toggle"></i>
+          </summary>
+          <div class="paper-list">
+            <div class="paper-item">
+              <div class="paper-num">01</div>
+              <div>
+                <a href="https://www.dropbox.com/scl/fi/bfklqn3u2ifhl5fsngqno/GoldenGulzarSonnet_Capacity.pdf?rlkey=86t9r06hsjur8zs43l7enwdh1&raw=1" target="_blank" class="paper-title">Political Responsiveness, Information Provision, and Capacity Gaps</a>
+                <div class="paper-meta">
+                  Golden, Miriam, Saad Gulzar, and Luke Sonnet
+                  <span class="paper-journal">Comparative Political Studies, 2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="paper-item">
+              <div class="paper-num">02</div>
+              <div>
+                <a href="https://www.cambridge.org/core/journals/british-journal-of-political-science/article/global-legislators-database-characteristics-of-national-legislators-in-the-worlds-democracies/0ED2D5A1E7B1673ADB124E14E8F1DA7D" target="_blank" class="paper-title">The Global Legislators Database: Characteristics of National Legislators in the World's Democracies</a>
+                <div class="paper-meta">
+                  Carnes, Nicholas, Joshua Ferrer, Miriam Golden, et al.
+                  <span class="paper-journal">British Journal of Political Science, 2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="paper-item">
+              <div class="paper-num">03</div>
+              <div>
+                <a href="https://www.miriamgolden.com/research" target="_blank" class="paper-title">Effects on Reelection Rates of the Introduction of Merit Civil Service Appointments in US States</a>
+                <div class="paper-meta">
+                  Golden, Miriam, Eugenia Nazrullaeva, and Dylan Potts
+                  <span class="paper-journal">Working Paper, 2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="paper-item">
+              <div class="paper-num">04</div>
+              <div>
+                <a href="https://www.dropbox.com/scl/fi/yq4q8nkin3jgeqaqen07z/CallenGulzarHasanainKhanRezaee_Personalities.pdf?rlkey=x1mwrszeyd7lrdnwnoi8f7owg&raw=1" target="_blank" class="paper-title">Personalities and Public Sector Performance: Evidence from a Health Experiment in Pakistan</a>
+                <div class="paper-meta">
+                  Callen, Michael, Saad Gulzar, Ali Hasanain, Muhammad Yasir Khan, and Arman Rezaee
+                  <span class="paper-journal">Economic Development and Cultural Change, 2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="paper-item">
+              <div class="paper-num">05</div>
+              <div>
+                <a href="https://eos.wzb.eu/ipi/shiny-covid-crowdsourcing/" target="_blank" class="paper-title">The Model Challenges: Gathering, Aggregating, and Evaluating Covid Mortality Models</a>
+                <div class="paper-meta">
+                  Golden, Miriam A., Tara Slough, Haoyu Zhai, et al.
+                  <span class="paper-journal">Working Paper, 2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="paper-item">
+              <div class="paper-num">06</div>
+              <div>
+                <a href="https://doi.org/10.1017/XPS.2023.28" target="_blank" class="paper-title">Inaccurate Forecasting of a Randomized Controlled Trial</a>
+                <div class="paper-meta">
+                  Ahrenshop, Mats, Miriam Golden, Saad Gulzar, and Luke Sonnet
+                  <span class="paper-journal">Journal of Experimental Political Science, 2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AFFILIATIONS -->
+<section id="affiliations">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-num">04 /</span>
+      <div class="section-line"></div>
+      <h2 class="section-title">Affiliations</h2>
+    </div>
+
+    <div class="aff-grid">
+      <div class="aff-item fade-up">
+        <div class="aff-period">Since 2025</div>
+        <div class="aff-role">Mentor</div>
+        <a href="https://csod10.lums.edu.pk/" target="_blank" class="aff-org">Career Services Office, LUMS</a>
+        <p class="aff-desc">Providing professional mentorship and career guidance to LUMS students navigating the development and research sectors.</p>
+      </div>
+      <div class="aff-item fade-up">
+        <div class="aff-period">Since 2024</div>
+        <div class="aff-role">Data and Research Analyst</div>
+        <a href="https://www.cdpr.org.pk/" target="_blank" class="aff-org">Consortium for Development Policy Research (CDPR)</a>
+        <p class="aff-desc">Contributing to evidence-based policy research and data analysis in Pakistan.</p>
+      </div>
+      <div class="aff-item fade-up">
+        <div class="aff-period">Oct 2019 — Dec 2022</div>
+        <div class="aff-role">Senior Research Associate</div>
+        <a href="https://www.cerp.org.pk/" target="_blank" class="aff-org">Center for Economic Research in Pakistan (CERP)</a>
+        <p class="aff-desc">Managed large-scale research projects, coordinated field teams, and ensured data quality for economic research initiatives.</p>
+      </div>
+      <div class="aff-item fade-up">
+        <div class="aff-period">Sept 2018 — Aug 2019</div>
+        <div class="aff-role">Research Supplier</div>
+        <span class="aff-org" style="cursor:default;">Stanford University</span>
+        <p class="aff-desc">Provided research assistance and data support for projects led by Dr. Saad Gulzar, contributing to political economy research.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-sig">Mamoor Ali Khan</div>
+  <div class="footer-mono">Notre Dame, IN &nbsp;<span>//</span>&nbsp; 2026</div>
+</footer>
+
+<script>
+// CURSOR
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.transform = `translate(${mx - 3}px, ${my - 3}px)`;
+});
+
+function animateRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, summary, .aff-item, .mentor-entry, .stat-block').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+  el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+});
+
+// CLOCK
+function updateTime() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2,'0');
+  const m = String(now.getMinutes()).padStart(2,'0');
+  const s = String(now.getSeconds()).padStart(2,'0');
+  const el = document.getElementById('navTime');
+  if (el) el.textContent = `${h}:${m}:${s}`;
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+// CANVAS GRID
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+let mouseX = 0, mouseY = 0;
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+function drawGrid() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const spacing = 60;
+  const cols = Math.ceil(canvas.width / spacing) + 1;
+  const rows = Math.ceil(canvas.height / spacing) + 1;
+
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      const x = i * spacing;
+      const y = j * spacing;
+      const dx = x - mouseX;
+      const dy = y - mouseY;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      const maxDist = 200;
+      const intensity = Math.max(0, 1 - dist / maxDist);
+
+      ctx.beginPath();
+      ctx.arc(x, y, 1 + intensity * 2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(100, 200, 255, ${0.05 + intensity * 0.3})`;
+      ctx.fill();
+    }
+  }
+  requestAnimationFrame(drawGrid);
+}
+drawGrid();
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      const siblings = entry.target.parentElement.querySelectorAll('.fade-up');
+      siblings.forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 80);
+      });
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Details toggle icon
+document.querySelectorAll('details').forEach(det => {
+  det.addEventListener('toggle', () => {
+    const icon = det.querySelector('.exp-toggle i, .r-toggle');
+    if (!icon) return;
+    if (det.open) {
+      icon.className = icon.className.replace('fa-plus', 'fa-minus');
+    } else {
+      icon.className = icon.className.replace('fa-minus', 'fa-plus');
+    }
+  });
+});
+</script>
 </body>
 </html>
