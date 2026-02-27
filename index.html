@@ -13,7 +13,7 @@
    TOKENS & RESET
    ============================================= */
 :root {
-  --paper:      #f5f3ec; /* Slightly warmer, classic newsprint */
+  --paper:      #f5f3ec; 
   --ink:        #111111;
   --ink-light:  #444444;
   --ink-faint:  #888888;
@@ -141,7 +141,7 @@ strong { font-weight: 700; }
 }
 
 /* =============================================
-   HERO / FRONT PAGE
+   FRONT PAGE (HERO)
    ============================================= */
 .front-page {
   display: grid;
@@ -157,10 +157,7 @@ strong { font-weight: 700; }
   .front-page { grid-template-columns: 1fr; gap: 40px; }
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-}
+.column { display: flex; flex-direction: column; }
 
 .pullquote {
   font-size: 1.2rem;
@@ -173,32 +170,17 @@ strong { font-weight: 700; }
 }
 
 .photo-frame {
-  width: 100%;
-  border: var(--rule-thin);
-  padding: 4px;
-  background: var(--paper);
-  margin-bottom: 16px;
+  width: 100%; border: var(--rule-thin); padding: 4px; background: var(--paper); margin-bottom: 16px;
 }
 .photo-frame img {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: grayscale(100%) contrast(120%);
+  width: 100%; height: auto; display: block; filter: grayscale(100%) contrast(120%);
 }
 
-.action-links {
-  display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px;
-}
+.action-links { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
 .action-btn {
-  display: block;
-  text-align: center;
-  padding: 12px;
-  border: var(--rule-thin);
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  transition: all 0.2s;
+  display: block; text-align: center; padding: 12px; border: var(--rule-thin);
+  font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em;
+  text-transform: uppercase; transition: all 0.2s;
 }
 .action-btn.dark { background: var(--ink); color: var(--paper); }
 .action-btn:hover { background: var(--ink); color: var(--paper); }
@@ -207,10 +189,7 @@ strong { font-weight: 700; }
   display: flex; align-items: center; border: var(--rule-thin); margin-top: 16px;
 }
 .ig-icon {
-  width: 48px; height: 48px;
-  background: var(--ink);
-  color: var(--paper);
-  display: flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: center;
 }
 .ig-text {
   padding: 0 12px; font-family: 'DM Mono', monospace; font-size: 0.55rem;
@@ -218,9 +197,7 @@ strong { font-weight: 700; }
 }
 
 .stat-block {
-  border-bottom: var(--rule-thin);
-  padding: 16px 0;
-  text-align: center;
+  border-bottom: var(--rule-thin); padding: 16px 0; text-align: center;
 }
 .stat-block:first-child { border-top: var(--rule-thin); }
 .stat-n { font-size: 4rem; line-height: 1; margin-bottom: 4px; }
@@ -230,20 +207,13 @@ strong { font-weight: 700; }
    MARQUEE
    ============================================= */
 .marquee-wrap {
-  border-top: var(--rule-thick);
-  border-bottom: var(--rule-thin);
-  padding: 12px 0;
-  overflow: hidden;
-  white-space: nowrap;
-  margin-bottom: 60px;
+  border-top: var(--rule-thick); border-bottom: var(--rule-thin);
+  padding: 12px 0; overflow: hidden; white-space: nowrap; margin-bottom: 60px;
 }
 .marquee-inner {
-  display: inline-flex; gap: 40px;
-  animation: scroll 30s linear infinite;
+  display: inline-flex; gap: 40px; animation: scroll 30s linear infinite;
 }
-.mq-item {
-  font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
-}
+.mq-item { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
 .mq-item::before { content: '•'; margin-right: 40px; }
 @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
@@ -251,18 +221,11 @@ strong { font-weight: 700; }
    JOURNEY SECTION
    ============================================= */
 .journey-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 48px;
-  margin-bottom: 60px;
+  display: grid; grid-template-columns: 2fr 1fr; gap: 48px; margin-bottom: 60px;
 }
 @media (max-width: 900px) { .journey-grid { grid-template-columns: 1fr; gap: 32px; } }
 
-.gratitude-box {
-  background: var(--ink);
-  color: var(--paper);
-  padding: 32px;
-}
+.gratitude-box { background: var(--ink); color: var(--paper); padding: 32px; }
 .gratitude-box h3 { color: var(--paper); font-size: 2rem; border-bottom: 1px solid #444; padding-bottom: 12px; margin-bottom: 16px; }
 .gratitude-box a { text-decoration: underline; color: var(--paper); }
 .gratitude-box p { font-size: 0.9rem; color: #ddd; }
@@ -270,28 +233,15 @@ strong { font-weight: 700; }
 .gratitude-item:last-child { margin-bottom: 0; }
 
 /* =============================================
-   EXPERIENCE / CLASSIFIEDS STYLE
+   EXPERIENCE SECTION
    ============================================= */
-.experience-list {
-  border-top: var(--rule-thin);
-  margin-bottom: 60px;
-}
-details.exp-item {
-  border-bottom: var(--rule-thin);
-  cursor: pointer;
-}
+.experience-list { border-top: var(--rule-thin); margin-bottom: 60px; }
+details.exp-item { border-bottom: var(--rule-thin); cursor: pointer; }
 details.exp-item summary {
-  display: grid;
-  grid-template-columns: 120px 1fr 30px;
-  align-items: center;
-  padding: 24px 0;
-  list-style: none;
+  display: grid; grid-template-columns: 120px 1fr 30px; align-items: center; padding: 24px 0; list-style: none;
 }
 details.exp-item summary::-webkit-details-marker { display: none; }
-@media (max-width: 768px) {
-  details.exp-item summary { grid-template-columns: 1fr 30px; }
-  .exp-date { display: none; }
-}
+@media (max-width: 768px) { details.exp-item summary { grid-template-columns: 1fr 30px; } .exp-date { display: none; } }
 
 .exp-date { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--ink-light); line-height: 1.5; }
 .exp-role { font-size: 2.2rem; display: block; line-height: 1; margin-bottom: 4px; }
@@ -299,40 +249,22 @@ details.exp-item summary::-webkit-details-marker { display: none; }
 .exp-icon { text-align: right; }
 details[open] .exp-icon::before { content: "\f068"; }
 
-.exp-body {
-  padding: 0 0 32px 120px;
-  font-size: 0.95rem;
-}
+.exp-body { padding: 0 0 32px 120px; font-size: 0.95rem; }
 @media (max-width: 768px) { .exp-body { padding: 0 0 24px 0; } }
 
 /* =============================================
-   RESEARCH PORTFOLIO
+   RESEARCH SECTION
    ============================================= */
 .research-note {
-  border: var(--rule-thin);
-  padding: 16px 24px;
-  margin-bottom: 32px;
-  font-style: italic;
-  font-size: 0.9rem;
+  border: var(--rule-thin); padding: 16px 24px; margin-bottom: 32px; font-style: italic; font-size: 0.9rem;
 }
-
-.portfolio-cat {
-  margin-bottom: 40px;
-}
-.cat-header {
-  border-bottom: var(--rule-thick);
-  padding-bottom: 12px;
-  margin-bottom: 16px;
-}
+.portfolio-cat { margin-bottom: 40px; }
+.cat-header { border-bottom: var(--rule-thick); padding-bottom: 12px; margin-bottom: 16px; }
 .cat-role { font-family: 'DM Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-light); margin-bottom: 8px; }
 .cat-desc { font-size: 1rem; }
 
 .paper-row {
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: 16px;
-  padding: 16px 0;
-  border-bottom: var(--rule-light);
+  display: grid; grid-template-columns: 40px 1fr; gap: 16px; padding: 16px 0; border-bottom: var(--rule-light);
 }
 .paper-row:last-child { border-bottom: none; }
 .paper-num { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--ink-faint); }
@@ -340,20 +272,11 @@ details[open] .exp-icon::before { content: "\f068"; }
 .paper-meta { font-size: 0.85rem; color: var(--ink-light); }
 
 /* =============================================
-   AFFILIATIONS
+   AFFILIATIONS SECTION
    ============================================= */
-.aff-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  margin-bottom: 60px;
-}
+.aff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 60px; }
 @media (max-width: 768px) { .aff-grid { grid-template-columns: 1fr; gap: 24px; } }
-
-.aff-card {
-  border: var(--rule-thin);
-  padding: 24px;
-}
+.aff-card { border: var(--rule-thin); padding: 24px; }
 .aff-card h3 { font-size: 2.2rem; margin-bottom: 4px; }
 .aff-org { display: block; font-style: italic; margin-bottom: 16px; text-decoration: underline; }
 
@@ -361,11 +284,8 @@ details[open] .exp-icon::before { content: "\f068"; }
    FOOTER
    ============================================= */
 footer {
-  border-top: var(--rule-thick);
-  padding-top: 24px;
-  display: flex; justify-content: space-between;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+  border-top: var(--rule-thick); padding-top: 24px; display: flex; justify-content: space-between;
+  font-family: 'DM Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
 }
 @media (max-width: 768px) { footer { flex-direction: column; text-align: center; gap: 12px; } }
 </style>
@@ -395,11 +315,11 @@ footer {
     
     <div class="column">
       <div class="section-label"><span>Profile</span> <span>01</span></div>
-      <p class="drop-cap">It began in 2013. Fresh out of Computer Science, I found myself not in a tech startup, but as an intern in a pharmaceutical firm. It was there, amidst the rows of numbers and spreadsheets, that I discovered my true language: <strong>Data</strong>.</p>
+      <p class="drop-cap">From the historic streets of Peshawar to Notre Dame. I am a Research Operations Specialist currently managing international research teams across Colombia, India, Nepal, Pakistan, and the United States.</p>
       
-      <div class="pullquote">"A decade bridging quantitative rigour with the human complexities of development research across South Asia, the Americas, East Africa, and the Middle East."</div>
+      <div class="pullquote">"A decade bridging quantitative rigour with the human complexities of development research."</div>
       
-      <p>I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. My specialty is shaping raw data into panel form and using OLS to solve problems.</p>
+      <p>My specialty lies in panel data construction, OLS-based analysis, and directing end-to-end field operations.</p>
     </div>
 
     <div class="column">
@@ -460,8 +380,10 @@ footer {
     <div class="section-label"><span>Feature: My Journey</span> <span>04</span></div>
     <div class="journey-grid">
       <div>
-        <p>This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met Dr. Luke Sonnet, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. I like to think of myself as a "Data Wizard".</p>
-        <p>Today, I write this as a Research Manager at the Kellogg Institute, University of Notre Dame. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself, transcending the fear of embarrassment and failure.</p>
+        <p class="drop-cap">It began in 2013. Fresh out of Computer Science, I found myself not in a tech startup, but as an intern in a pharmaceutical firm. It was there, amidst the rows of numbers and spreadsheets, that I discovered my true language: <strong>Data</strong>.</p>
+        <p>I realized I had a specific talent; I could listen to what the data was saying and shape it to tell the truth of the business. This skill propelled me to Assistant Product Manager, where I crafted marketing strategies for OTC products. But I wanted more impact. I made a pivotal decision to pursue a Master's in Development Studies, a decision that finally married my technical programming roots with the human-centric world of development practice.</p>
+        <p>This path led me to impactful work with USAID and UNHCR projects, but the true turning point was the mentorship I received. I met <a href="https://lukesonnet.com/" target="_blank" style="text-decoration:underline;">Dr. Luke Sonnet</a>, under whose wing I delved into the realm of data analysis. Though I will always consider myself a student of the craft, I have built a proven track record. My specialty is shaping raw data into panel form and using OLS to solve problems. I like to think of myself as a "Data Wizard" :-)</p>
+        <p><strong>From Peshawar to Notre Dame.</strong> Today, I write this as a Research Manager at the Kellogg Institute, University of Notre Dame. It is a reality that feels worlds apart from where I began. My journey from the historic streets of Peshawar to the United States was paved with grit, the generosity of mentors, and an unyielding conviction to believe in oneself, transcending the fear of embarrassment and failure.</p>
       </div>
       <div class="gratitude-box">
         <div class="mono" style="margin-bottom:16px; color:#aaa;">In Gratitude</div>
