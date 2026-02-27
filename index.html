@@ -13,7 +13,7 @@
   --void: #020408;
   --deep: #050c14;
   --surface: #0a1628;
-  --panel: rgba(10, 22, 40, 0.7);
+  --panel: rgba(6, 15, 28, 0.85);
   --line: rgba(100, 200, 255, 0.08);
   --line-bright: rgba(100, 200, 255, 0.18);
   --ice: #64c8ff;
@@ -21,9 +21,9 @@
   --ice-glow: rgba(100, 200, 255, 0.12);
   --warm: #e8c97a;
   --warm-dim: rgba(232, 201, 122, 0.4);
-  --text-primary: #d8eaf5;
-  --text-secondary: rgba(200, 220, 240, 0.55);
-  --text-mono: #7eb8d4;
+  --text-primary: #eaf4ff;
+  --text-secondary: #a8c8e0;
+  --text-mono: #90cce8;
   --border: rgba(100, 200, 255, 0.1);
   --border-active: rgba(100, 200, 255, 0.3);
 }
@@ -102,7 +102,7 @@ nav {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--text-secondary);
+  color: #88aabf;
   text-decoration: none;
   transition: color 0.3s ease;
   position: relative;
@@ -170,7 +170,7 @@ nav {
 }
 .hero-desc {
   font-size: 0.95rem;
-  color: var(--text-secondary);
+  color: #b8d8ee;
   max-width: 420px;
   line-height: 1.9;
   font-weight: 300;
@@ -283,8 +283,8 @@ nav {
 }
 .stat-label {
   font-family: 'Space Mono', monospace;
-  font-size: 0.55rem;
-  color: var(--text-secondary);
+  font-size: 0.58rem;
+  color: #88aabf;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
@@ -337,8 +337,8 @@ section { position: relative; z-index: 1; }
   align-items: start;
 }
 .journey-text p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
+  font-size: 1rem;
+  color: #b8d8ee;
   margin-bottom: 24px;
   line-height: 2;
   font-weight: 300;
@@ -399,9 +399,9 @@ section { position: relative; z-index: 1; }
 }
 .mentor-entry:hover .mentor-name { color: var(--ice); }
 .mentor-entry p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.8;
+  font-size: 0.9rem;
+  color: #b0cfe4;
+  line-height: 1.85;
   font-weight: 300;
 }
 
@@ -433,10 +433,10 @@ details > summary::-webkit-details-marker { display: none; }
 
 .exp-date {
   font-family: 'Space Mono', monospace;
-  font-size: 0.6rem;
-  color: var(--text-mono);
+  font-size: 0.62rem;
+  color: #90cce8;
   letter-spacing: 0.1em;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 .exp-info { display: flex; flex-direction: column; gap: 4px; }
 .exp-title {
@@ -471,8 +471,8 @@ details[open] .exp-toggle {
 
 .exp-body {
   padding: 0 32px 28px 224px;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  font-size: 0.95rem;
+  color: #b8d8ee;
   line-height: 1.9;
   font-weight: 300;
   border-top: 1px solid var(--line);
@@ -482,19 +482,25 @@ details[open] .exp-toggle {
 /* RESEARCH SECTION */
 #research { border-top: 1px solid var(--line); }
 .research-notice {
-  border: 1px solid var(--border);
-  padding: 20px 28px;
+  border: 1px solid rgba(232, 201, 122, 0.5);
+  border-left: 4px solid var(--warm);
+  padding: 24px 28px;
   margin-bottom: 48px;
-  display: flex; align-items: center; gap: 16px;
-  background: var(--panel);
+  display: flex; align-items: flex-start; gap: 18px;
+  background: rgba(232, 201, 122, 0.07);
 }
-.research-notice i { color: var(--warm); font-size: 0.8rem; flex-shrink: 0; }
+.research-notice i { color: var(--warm); font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
 .research-notice p {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--text-secondary);
-  letter-spacing: 0.05em;
-  line-height: 1.7;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: #ddd8bc;
+  letter-spacing: 0.01em;
+  line-height: 1.75;
+  font-weight: 400;
+}
+.research-notice p strong {
+  color: var(--warm);
+  font-weight: 600;
 }
 
 .research-category {
@@ -520,10 +526,10 @@ details[open] .exp-toggle {
   margin-bottom: 6px;
 }
 .cat-focus {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
+  font-size: 0.9rem;
+  color: #b0cfe4;
   font-weight: 300;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 .cat-focus strong { color: var(--text-primary); font-weight: 500; }
 
@@ -582,10 +588,10 @@ details[open] .research-summary-btn .r-toggle { transform: rotate(45deg); color:
 .paper-title:hover { color: var(--ice); }
 .paper-meta {
   font-family: 'Space Mono', monospace;
-  font-size: 0.58rem;
-  color: var(--text-secondary);
+  font-size: 0.62rem;
+  color: #96b8cc;
   letter-spacing: 0.05em;
-  line-height: 1.8;
+  line-height: 1.9;
 }
 .paper-journal {
   color: var(--warm);
@@ -636,9 +642,9 @@ details[open] .research-summary-btn .r-toggle { transform: rotate(45deg); color:
 }
 .aff-org:hover { color: var(--text-primary); }
 .aff-desc {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.8;
+  font-size: 0.9rem;
+  color: #b0cfe4;
+  line-height: 1.85;
   font-weight: 300;
   margin-top: 12px;
 }
@@ -724,7 +730,47 @@ footer {
   100% { transform: translateX(-50%); }
 }
 
-/* FADE IN ANIMATION */
+/* CHICAGO BANNERS */
+.chicago-banner {
+  width: 100%;
+  height: 260px;
+  position: relative; z-index: 1;
+  overflow: hidden;
+  display: flex; align-items: flex-end;
+}
+.chicago-banner img {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  filter: grayscale(30%) brightness(0.45) contrast(1.1);
+  transition: filter 0.6s ease;
+}
+.chicago-banner:hover img {
+  filter: grayscale(10%) brightness(0.55) contrast(1.1);
+}
+.chicago-caption {
+  position: relative; z-index: 1;
+  padding: 24px 60px;
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(to top, rgba(2,4,8,0.85) 0%, transparent 100%);
+}
+.chicago-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+.chicago-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.05em;
+}
 .fade-up {
   opacity: 0;
   transform: translateY(30px);
@@ -785,7 +831,7 @@ footer {
       From the streets of Peshawar to Notre Dame. A decade of bridging quantitative rigor with the human complexities of development research across four continents.
     </p>
     <div class="hero-actions fade-up">
-      <a href="mailto:skhan24@nd.edu" class="btn-primary">
+      <a href="/cdn-cgi/l/email-protection#ed9e86858c83dfd9ad8389c3888998" class="btn-primary">
         <i class="fas fa-envelope" style="margin-right:8px; font-size:0.7rem;"></i> Get in Touch
       </a>
       <a href="https://www.dropbox.com/scl/fi/l1b0zx35sj032045oajtc/cvmak.pdf?rlkey=9a55m6v82eoqxasv9vf0yxcin&dl=0" target="_blank" class="btn-ghost">
@@ -820,7 +866,7 @@ footer {
       </div>
       <div class="stat-block">
         <div class="stat-num">10+</div>
-        <div class="stat-label">Publications</div>
+        <div class="stat-label">Projects</div>
       </div>
       <div class="stat-block">
         <div class="stat-num">3</div>
@@ -853,6 +899,15 @@ footer {
     <span class="divider-item">Review of Economic Studies</span>
     <span class="divider-item">Science 2024</span>
     <span class="divider-item">British Journal of Political Science</span>
+  </div>
+</div>
+
+<!-- CHICAGO BANNER 1 -->
+<div class="chicago-banner">
+  <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1600&q=80&auto=format&fit=crop" alt="Chicago skyline">
+  <div class="chicago-caption">
+    <span class="chicago-label">Chicago, IL</span>
+    <span class="chicago-title">The Journey</span>
   </div>
 </div>
 
@@ -908,6 +963,15 @@ footer {
     <span class="divider-item">Survey Design</span>
     <span class="divider-item">Political Economy</span>
     <span class="divider-item">Development Studies</span>
+  </div>
+</div>
+
+<!-- CHICAGO BANNER 2 -->
+<div class="chicago-banner">
+  <img src="https://images.unsplash.com/photo-1494522855154-9297ac14b55f?w=1600&q=80&auto=format&fit=crop" alt="Chicago architecture">
+  <div class="chicago-caption">
+    <span class="chicago-label">Chicago, IL</span>
+    <span class="chicago-title">Work Experience</span>
   </div>
 </div>
 
@@ -1021,6 +1085,15 @@ footer {
   </div>
 </section>
 
+<!-- CHICAGO BANNER 3 -->
+<div class="chicago-banner">
+  <img src="https://images.unsplash.com/photo-1529251333259-d36cccaf22ea?w=1600&q=80&auto=format&fit=crop" alt="Chicago at night">
+  <div class="chicago-caption">
+    <span class="chicago-label">Chicago, IL</span>
+    <span class="chicago-title">Research Operations</span>
+  </div>
+</div>
+
 <!-- RESEARCH -->
 <section id="research">
   <div class="section-wrap">
@@ -1032,7 +1105,7 @@ footer {
 
     <div class="research-notice fade-up">
       <i class="fas fa-info-circle"></i>
-      <p>Portfolio Statement: This portfolio spans nearly a decade of technical execution and operational leadership. While I do not claim authorship, I served as the technical backbone for these studies — driving rigorous data cleaning, coding in R, and statistical analysis alongside complex field operations and stakeholder management.</p>
+      <p><strong>Note on this portfolio:</strong> I am not an author on any of the publications listed below. This section documents the projects I supported as a technical operator and field manager over nearly a decade. My contributions included data cleaning and management, R coding, survey design, and field operations. All academic credit belongs to the named authors.</p>
     </div>
 
     <!-- Category 1 -->
@@ -1249,6 +1322,15 @@ footer {
   </div>
 </section>
 
+<!-- CHICAGO BANNER 4 -->
+<div class="chicago-banner">
+  <img src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?w=1600&q=80&auto=format&fit=crop" alt="Chicago river and buildings">
+  <div class="chicago-caption">
+    <span class="chicago-label">Chicago, IL</span>
+    <span class="chicago-title">Affiliations</span>
+  </div>
+</div>
+
 <!-- AFFILIATIONS -->
 <section id="affiliations">
   <div class="section-wrap">
@@ -1292,7 +1374,7 @@ footer {
   <div class="footer-mono">Notre Dame, IN &nbsp;<span>//</span>&nbsp; 2026</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // CURSOR
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
@@ -1389,12 +1471,4 @@ document.querySelectorAll('details').forEach(det => {
     const icon = det.querySelector('.exp-toggle i, .r-toggle');
     if (!icon) return;
     if (det.open) {
-      icon.className = icon.className.replace('fa-plus', 'fa-minus');
-    } else {
-      icon.className = icon.className.replace('fa-minus', 'fa-plus');
-    }
-  });
-});
-</script>
-</body>
-</html>
+      icon.className = icon.className.replace('fa-
