@@ -725,7 +725,7 @@ footer {
         <div class="tools-left">
           <div class="mono" style="font-size:0.65rem; color:#666; margin-bottom:12px;">Project</div>
           <h3 class="headline-font" style="font-size: 3rem; line-height: 1; margin-bottom: 8px; color: var(--paper);">super-RA</h3>
-          <p style="margin-bottom: 16px; font-size: 0.95rem; color: #ccc;">A growing library of Claude Skills for empirical social science research. Each skill enforces data integrity, transparent variable tracking, and end-to-end reproducibility. Designed for researchers working with foundations, multilateral institutions, and policy organizations.</p>
+          <p style="margin-bottom: 16px; font-size: 0.95rem; color: #ccc;">A growing library of research-assistant skills for empirical social science. Each skill enforces data integrity, transparent variable tracking, and end-to-end reproducibility. Ships with parallel implementations for Claude and Codex. Designed for researchers working with foundations, multilateral institutions, and policy organizations.</p>
           <a href="https://github.com/Mamooralikhan/super-RA" target="_blank" class="action-btn dark" style="display:inline-block; width:auto; padding: 10px 24px;"><i class="fab fa-github"></i> &nbsp;github.com/Mamooralikhan/super-RA</a>
         </div>
         <div class="tools-right">
@@ -733,6 +733,10 @@ footer {
           <div class="skill-row">
             <div class="skill-name">/replication-repo &nbsp;<span style="color: var(--ink-faint);">— Available</span></div>
             <p class="skill-desc">Constructs a complete, self-contained replication package from an existing research project. Produces standardized file paths, cleaned datasets, and comprehensive documentation aligned with journal and funder requirements.</p>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name">/ref-check &nbsp;<span style="color: var(--ink-faint);">— Available</span></div>
+            <p class="skill-desc">Audits every reference in a paper against its source page, flags mismatches in author names, titles, years, and journal details, and produces a structured verification workbook.</p>
           </div>
           <div class="skill-row" style="opacity: 0.6;">
             <div class="skill-name">/coding-agent &nbsp;<span style="color: var(--ink-faint);">— In Development</span></div>
@@ -750,6 +754,71 @@ footer {
       </div>
       <div style="padding: 16px 32px; background: #1a1a1a; color: var(--paper); border-top: 1px solid #333;">
         <span class="mono" style="font-size: 0.6rem; letter-spacing: 0.15em; color: #666;">MIT License &nbsp;•&nbsp; Open Source &nbsp;•&nbsp; Built for Empirical Social Science</span>
+      </div>
+    </div>
+
+    <div style="border: 1px solid #333; margin-top: 32px;">
+      <div class="tools-inner">
+        <div class="tools-left">
+          <div class="mono" style="font-size:0.65rem; color:#666; margin-bottom:12px;">Project</div>
+          <h3 class="headline-font" style="font-size: 3rem; line-height: 1; margin-bottom: 8px; color: var(--paper);">punjab-pp-boundaries</h3>
+          <p style="margin-bottom: 16px; font-size: 0.95rem; color: #ccc;">No open geodata existed for Punjab's 297 Provincial Assembly constituencies under the 2018 delimitation. This project reconstructed every boundary from archival ECP district maps, 30,679 GPS polling station coordinates, and a 2013 shapefile baseline — producing a validated GeoPackage with full provenance tracking for each feature.</p>
+          <p style="margin-bottom: 24px; font-size: 0.85rem; color: #888;">Output: <span style="color: #ccc; font-family: 'DM Mono', monospace;">punjab_pp_2018.gpkg</span> &nbsp;·&nbsp; EPSG:4326 &nbsp;·&nbsp; ~1.4 MB &nbsp;·&nbsp; CC BY 4.0</p>
+          <a href="https://github.com/Mamooralikhan/punjab-pp-boundaries" target="_blank" class="action-btn dark" style="display:inline-block; width:auto; padding: 10px 24px;"><i class="fab fa-github"></i> &nbsp;github.com/Mamooralikhan/punjab-pp-boundaries</a>
+        </div>
+        <div class="tools-right">
+          <div class="mono" style="font-size:0.65rem; color:#666; margin-bottom:16px;">Pipeline</div>
+          <div class="skill-row">
+            <div class="skill-name">01 &nbsp;— &nbsp;Code Extraction</div>
+            <p class="skill-desc">Parses ECP HTML to extract official codes (PP-1 to PP-297). Classifies 36 districts as STABLE or CHANGED based on seat count shifts between delimitations.</p>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name">02 &nbsp;— &nbsp;Stable Assignment</div>
+            <p class="skill-desc">Matches 2018 GPS polling centroids to 2013 polygons using the Hungarian algorithm (bipartite matching), minimising total displacement across 132 constituencies.</p>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name">03 &nbsp;— &nbsp;Image Georeferencing</div>
+            <p class="skill-desc">Warps 42 archival JPEG panels via thin-plate spline mapping. Extracts contours on standard maps; applies HSV thresholding on satellite panels to isolate boundary pixels.</p>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name">04 &nbsp;— &nbsp;Voronoi Tessellation</div>
+            <p class="skill-desc">For 165 changed-district constituencies, generates Voronoi regions from polling station point clouds. Accuracy: ±200–1,000 m. Fallback to 2013 geometry where GPS unavailable.</p>
+          </div>
+          <div class="skill-row" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+            <div class="skill-name">05 &nbsp;— &nbsp;Assembly &amp; Validation</div>
+            <p class="skill-desc">Merges all geometry sources and runs six validation checks: row count, code uniqueness, geometry integrity, centroid containment, and province boundary alignment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid #333; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center;">
+        <div style="padding: 20px 16px; border-right: 1px solid #333;">
+          <div class="headline-font" style="font-size: 2.5rem; color: var(--paper); line-height: 1;">297</div>
+          <div class="mono" style="font-size: 0.6rem; color: #666; margin-top: 4px;">Constituencies</div>
+        </div>
+        <div style="padding: 20px 16px; border-right: 1px solid #333;">
+          <div class="headline-font" style="font-size: 2.5rem; color: var(--paper); line-height: 1;">30,679</div>
+          <div class="mono" style="font-size: 0.6rem; color: #666; margin-top: 4px;">GPS Polling Stations</div>
+        </div>
+        <div style="padding: 20px 16px; border-right: 1px solid #333;">
+          <div class="headline-font" style="font-size: 2.5rem; color: var(--paper); line-height: 1;">42</div>
+          <div class="mono" style="font-size: 0.6rem; color: #666; margin-top: 4px;">Archival Map Panels</div>
+        </div>
+        <div style="padding: 20px 16px;">
+          <div class="headline-font" style="font-size: 2.5rem; color: var(--paper); line-height: 1;">6</div>
+          <div class="mono" style="font-size: 0.6rem; color: #666; margin-top: 4px;">Validation Checks</div>
+        </div>
+      </div>
+
+      <div style="padding: 14px 32px; background: #1a1a1a; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <span class="mono" style="font-size: 0.6rem; color: #555; margin-right: 4px;">Stack</span>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #888; border: 1px solid #333; padding: 3px 8px;">Python 3.9</span>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #888; border: 1px solid #333; padding: 3px 8px;">GeoPandas</span>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #888; border: 1px solid #333; padding: 3px 8px;">GDAL / Rasterio</span>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #888; border: 1px solid #333; padding: 3px 8px;">OpenCV</span>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #888; border: 1px solid #333; padding: 3px 8px;">Shapely / Scipy</span>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #888; border: 1px solid #333; padding: 3px 8px;">Tesseract OCR</span>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #888; border: 1px solid #333; padding: 3px 8px;">scikit-image</span>
       </div>
     </div>
   </section>
